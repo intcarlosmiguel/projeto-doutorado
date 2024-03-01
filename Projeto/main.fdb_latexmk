@@ -1,14 +1,14 @@
 # Fdb version 3
-["bibtex main"] 1709307634 "main.aux" "main.bbl" "main" 1709307635
+["bibtex main"] 1709308777 "main.aux" "main.bbl" "main" 1709308778
   "/usr/share/texlive/texmf-dist/bibtex/bst/natbib/unsrtnat.bst" 1233624470 24550 a41a6405f4de768c43e871d9fbce2bc8 ""
-  "main.aux" 1709307635 1021 9d7c4c72ed7f01ac3e4a7548ae09b49f "pdflatex"
+  "main.aux" 1709308778 1238 eaf57e5c32182f50bf853ceeb80677a0 "pdflatex"
   "reference.bib" 1709307633 2739 70618adafe1669983f3e0660fd8bd2c3 ""
   (generated)
   "main.bbl"
   "main.blg"
-["pdflatex"] 1709307634 "/home/miguel/Downloads/Code/Github/projeto-doutorado/Projeto/main.tex" "main.pdf" "main" 1709307635
+["pdflatex"] 1709308777 "/home/miguel/Downloads/Code/Github/projeto-doutorado/Projeto/main.tex" "main.pdf" "main" 1709308778
   "/etc/texmf/web2c/texmf.cnf" 1680370422 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/miguel/Downloads/Code/Github/projeto-doutorado/Projeto/main.tex" 1709307633 5157 d7e2fb9945dcd5c0832adccd06fdc5d2 ""
+  "/home/miguel/Downloads/Code/Github/projeto-doutorado/Projeto/main.tex" 1709308777 5985 c27bb88b3f22957073d46914a54d5ff1 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm" 1136768653 1324 c910af8c371558dc20f2d7822f66fe64 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm" 1136768653 1524 4414a8315f39513458b80dfc63bff03a ""
@@ -55,9 +55,9 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1644012257 39432 7155514e09a3d69036fac785183a21c2 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1680370441 4379155 98693266ff65f58d9f98aff394de12d2 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1685444430 2799603 7a64b60e47507a07cbc973563228a9f1 ""
-  "main.aux" 1709307635 1021 9d7c4c72ed7f01ac3e4a7548ae09b49f "pdflatex"
-  "main.bbl" 1709307634 2877 52593b517d68ae67e46ca11e13b0c1b3 "bibtex main"
-  "main.tex" 1709307633 5157 d7e2fb9945dcd5c0832adccd06fdc5d2 ""
+  "main.aux" 1709308778 1238 eaf57e5c32182f50bf853ceeb80677a0 "pdflatex"
+  "main.bbl" 1709308777 2877 52593b517d68ae67e46ca11e13b0c1b3 "bibtex main"
+  "main.tex" 1709308777 5985 c27bb88b3f22957073d46914a54d5ff1 ""
   (generated)
   "main.aux"
   "main.log"

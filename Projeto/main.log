@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.5.30)  1 MAR 2024 12:40
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.5.30)  1 MAR 2024 12:59
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -120,14 +120,14 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <8> on input line 11.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 11.
+ [1
 
-Overfull \hbox (1.57469pt too wide) in paragraph at lines 27--28
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+Overfull \hbox (1.57469pt too wide) in paragraph at lines 29--30
 \OT1/cmr/m/n/10 tado sob condi^^Xc~oes vari^^Saveis. Es-sas mu-dan^^Xcas abrup-tas s~ao quan-tific^^Saveis atrav^^Ses
  []
 
-[1
-
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./main.bbl [2]
+[2] [3] [4] [5] [6] (./main.bbl
 Underfull \hbox (badness 5578) in paragraph at lines 26--34
 []\OT1/cmr/m/n/10 Yi Wang, W.Y. Szeto, Ke Han, and Terry L. Friesz.  Dy-
  []
@@ -187,20 +187,20 @@ Underfull \hbox (badness 1178) in paragraph at lines 48--56
 \OT1/cmr/m/n/10 ber 2018.  ISSN 1091-6490.  doi: 10.1073/pnas.1801545116.  URL
  []
 
-) [3] (./main.aux) ) 
+) [7] (./main.aux) ) 
 Here is how much of TeX's memory you used:
- 2287 strings out of 478287
- 38336 string characters out of 5849289
- 333558 words of memory out of 5000000
- 20477 multiletter control sequences out of 15000+600000
+ 2288 strings out of 478287
+ 38344 string characters out of 5849289
+ 335558 words of memory out of 5000000
+ 20478 multiletter control sequences out of 15000+600000
  473413 words of font info for 42 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 60i,7n,67p,1118b,219s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,7n,67p,1136b,197s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on main.pdf (3 pages, 97032 bytes).
+Output written on main.pdf (7 pages, 100017 bytes).
 PDF statistics:
- 44 PDF objects out of 1000 (max. 8388607)
- 26 compressed objects within 1 object stream
+ 58 PDF objects out of 1000 (max. 8388607)
+ 36 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
