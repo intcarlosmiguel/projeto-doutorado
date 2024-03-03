@@ -1,14 +1,14 @@
 # Fdb version 3
-["bibtex main"] 1709326023 "main.aux" "main.bbl" "main" 1709326025
+["bibtex main"] 1709436271 "main.aux" "main.bbl" "main" 1709436426
   "/usr/share/texlive/texmf-dist/bibtex/bst/natbib/unsrtnat.bst" 1233624470 24550 a41a6405f4de768c43e871d9fbce2bc8 ""
-  "main.aux" 1709326024 1434 4e861a8a142d877a6da1ae327e3a1b4e "pdflatex"
-  "reference.bib" 1709325908 3625 ae7816a2cafff1254d36f070009b054f ""
+  "main.aux" 1709436426 1632 c6d2a2b2ac92145e95ca9274cab9936d "pdflatex"
+  "reference.bib" 1709382720 3625 ae7816a2cafff1254d36f070009b054f ""
   (generated)
   "main.bbl"
   "main.blg"
-["pdflatex"] 1709326023 "/home/carlos/Downloads/Code/Github/projeto-doutorado/Projeto/main.tex" "main.pdf" "main" 1709326025
-  "/etc/texmf/web2c/texmf.cnf" 1709143431 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/carlos/Downloads/Code/Github/projeto-doutorado/Projeto/main.tex" 1709326021 6351 dd06360a2951db4e85379100fd985626 ""
+["pdflatex"] 1709436423 "/home/miguel/Downloads/Code/Github/projeto-doutorado/Projeto/main.tex" "main.pdf" "main" 1709436426
+  "/etc/texmf/web2c/texmf.cnf" 1680370422 475 c0e671620eb5563b2130f56340a5fde8 ""
+  "/home/miguel/Downloads/Code/Github/projeto-doutorado/Projeto/main.tex" 1709436423 6644 1ee3c7eddc66af984727208f3949f90b ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm" 1136768653 1324 c910af8c371558dc20f2d7822f66fe64 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm" 1136768653 1524 4414a8315f39513458b80dfc63bff03a ""
@@ -40,6 +40,7 @@
   "/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty" 1622581934 5049 969aec05d5f39c43f8005910498fcf90 ""
   "/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo" 1636758526 8448 96f18c76bf608a36ee6fbf021ac1dd32 ""
   "/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty" 1579991033 13886 d1306dcf79a944f6988e688c1785f9ce ""
+  "/usr/share/texlive/texmf-dist/tex/latex/float/float.sty" 1137110151 6749 16d2656a1984957e674b149555f1ea1d ""
   "/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg" 1465944070 1224 978390e9c2234eab29404bc21b268d1e ""
   "/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def" 1601931164 19103 48d29b6e2a64cb717117ef65f107b404 ""
   "/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty" 1622581934 18399 7e40f80366dffb22c0e7b70517db5cb4 ""
@@ -53,11 +54,12 @@
   "/usr/share/texlive/texmf-dist/tex/latex/natbib/natbib.sty" 1644012257 45458 f1c6cb3edd91174e966cbbaf88993bcf ""
   "/usr/share/texlive/texmf-dist/web2c/texmf.cnf" 1644012257 39432 7155514e09a3d69036fac785183a21c2 ""
   "/usr/share/texmf/web2c/texmf.cnf" 1644012257 39432 7155514e09a3d69036fac785183a21c2 ""
-  "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1709143594 4379155 98693266ff65f58d9f98aff394de12d2 ""
-  "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1709143643 2801538 1a9ebe36799839f600ff5c17423955a0 ""
-  "main.aux" 1709326024 1434 4e861a8a142d877a6da1ae327e3a1b4e "pdflatex"
-  "main.bbl" 1709326023 3740 09ba858099b7a603bda83062a18eee4e "bibtex main"
-  "main.tex" 1709326021 6351 dd06360a2951db4e85379100fd985626 ""
+  "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1680370441 4379155 98693266ff65f58d9f98aff394de12d2 ""
+  "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1685444430 2799603 7a64b60e47507a07cbc973563228a9f1 ""
+  "img/urbanizacao.png" 1709435519 2794131 b0c66a6826f66067779b860168e329dd ""
+  "main.aux" 1709436426 1632 c6d2a2b2ac92145e95ca9274cab9936d "pdflatex"
+  "main.bbl" 1709436271 3740 09ba858099b7a603bda83062a18eee4e "bibtex main"
+  "main.tex" 1709436423 6644 1ee3c7eddc66af984727208f3949f90b ""
   (generated)
   "main.aux"
   "main.log"
