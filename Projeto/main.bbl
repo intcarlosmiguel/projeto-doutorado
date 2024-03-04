@@ -1,4 +1,4 @@
-\begin{thebibliography}{8}
+\begin{thebibliography}{11}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -21,6 +21,20 @@ Janice Hegewald, Melanie Schubert, Alice Freiberg, Karla Romero~Starke,
 \newblock ISSN 1660-4601.
 \newblock \doi{10.3390/ijerph17176175}.
 \newblock URL \url{http://dx.doi.org/10.3390/ijerph17176175}.
+
+\bibitem[Adli et~al.(2017)Adli, Berger, Brakemeier, Engel, Fingerhut,
+  Gomez-Carrillo, Hehl, Heinz, H, Mehran, Tolaas, Walter, Weiland, and
+  Stollmann]{Adli2017}
+Mazda Adli, Maximilian Berger, Eva-Lotta Brakemeier, Ludwig Engel, Joerg
+  Fingerhut, Ana Gomez-Carrillo, Rainer Hehl, Andreas Heinz, Juergen~Mayer H,
+  Nassim Mehran, Sissel Tolaas, Henrik Walter, Ute Weiland, and Joerg
+  Stollmann.
+\newblock Neurourbanism: towards a new discipline.
+\newblock \emph{The Lancet Psychiatry}, 4\penalty0 (3):\penalty0 183–185,
+  March 2017.
+\newblock ISSN 2215-0366.
+\newblock \doi{10.1016/s2215-0366(16)30371-6}.
+\newblock URL \url{http://dx.doi.org/10.1016/S2215-0366(16)30371-6}.
 
 \bibitem[Wang et~al.(2018)Wang, Szeto, Han, and Friesz]{Wang2018}
 Yi~Wang, W.Y. Szeto, Ke~Han, and Terry~L. Friesz.
@@ -54,6 +68,15 @@ Guanwen Zeng, Daqing Li, Shengmin Guo, Liang Gao, Ziyou Gao, H.~Eugene Stanley,
 \newblock \doi{10.1073/pnas.1801545116}.
 \newblock URL \url{http://dx.doi.org/10.1073/pnas.1801545116}.
 
+\bibitem[Amb\"{u}hl et~al.(2023)Amb\"{u}hl, Menendez, and González]{Ambhl2023}
+Lukas Amb\"{u}hl, Monica Menendez, and Marta~C. González.
+\newblock Understanding congestion propagation by combining percolation theory
+  with the macroscopic fundamental diagram.
+\newblock \emph{Communications Physics}, 6\penalty0 (1), February 2023.
+\newblock ISSN 2399-3650.
+\newblock \doi{10.1038/s42005-023-01144-w}.
+\newblock URL \url{http://dx.doi.org/10.1038/s42005-023-01144-w}.
+
 \bibitem[R.~Byron~Bird(2001)]{darcy}
 Edwin N.~Lightfoot R.~Byron~Bird, Warren E.~Stewart.
 \newblock \emph{Transport Phenomena.}
@@ -68,6 +91,16 @@ Hyejin Youn, Michael~T. Gastner, and Hawoong Jeong.
 \newblock ISSN 1079-7114.
 \newblock \doi{10.1103/physrevlett.101.128701}.
 \newblock URL \url{http://dx.doi.org/10.1103/PhysRevLett.101.128701}.
+
+\bibitem[Dial(2006)]{Dial2006}
+Robert~B. Dial.
+\newblock A path-based user-equilibrium traffic assignment algorithm that
+  obviates path storage and enumeration.
+\newblock \emph{Transportation Research Part B: Methodological}, 40\penalty0
+  (10):\penalty0 917–936, December 2006.
+\newblock ISSN 0191-2615.
+\newblock \doi{10.1016/j.trb.2006.02.008}.
+\newblock URL \url{http://dx.doi.org/10.1016/j.trb.2006.02.008}.
 
 \bibitem[Simini et~al.(2012)Simini, González, Maritan, and
   Barabási]{Simini2012}

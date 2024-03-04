@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.5.30)  3 MAR 2024 00:27
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.5.30)  3 MAR 2024 13:17
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -135,100 +135,150 @@ File: img/urbanizacao.png Graphic file (type png)
 <use img/urbanizacao.png>
 Package pdftex.def Info: img/urbanizacao.png  used on input line 27.
 (pdftex.def)             Requested size: 241.49895pt x 198.60536pt.
- [2 <./img/urbanizacao.png>] [3] [4] [5] [6] [7] (./main.bbl
-Underfull \hbox (badness 5578) in paragraph at lines 26--34
+ [2 <./img/urbanizacao.png>]
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 51.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 51.
+ [3] [4] [5] [6] [7] (./main.bbl
+Underfull \hbox (badness 2941) in paragraph at lines 15--24
+\OT1/cmr/m/n/10 Franziska Au-gustin, Steffi G. Riedel-Heller, Hajo Zeeb, and An-
+ []
+
+
+Underfull \hbox (badness 6641) in paragraph at lines 15--24
+\OT1/cmr/m/n/10 dreas Sei-dler.  Traf-fic noise and men-tal health: A sys-tem-
+ []
+
+
+Underfull \hbox (badness 7832) in paragraph at lines 15--24
+\OT1/cmr/m/n/10 atic re-view and meta-analysis.  \OT1/cmr/m/it/10 In-ter-na-tional Jour-nal of En-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 15--24
+\OT1/cmr/m/it/10 vi-ron-men-tal Re-search and Pub-lic Health\OT1/cmr/m/n/10 , 17(17):6175, Au-gust
+ []
+
+
+Underfull \hbox (badness 4193) in paragraph at lines 15--24
+\OT1/cmr/m/n/10 2020.  ISSN 1660-4601.  doi: 10.3390/ijerph17176175.  URL
+ []
+
+
+Underfull \hbox (badness 2894) in paragraph at lines 28--38
+\OT1/cmr/m/n/10 gel, Jo-erg Fin-ger-hut, Ana Gomez-Carrillo, Rainer Hehl, An-dreas
+ []
+
+
+Underfull \hbox (badness 3333) in paragraph at lines 28--38
+\OT1/cmr/m/n/10 Heinz, Juer-gen Mayer H, Nas-sim Mehran, Sis-sel To-laas, Hen-rik
+ []
+
+
+Underfull \hbox (badness 1521) in paragraph at lines 28--38
+\OT1/cmr/m/n/10 Wal-ter, Ute Wei-land, and Jo-erg Stoll-mann.  Neu-rour-ban-ism: to-
+ []
+
+
+Underfull \hbox (badness 4608) in paragraph at lines 40--48
 []\OT1/cmr/m/n/10 Yi Wang, W.Y. Szeto, Ke Han, and Terry L. Friesz.  Dy-
  []
 
 
-Underfull \hbox (badness 6978) in paragraph at lines 26--34
+Underfull \hbox (badness 5417) in paragraph at lines 40--48
 \OT1/cmr/m/n/10 namic traf-fic as-sign-ment: A re-view of the method-olog-i-cal ad-
  []
 
 
-Underfull \hbox (badness 3861) in paragraph at lines 26--34
+Underfull \hbox (badness 2384) in paragraph at lines 40--48
 \OT1/cmr/m/n/10 vances for en-vi-ron-men-tally sus-tain-able road trans-porta-tion ap-pli-ca-
  []
 
 
-Underfull \hbox (badness 1137) in paragraph at lines 26--34
-\OT1/cmr/m/n/10 tions.  \OT1/cmr/m/it/10 Trans-porta-tion Re-search Part B: Method-olog-i-cal\OT1/cmr/m/n/10 , 111:370{394,
- []
-
-
-Underfull \hbox (badness 1558) in paragraph at lines 36--45
+Underfull \hbox (badness 1014) in paragraph at lines 50--59
 \OT1/cmr/m/n/10 nam-i-cal traf-fic net-work with evolv-ing crit-i-cal bot-tle-necks.  \OT1/cmr/m/it/10 Pro-ceed-
  []
 
 
-Underfull \hbox (badness 2351) in paragraph at lines 36--45
+Underfull \hbox (badness 1546) in paragraph at lines 50--59
 \OT1/cmr/m/it/10 ings of the Na-tional Academy of Sci-ences\OT1/cmr/m/n/10 , 112(3):669{672, De-cem-
  []
 
 
-Underfull \hbox (badness 1178) in paragraph at lines 36--45
-\OT1/cmr/m/n/10 ber 2014.  ISSN 1091-6490.  doi: 10.1073/pnas.1419185112.  URL
- []
-
-
-Underfull \hbox (badness 6910) in paragraph at lines 48--56
+Underfull \hbox (badness 5359) in paragraph at lines 62--70
 []\OT1/cmr/m/n/10 Guanwen Zeng, Daqing Li, Sheng-min Guo, Liang Gao, Ziyou
  []
 
 
-Underfull \hbox (badness 4120) in paragraph at lines 48--56
+Underfull \hbox (badness 3179) in paragraph at lines 62--70
 \OT1/cmr/m/n/10 Gao, H. Eu-gene Stan-ley, and Shlomo Havlin.  Switch be-tween
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 48--56
+Underfull \hbox (badness 7832) in paragraph at lines 62--70
 \OT1/cmr/m/n/10 crit-i-cal per-co-la-tion modes in city traf-fic dy-nam-ics.  \OT1/cmr/m/it/10 Pro-ceed-
  []
 
 
-Underfull \hbox (badness 4713) in paragraph at lines 48--56
-\OT1/cmr/m/it/10 ings of the Na-tional Academy of Sci-ences\OT1/cmr/m/n/10 , 116(1):23{28, De-cem-
+Underfull \hbox (badness 1466) in paragraph at lines 62--70
+\OT1/cmr/m/it/10 ings of the Na-tional Academy of Sci-ences\OT1/cmr/m/n/10 , 116(1):23{28, De-cem-ber
  []
 
 
-Underfull \hbox (badness 1178) in paragraph at lines 48--56
-\OT1/cmr/m/n/10 ber 2018.  ISSN 1091-6490.  doi: 10.1073/pnas.1801545116.  URL
+Underfull \hbox (badness 2970) in paragraph at lines 62--70
+\OT1/cmr/m/n/10 2018.  ISSN 1091-6490.  doi: 10.1073/pnas.1801545116.  URL
  []
 
-
-Underfull \hbox (badness 4072) in paragraph at lines 64--71
+[8]
+Underfull \hbox (badness 3138) in paragraph at lines 87--94
 []\OT1/cmr/m/n/10 Hyejin Youn, Michael T. Gast-ner, and Ha-woong Jeong.  Price
  []
 
 
-Underfull \hbox (badness 6978) in paragraph at lines 64--71
+Underfull \hbox (badness 5231) in paragraph at lines 87--94
 \OT1/cmr/m/n/10 of an-ar-chy in trans-porta-tion net-works: Ef-fi-ciency and op-ti-mal-
  []
 
 
-Underfull \hbox (badness 4846) in paragraph at lines 64--71
+Underfull \hbox (badness 3668) in paragraph at lines 87--94
 \OT1/cmr/m/n/10 ity con-trol.  \OT1/cmr/m/it/10 Phys-i-cal Re-view Let-ters\OT1/cmr/m/n/10 , 101(12), Septem-ber 2008.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 64--71
+Underfull \hbox (badness 7291) in paragraph at lines 87--94
 \OT1/cmr/m/n/10 ISSN 1079-7114.  doi: 10.1103/phys-revlett.101.128701.  URL
  []
 
-) [8] (./main.aux) ) 
+
+Underfull \hbox (badness 1728) in paragraph at lines 96--104
+[]\OT1/cmr/m/n/10 Robert B. Dial.  A path-based user-equilibrium traf-fic as-sign-ment
+ []
+
+
+Underfull \hbox (badness 3954) in paragraph at lines 96--104
+\OT1/cmr/m/n/10 al-go-rithm that ob-vi-ates path stor-age and enu-mer-a-tion.  \OT1/cmr/m/it/10 Trans-
+ []
+
+
+Underfull \hbox (badness 2277) in paragraph at lines 96--104
+\OT1/cmr/m/it/10 porta-tion Re-search Part B: Method-olog-i-cal\OT1/cmr/m/n/10 , 40(10):917{936, De-cem-
+ []
+
+) [9] (./main.aux) ) 
 Here is how much of TeX's memory you used:
- 2378 strings out of 478287
- 39826 string characters out of 5849289
- 337068 words of memory out of 5000000
- 20561 multiletter control sequences out of 15000+600000
+ 2391 strings out of 478287
+ 40017 string characters out of 5849289
+ 338322 words of memory out of 5000000
+ 20574 multiletter control sequences out of 15000+600000
  473413 words of font info for 42 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 60i,7n,67p,1194b,230s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on main.pdf (8 pages, 2154646 bytes).
+ 60i,7n,67p,1203b,232s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on main.pdf (9 pages, 2194404 bytes).
 PDF statistics:
- 64 PDF objects out of 1000 (max. 8388607)
- 39 compressed objects within 1 object stream
+ 87 PDF objects out of 1000 (max. 8388607)
+ 53 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
