@@ -55,9 +55,26 @@ Outro impasse nessa modelagem é a influência direta da densidade de tráfego s
     \label{eq:BPR}
 \end{equation}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{img/BPR.png}
+    \caption{Comportamento da Função BPR com o incremento de fluxo.}
+    \label{fig:BPR}
+\end{figure}
+
 %//! Coleta de dados
 
 Por fim, a obtenção dos dados, apresenta desafios significativos em termos de sensibilidade temporal, uma vez que as condições de tráfego são altamente dinâmicas e sujeitas a variações diárias, sazonais e devido a eventos não regulares. Além disso, há questões morais intrínsecas à coleta e ao uso desses dados, particularmente no que se refere à privacidade dos indivíduos. As informações de localização e padrões de movimento, por exemplo, podem revelar detalhes sobre a vida das pessoas, levantando preocupações éticas sobre como esses dados são coletados, armazenados e utilizados. \citet{Simini2012} utilizaram um modelo para tentar estimar ,dado uma conexão entre cidades dos Estados Unidos, o número de pessoas que trafegam entre as duas cidades.
+
+\begin{enumerate}
+    \item Let the current feasible solution be \( x^k \).
+    \item Compute \( A_{ij}(x) |_{x = x}^k = c_{ij} \). Set \( y_{ij} = 0 \), all \( (i, j) \). Set \( s = 1 \).
+    \item Find the shortest route between every node in the network and node \( s \) (i.e., solve one shortest route problem) using the \( c_{ij} \) as distances.
+    \item For each origin \( r \) in the network, perform the Fortran operation \( y_{ij} = y_{ij} + D(r, s) \) for every arc \( (i, j) \) on the shortest route between node \( r \) and node \( s \).
+    \item If \( s \) is not equal to the number of destinations, set \( s = s + 1 \) and go to step 3; otherwise go to step 6.
+    \item Now the \( y_{ij} \) are the solution to subproblem \( k \). Denote by \( y^* \) the vector of the \( y_{ij} \). Minimize the function \( f \) along the line segment between \( x^* \) and \( y^* \), using a one-dimensional search technique. Let the minimizing point be \( x^{k+1} \).
+    \item Test the stopping criterion, and go to step 2 if it fails.
+\end{enumerate}
 
 %//! Proposta do trabalho 
 

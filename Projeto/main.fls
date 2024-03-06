@@ -1,9 +1,9 @@
-PWD /home/miguel/Downloads/Code/Github/projeto-doutorado/Projeto
+PWD /home/carlos/Downloads/Code/Github/projeto-doutorado/Projeto
 INPUT /etc/texmf/web2c/texmf.cnf
 INPUT /usr/share/texmf/web2c/texmf.cnf
 INPUT /usr/share/texlive/texmf-dist/web2c/texmf.cnf
 INPUT /var/lib/texmf/web2c/pdftex/pdflatex.fmt
-INPUT /home/miguel/Downloads/Code/Github/projeto-doutorado/Projeto/main.tex
+INPUT /home/carlos/Downloads/Code/Github/projeto-doutorado/Projeto/main.tex
 OUTPUT main.log
 INPUT /usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 INPUT /usr/share/texlive/texmf-dist/tex/latex/base/article.cls
@@ -250,6 +250,11 @@ INPUT ./img/urbanizacao.png
 INPUT img/urbanizacao.png
 INPUT ./img/urbanizacao.png
 INPUT ./img/urbanizacao.png
+INPUT ./img/BPR.png
+INPUT ./img/BPR.png
+INPUT img/BPR.png
+INPUT ./img/BPR.png
+INPUT ./img/BPR.png
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmti10.tfm
 INPUT ./main.bbl
 INPUT main.bbl
@@ -264,6 +269,8 @@ INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb
+INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
+INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb

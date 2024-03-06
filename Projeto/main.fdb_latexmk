@@ -1,14 +1,14 @@
 # Fdb version 3
-["bibtex main"] 1709482370 "main.aux" "main.bbl" "main" 1709482670
+["bibtex main"] 1709591114 "main.aux" "main.bbl" "main" 1709591213
   "/usr/share/texlive/texmf-dist/bibtex/bst/natbib/unsrtnat.bst" 1233624470 24550 a41a6405f4de768c43e871d9fbce2bc8 ""
-  "main.aux" 1709482670 2051 fcd8059e6b84c301dedee601d7c30039 "pdflatex"
-  "reference.bib" 1709481445 5888 26a25c98777c592a448281e410757f5e ""
+  "main.aux" 1709591213 2238 eddd46bc6dc8aa96067781ddbfa0ab36 "pdflatex"
+  "reference.bib" 1709565874 5888 26a25c98777c592a448281e410757f5e ""
   (generated)
   "main.bbl"
   "main.blg"
-["pdflatex"] 1709482667 "/home/miguel/Downloads/Code/Github/projeto-doutorado/Projeto/main.tex" "main.pdf" "main" 1709482670
-  "/etc/texmf/web2c/texmf.cnf" 1680370422 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/miguel/Downloads/Code/Github/projeto-doutorado/Projeto/main.tex" 1709482667 8032 50386b622e329c69ec94ab30501149ae ""
+["pdflatex"] 1709591207 "/home/carlos/Downloads/Code/Github/projeto-doutorado/Projeto/main.tex" "main.pdf" "main" 1709591213
+  "/etc/texmf/web2c/texmf.cnf" 1709143431 475 c0e671620eb5563b2130f56340a5fde8 ""
+  "/home/carlos/Downloads/Code/Github/projeto-doutorado/Projeto/main.tex" 1709591205 9284 978dd847ee4e4ff3267d2772d01188a8 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm" 1136768653 1324 c910af8c371558dc20f2d7822f66fe64 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm" 1136768653 1524 4414a8315f39513458b80dfc63bff03a ""
@@ -30,7 +30,9 @@
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1248133631 35752 024fb6c41858982481f6968b5fc26508 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb" 1248133631 32722 d7379af29a190c3f453aba36302ff5a9 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb" 1248133631 32362 179c33bbf43f19adbb3825bb4e36e57a ""
+  "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb" 1248133631 32762 224316ccc9ad3ca0423a14971cfa7fc1 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1248133631 32569 5e5ddc8df908dea60932f3c484a54c0d ""
+  "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb" 1248133631 32716 08e384dc442464e7285e891af9f45947 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb" 1248133631 37944 359e864bd06cde3b1cf57bb20757fb06 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb" 1248133631 31099 c85edf1dd5b9e826d67c9c7293b6786c ""
   "/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii" 1461363279 71627 94eb9990bed73c364d7f53f960cc8c5b ""
@@ -58,12 +60,13 @@
   "/usr/share/texlive/texmf-dist/tex/latex/natbib/natbib.sty" 1644012257 45458 f1c6cb3edd91174e966cbbaf88993bcf ""
   "/usr/share/texlive/texmf-dist/web2c/texmf.cnf" 1644012257 39432 7155514e09a3d69036fac785183a21c2 ""
   "/usr/share/texmf/web2c/texmf.cnf" 1644012257 39432 7155514e09a3d69036fac785183a21c2 ""
-  "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1680370441 4379155 98693266ff65f58d9f98aff394de12d2 ""
-  "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1685444430 2799603 7a64b60e47507a07cbc973563228a9f1 ""
-  "img/urbanizacao.png" 1709435519 2794131 b0c66a6826f66067779b860168e329dd ""
-  "main.aux" 1709482670 2051 fcd8059e6b84c301dedee601d7c30039 "pdflatex"
-  "main.bbl" 1709482370 5311 ec20688f45b902f91ce0feb05cc5802d "bibtex main"
-  "main.tex" 1709482667 8032 50386b622e329c69ec94ab30501149ae ""
+  "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1709143594 4379155 98693266ff65f58d9f98aff394de12d2 ""
+  "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1709143643 2801538 1a9ebe36799839f600ff5c17423955a0 ""
+  "img/BPR.png" 1709582264 69552 05d84e621afb81d5f13447e844bba836 ""
+  "img/urbanizacao.png" 1709565874 2794131 b0c66a6826f66067779b860168e329dd ""
+  "main.aux" 1709591213 2238 eddd46bc6dc8aa96067781ddbfa0ab36 "pdflatex"
+  "main.bbl" 1709591114 5311 ec20688f45b902f91ce0feb05cc5802d "bibtex main"
+  "main.tex" 1709591205 9284 978dd847ee4e4ff3267d2772d01188a8 ""
   (generated)
   "main.aux"
   "main.log"
