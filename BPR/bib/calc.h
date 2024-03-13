@@ -45,7 +45,6 @@ double** lerArquivo(const char *nomeArquivo, int nColunas,int* size) {
     int linha = 0,i;
     while (fgets(buffer, 1024, arquivo) != NULL) {
         // Processa cada linha do arquivo aqui. Neste exemplo, vamos assumir que os dados são números inteiros.
-        int coluna;
         char *token = strtok(buffer, " "); // Supondo que os dados sejam separados por espaços. Ajuste o delimitador conforme necessário.
         data[linha] =(double*) malloc(nColunas*sizeof(double));
         for (i = 0; i < nColunas && token != NULL; i++) {
@@ -65,4 +64,21 @@ double** lerArquivo(const char *nomeArquivo, int nColunas,int* size) {
     fclose(arquivo);
     *size = N;
     return data;
+}
+
+void load_MATOD(double** MATRIZ_OD,igraph_vector_int_t* fontes,igraph_vector_int_t* alvos){
+    char nomeDoArquivo[800];
+    int size,i,site1,site2;
+    sprintf(nomeDoArquivo,"./file/dial_matod.txt");
+    double** data = lerArquivo(nomeDoArquivo, 3,&size);
+    
+    for (i = 0; i < size; i++){
+        site1 = data[i][0] - 1;
+        site2 = data[i][1] - 1;
+        MATRIZ_OD[site1][site2] = data[i][2];
+        if(!igraph_vector_int_contains(fontes,site1)) igraph_vector_int_push_back(fontes,site1 );
+        if(!igraph_vector_int_contains(alvos,site2)) igraph_vector_int_push_back(alvos,site2 );
+        
+    }
+
 }

@@ -2,6 +2,7 @@
     "files.associations": {
         "string.h": "c",
         "algorithm": "c",
-        "iterator": "c"
+        "iterator": "c",
+        "calc.h": "c"
     }
 }
