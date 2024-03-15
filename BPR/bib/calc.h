@@ -3,6 +3,23 @@
 #include <stdlib.h>
 #include <string.h>
 
+void print_vetor(void* array,int N,int check){
+    if(check == sizeof(int)){
+        int* intArray = (int*)array;
+        for (int i = 0; i < N; i++){
+            if(i!=N-1) printf("%d ",intArray[i]);
+            else printf("%d\n",intArray[i]);
+        }
+    }
+    if(check == sizeof(double)){
+        double* doubleArray = (double*)array;
+        for (int i = 0; i < N; i++){
+            if(i!=N-1) printf("%f ",doubleArray[i]);
+            else printf("%f\n",doubleArray[i]);
+        }
+    }
+}
+
 int contarLinhasNoArquivo(const char *nomeArquivo) {
     FILE *arquivo;
     char buffer[1024]; // Buffer para armazenar cada linha lida do arquivo

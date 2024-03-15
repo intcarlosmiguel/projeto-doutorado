@@ -3,6 +3,9 @@
         "string.h": "c",
         "algorithm": "c",
         "iterator": "c",
-        "calc.h": "c"
+        "calc.h": "c",
+        "define.h": "c",
+        "bpr.h": "c",
+        "network.h": "c"
     }
 }
