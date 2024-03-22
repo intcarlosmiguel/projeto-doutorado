@@ -95,7 +95,7 @@ void load_MATOD(double** MATRIZ_OD,igraph_vector_int_t* fontes,igraph_vector_int
         MATRIZ_OD[site1][site2] = data[i][2];
         if(!igraph_vector_int_contains(fontes,site1)) igraph_vector_int_push_back(fontes,site1 );
         if(!igraph_vector_int_contains(alvos,site2)) igraph_vector_int_push_back(alvos,site2 );
-        
+        free(data[i]);
     }
-
-}
+    free(data);
+}   

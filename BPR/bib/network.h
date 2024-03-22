@@ -1,9 +1,12 @@
 #pragma once
 #include <igraph.h>
 
-int find_id(int fonte,int alvo,int** edge_list,int L){
-    int i;
-    for (i = 0; i < L; i++)if((edge_list[i][0] == fonte)&&(edge_list[i][1] == alvo)) break;
+int find_id(int fonte,int alvo,int** edge_list){
+    int i = 0;
+    while(true){
+        if((edge_list[i][0] == fonte)&&(edge_list[i][1] == alvo)) break;
+        i++;
+    }
     return i;
 }
 
@@ -17,7 +20,8 @@ void Dijkstra(igraph_t* Grafo,int* fonte,igraph_vector_int_t* alvos,igraph_vecto
     igraph_vector_int_list_init(&evecs, 0);
     
     igraph_vector_int_init(&inbound, 0);
-    igraph_get_shortest_paths_dijkstra(Grafo, &vecs,&evecs,*fonte,alvos_vs,pesos, IGRAPH_ALL,parents,&inbound);
+    igraph_get_shortest_paths_dijkstra(Grafo, &vecs,&evecs,*fonte,alvos_vs,pesos, IGRAPH_OUT,parents,&inbound);
+    //igraph_get_shortest_paths_bellman_ford(Grafo, &vecs,&evecs,*fonte,alvos_vs,pesos, IGRAPH_IN,parents,&inbound);
     //igraph_vector_int_print(parents);
     igraph_vector_int_list_destroy(&vecs);
     igraph_vector_int_list_destroy(&evecs);
@@ -25,7 +29,7 @@ void Dijkstra(igraph_t* Grafo,int* fonte,igraph_vector_int_t* alvos,igraph_vecto
     igraph_vector_int_destroy(&inbound);
 }
 
-void atualiza_fluxo(igraph_t *Grafo,double** MATRIZ_OD,int** edge_list,igraph_vector_t* fluxo,igraph_vector_int_t *fontes,igraph_vector_int_t *alvos, igraph_vector_t *pesos,int L){
+void atualiza_fluxo(igraph_t *Grafo,double** MATRIZ_OD,int** edge_list,igraph_vector_t* fluxo,igraph_vector_int_t *fontes,igraph_vector_int_t *alvos, igraph_vector_t *pesos){
     int i,j,fonte,alvo,antecessor,index;
     double volume;
     igraph_vector_fill(fluxo,0);
@@ -43,7 +47,7 @@ void atualiza_fluxo(igraph_t *Grafo,double** MATRIZ_OD,int** edge_list,igraph_ve
             volume = MATRIZ_OD[fonte][alvo];
             while (alvo != fonte){
                 antecessor = VECTOR(parents)[alvo];
-                index = find_id(antecessor,alvo,edge_list,L);
+                index = find_id(antecessor,alvo,edge_list);
                 //printf("%d : (%d,%d) - %f\n",index,antecessor,alvo,volume);
                 VECTOR(*fluxo)[index] += volume;
                 alvo = antecessor;
