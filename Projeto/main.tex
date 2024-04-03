@@ -64,28 +64,34 @@ Outro impasse nessa modelagem é a influência direta da densidade de tráfego s
 
 %//! Coleta de dados
 
-Por fim, a obtenção dos dados, apresenta desafios significativos em termos de sensibilidade temporal, uma vez que as condições de tráfego são altamente dinâmicas e sujeitas a variações diárias, sazonais e devido a eventos não regulares. Além disso, há questões morais intrínsecas à coleta e ao uso desses dados, particularmente no que se refere à privacidade dos indivíduos. As informações de localização e padrões de movimento, por exemplo, podem revelar detalhes sobre a vida das pessoas, levantando preocupações éticas sobre como esses dados são coletados, armazenados e utilizados. \citet{Simini2012} utilizaram um modelo para tentar estimar ,dado uma conexão entre cidades dos Estados Unidos, o número de pessoas que trafegam entre as duas cidades.
+Por fim, a obtenção dos dados, apresenta desafios significativos em termos de sensibilidade temporal, uma vez que as condições de tráfego são altamente dinâmicas e sujeitas a variações diárias, sazonais e devido a eventos não regulares. Além disso, há questões morais intrínsecas à coleta e ao uso desses dados, particularmente no que se refere à privacidade dos indivíduos. As informações de localização e padrões de movimento, por exemplo, podem revelar detalhes sobre a vida das pessoas, levantando preocupações éticas sobre como esses dados são coletados, armazenados e utilizados. \citet{Simini2012} utilizaram um modelo para tentar estimar, dado uma conexão entre cidades dos Estados Unidos, o número de pessoas que trafegam entre as duas cidades.
 
-\begin{enumerate}
-    \item Let the current feasible solution be \( x^k \).
-    \item Compute \( A_{ij}(x) |_{x = x}^k = c_{ij} \). Set \( y_{ij} = 0 \), all \( (i, j) \). Set \( s = 1 \).
-    \item Find the shortest route between every node in the network and node \( s \) (i.e., solve one shortest route problem) using the \( c_{ij} \) as distances.
-    \item For each origin \( r \) in the network, perform the Fortran operation \( y_{ij} = y_{ij} + D(r, s) \) for every arc \( (i, j) \) on the shortest route between node \( r \) and node \( s \).
-    \item If \( s \) is not equal to the number of destinations, set \( s = s + 1 \) and go to step 3; otherwise go to step 6.
-    \item Now the \( y_{ij} \) are the solution to subproblem \( k \). Denote by \( y^* \) the vector of the \( y_{ij} \). Minimize the function \( f \) along the line segment between \( x^* \) and \( y^* \), using a one-dimensional search technique. Let the minimizing point be \( x^{k+1} \).
-    \item Test the stopping criterion, and go to step 2 if it fails.
-\end{enumerate}
+Os principais trabalhos que estudam tráfego precisam, majoritariamente, de uma matriz chamada de Origem-Destino (OD) que cada elemento representa quantas pessoas saem de uma região para outra. Utilizando essa matriz, grafo da região em estudo e algoritmos de programação não linear \cite{LeBlanc1975} conseguem obter o fluxo de cada aresta do grafo. Entretanto, como explicado anteriormente esses dados são difícies de serem coletados e são confidenciais. Contudo com o auxílio do \textit{Google Maps} é possível ter acesso ao fluxo em determinada rua por meio da sua API e assim pode-se tentar encontrar a matriz OD utilizando outras técnicas de otimização \cite{spiess1990gradient,turnquist1979estimation,spiess1987maximum}.
 
 %//! Proposta do trabalho 
 
 \newpage
 \section{Objetivos}
 
-Este projeto pretende estudar o problema de \textit{Traffic Assignment} a partir de simulações computacionais com foco em estudar a estrutura da rede e o seu comportamento perante mudanças na rede como a adesão de novas 
+Este projeto propõe uma investigação dos modelos de distribuição de tráfego em redes viárias, com o intuito de compreender as dinâmicas que governam o movimento e a alocação de indivíduos em diferentes vias. Essa investigação será conduzida através da aplicação de diversas métricas e técnicas de otimização, visando não apenas desvendar a distribuição baseadas em matrizes Origem-Destino (OD), mas também explorar a possibilidade de reconstruir essas matrizes a partir dos fluxos observados na rede. Outrossim, o estudo pretende examinar os efeitos dos congestionamentos no comportamento geral do fluxo, proporcionando uma compreensão mais refinada de como as interrupções e as variações de capacidade impactam a distribuição de tráfego. A seguir, os objetivos específicos são detalhados:
+
+\begin{enumerate}
+    \item Investigar e analisar modelos matemáticos e computacionais que descrevem a distribuição de indivíduos em redes de transporte. Este objetivo inclui a aplicação e o desenvolvimento de métricas para avaliar a eficiência, a equidade e a sustentabilidade dos padrões de tráfego resultantes.
+    \item Explorar a viabilidade de inferir matrizes Origem-Destino a partir de dados de fluxo observados, utilizando técnicas inversas e métodos de otimização. Este aspecto é crucial para melhorar as estratégias de planejamento e gestão de tráfego, especialmente em contextos onde os dados de origem-destino não estão diretamente disponíveis.
+    \item Avaliar como os congestionamentos alteram os padrões de fluxo dentro da rede, utilizando modelagem dinâmica e simulações para compreender as mudanças no comportamento dos usuários e na eficiência geral da rede sob condições variáveis de tráfego.
+\end{enumerate}
+
 
 \newpage
 
 \section{Métodos}
+
+\begin{itemize}
+    \item \textbf{Coleta de Dados:} a partir de dados de cidades obtidos através da API do Google Maps, ou recorrendo a conjuntos de dados publicados em artigos acadêmicos, que podem ser representados sob a forma de matrizes Origem-Destino (OD) ou como fluxos de tráfego específicos de uma área urbana em determinados períodos, daremos início às nossas análises. Além disso o site OpenStreetMap disponibiliza a partir da sua biblioteca do Python o shapefile de qualquer cidade.
+    \item \textbf{Análise dos Dados:} A exploração desses conjuntos de dados pode ser realizada sob múltiplas perspectivas. Para os dados organizados em matrizes Origem-Destino, é factível derivar os correspondentes fluxos de tráfego mediante a aplicação de modelos consolidados na literatura científica, os quais podem ser adaptados e otimizados levando em consideração as singularidades de cada indivíduo na rede. Quanto aos dados relativos a fluxos específicos, abre-se a possibilidade de tentar reconstruir as matrizes OD, pois a construção dessas matrizes é muito custosa.
+    \item \textbf{Estudo de Engarrafamentos:}  Analisando a malha viária urbana e a distribuição de fluxos em cada via, é possível investigar a extensão do impacto que diversas interrupções — como obras de infraestrutura, congestionamentos ou inundações — exercem sobre as rotas adjacentes. Essa análise permitirá identificar não apenas as cidades mais vulneráveis a essas perturbações, mas também aquelas vias específicas que, quando obstruídas, têm maior potencial de desencadear efeitos em cascata, levando a engarrafamentos generalizados. 
+    \item \textbf{Impactos de Falhas Semafóricas:} durante períodos chuvosos, é frequente a ocorrência de falhas em semáforos, provocando uma dinâmica em que pedestres e motoristas, enfrentando cruzamentos com sinais inoperantes, hesitam em ceder passagem, gerando congestionamento na rua perpendicular. Essa situação pode ser meticulosamente modelada para compreender as interações e o comportamento dos usuários da via, permitindo identificar quais semáforos demandam atenção prioritária em termos de manutenção preventiva. Além disso, diante da iminência de falhas, a implementação de uma estratégia proativa, que inclua a designação de pessoal para gestão do trânsito, pode mitigar o impacto negativo desses eventos no fluxo veicular e na segurança dos usuários da via.
+\end{itemize}
 
 \newpage
 
@@ -95,5 +101,4 @@ Este projeto pretende estudar o problema de \textit{Traffic Assignment} a partir
 
 \bibliographystyle{unsrtnat} % Use o estilo unsrtnat
 \bibliography{reference.bib}
-
 \end{document}

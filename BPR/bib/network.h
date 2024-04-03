@@ -1,6 +1,5 @@
 #pragma once
 #include <igraph.h>
-
 int find_id(int fonte,int alvo,int** edge_list){
     int i = 0;
     while(true){
@@ -10,7 +9,7 @@ int find_id(int fonte,int alvo,int** edge_list){
     return i;
 }
 
-void Dijkstra(igraph_t* Grafo,int* fonte,igraph_vector_int_t* alvos,igraph_vector_t* pesos,igraph_vector_int_t* parents){
+void Dijkstra(igraph_t* Grafo,int fonte,igraph_vector_int_t* alvos,igraph_vector_t* pesos,igraph_vector_int_t* parents){
 
     igraph_vector_int_list_t vecs, evecs;
     igraph_vector_int_t inbound;
@@ -20,7 +19,7 @@ void Dijkstra(igraph_t* Grafo,int* fonte,igraph_vector_int_t* alvos,igraph_vecto
     igraph_vector_int_list_init(&evecs, 0);
     
     igraph_vector_int_init(&inbound, 0);
-    igraph_get_shortest_paths_dijkstra(Grafo, &vecs,&evecs,*fonte,alvos_vs,pesos, IGRAPH_OUT,parents,&inbound);
+    igraph_get_shortest_paths_dijkstra(Grafo, &vecs,&evecs,fonte,igraph_vss_all(),pesos, IGRAPH_OUT,parents,&inbound);
     //igraph_get_shortest_paths_bellman_ford(Grafo, &vecs,&evecs,*fonte,alvos_vs,pesos, IGRAPH_IN,parents,&inbound);
     //igraph_vector_int_print(parents);
     igraph_vector_int_list_destroy(&vecs);
@@ -29,29 +28,27 @@ void Dijkstra(igraph_t* Grafo,int* fonte,igraph_vector_int_t* alvos,igraph_vecto
     igraph_vector_int_destroy(&inbound);
 }
 
-void atualiza_fluxo(igraph_t *Grafo,double** MATRIZ_OD,int** edge_list,igraph_vector_t* fluxo,igraph_vector_int_t *fontes,igraph_vector_int_t *alvos, igraph_vector_t *pesos){
-    int i,j,fonte,alvo,antecessor,index;
+void atualiza_fluxo(igraph_t *Grafo,struct MATRIZ_OD* OD,int** edge_list,igraph_vector_t* fluxo, igraph_vector_t *pesos,double**matrix_solution){
+    int i,j,fonte,alvo,antecessor,index,c = 0;
     double volume;
     igraph_vector_fill(fluxo,0);
-    for ( i = 0; i < igraph_vector_int_size(fontes); i++){
-        fonte = VECTOR(*fontes)[i];
-        //printf("=============== FONTE: %d ===============\n",fonte);
+    for ( i = 0; i < OD->N_FONTES; i++){
+        fonte = VECTOR(OD->fontes)[i];
         igraph_vector_int_t parents;
         igraph_vector_int_init(&parents, 0);
-        
-        Dijkstra(Grafo,&fonte,alvos,pesos,&parents);
+        Dijkstra(Grafo,fonte,&OD->alvos,pesos,&parents);
 
-        for ( j = 0; j < igraph_vector_int_size(alvos); j++){
-            alvo = VECTOR(*alvos)[j];
-            //printf("Alvo: %d\n",alvo);
-            volume = MATRIZ_OD[fonte][alvo];
+        for ( j = 0; j < OD->N_ALVOS; j++){
+            alvo = VECTOR(OD->alvos)[j];
+            volume = OD->MATRIZ[fonte][alvo];
             while (alvo != fonte){
                 antecessor = VECTOR(parents)[alvo];
                 index = find_id(antecessor,alvo,edge_list);
-                //printf("%d : (%d,%d) - %f\n",index,antecessor,alvo,volume);
                 VECTOR(*fluxo)[index] += volume;
                 alvo = antecessor;
+                matrix_solution[index][c] = volume;
             }
+            c++;
         }
         igraph_vector_int_destroy(&parents);
     }

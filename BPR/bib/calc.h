@@ -3,6 +3,14 @@
 #include <stdlib.h>
 #include <string.h>
 
+struct MATRIZ_OD{
+    int** MATRIZ;
+    int N_FONTES;
+    int N_ALVOS;
+    igraph_vector_int_t fontes;
+    igraph_vector_int_t alvos;
+};
+
 void print_vetor(void* array,int N,int check){
     if(check == sizeof(int)){
         int* intArray = (int*)array;
@@ -14,8 +22,8 @@ void print_vetor(void* array,int N,int check){
     if(check == sizeof(double)){
         double* doubleArray = (double*)array;
         for (int i = 0; i < N; i++){
-            if(i!=N-1) printf("%f ",doubleArray[i]);
-            else printf("%f\n",doubleArray[i]);
+            if(i!=N-1) printf("%.1f ",doubleArray[i]);
+            else printf("%.1f\n",doubleArray[i]);
         }
     }
 }
@@ -83,18 +91,25 @@ double** lerArquivo(const char *nomeArquivo, int nColunas,int* size) {
     return data;
 }
 
-void load_MATOD(double** MATRIZ_OD,igraph_vector_int_t* fontes,igraph_vector_int_t* alvos){
+void load_MATOD(struct MATRIZ_OD *OD){
     char nomeDoArquivo[800];
     int size,i,site1,site2;
     sprintf(nomeDoArquivo,"./file/dial_matod.txt");
     double** data = lerArquivo(nomeDoArquivo, 3,&size);
-    
+    OD->N_FONTES = 0;
+    OD->N_ALVOS = 0;
     for (i = 0; i < size; i++){
         site1 = data[i][0] - 1;
         site2 = data[i][1] - 1;
-        MATRIZ_OD[site1][site2] = data[i][2];
-        if(!igraph_vector_int_contains(fontes,site1)) igraph_vector_int_push_back(fontes,site1 );
-        if(!igraph_vector_int_contains(alvos,site2)) igraph_vector_int_push_back(alvos,site2 );
+        OD->MATRIZ[site1][site2] = data[i][2];
+        if(!igraph_vector_int_contains(&OD->fontes,site1)){
+            igraph_vector_int_push_back(&OD->fontes,site1 );
+            OD->N_FONTES++;
+        }
+        if(!igraph_vector_int_contains(&OD->alvos,site2)){
+            igraph_vector_int_push_back(&OD->alvos,site2 );
+            OD->N_ALVOS++;
+        }
         free(data[i]);
     }
     free(data);

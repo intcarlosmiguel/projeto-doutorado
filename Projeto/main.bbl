@@ -1,4 +1,4 @@
-\begin{thebibliography}{11}
+\begin{thebibliography}{15}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -111,5 +111,32 @@ Filippo Simini, Marta~C. González, Amos Maritan, and Albert-László
 \newblock ISSN 1476-4687.
 \newblock \doi{10.1038/nature10856}.
 \newblock URL \url{http://dx.doi.org/10.1038/nature10856}.
+
+\bibitem[LeBlanc et~al.(1975)LeBlanc, Morlok, and Pierskalla]{LeBlanc1975}
+Larry~J. LeBlanc, Edward~K. Morlok, and William~P. Pierskalla.
+\newblock An efficient approach to solving the road network equilibrium traffic
+  assignment problem.
+\newblock \emph{Transportation Research}, 9\penalty0 (5):\penalty0 309–318,
+  October 1975.
+\newblock ISSN 0041-1647.
+\newblock \doi{10.1016/0041-1647(75)90030-1}.
+\newblock URL \url{http://dx.doi.org/10.1016/0041-1647(75)90030-1}.
+
+\bibitem[Spiess(1990)]{spiess1990gradient}
+Heinz Spiess.
+\newblock A gradient approach for the od matrix adjustment problem.
+\newblock \emph{Universite de Montreal}, 1:\penalty0 2, 1990.
+
+\bibitem[Turnquist and Gur(1979)]{turnquist1979estimation}
+Mark Turnquist and Yehuda Gur.
+\newblock \emph{Estimation of trip tables from observed link volumes}.
+\newblock Number 730. 1979.
+
+\bibitem[Spiess(1987)]{spiess1987maximum}
+Heinz Spiess.
+\newblock A maximum likelihood model for estimating origin-destination
+  matrices.
+\newblock \emph{Transportation Research Part B: Methodological}, 21\penalty0
+  (5):\penalty0 395--412, 1987.
 
 \end{thebibliography}

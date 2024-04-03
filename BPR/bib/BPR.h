@@ -47,7 +47,7 @@ void BPR(igraph_vector_t* gradiente,struct PARAMETERS* BPR_PARAMETERS,igraph_vec
     }
 }
 
-double frank_wolfe(struct PARAMETERS* BPR_PARAMETERS,igraph_vector_t* fluxo,igraph_vector_t* tempo,igraph_vector_t* direcao,const double* objetivo_incial,igraph_vector_t* y){
+double frank_wolfe(struct PARAMETERS* BPR_PARAMETERS,igraph_vector_t* fluxo,igraph_vector_t* tempo,igraph_vector_t* direcao,const double* objetivo_incial,igraph_vector_t* y,double* stp){
     double direcao_gradiente = 0, passo = 1.0;
     int i,iteracoes = 0;
     for ( i = 0; i < BPR_PARAMETERS->L; i++) direcao_gradiente += VECTOR(*direcao)[i]*VECTOR(*tempo)[i];
@@ -72,44 +72,49 @@ double frank_wolfe(struct PARAMETERS* BPR_PARAMETERS,igraph_vector_t* fluxo,igra
         if(passo > max_step) break;
 		if(iteracoes > MAXIMO_ITERACOES) break;
     }
+    *stp = passo;
     return objetivo;
     
 }
 
-void optimize(struct PARAMETERS* BPR_PARAMETERS,int** edge_list,double** MATRIZ_OD,igraph_vector_int_t* edges,igraph_vector_int_t* fontes, igraph_vector_int_t* alvos){
+void optimize(struct PARAMETERS* BPR_PARAMETERS,int** edge_list,struct MATRIZ_OD *OD,igraph_t* Grafo,igraph_vector_t *solucao,double** matrix_solution){
 
     igraph_vector_t tempo;
     igraph_vector_init(&tempo, BPR_PARAMETERS->L);
 
-    int i,iteracoes = 0;
-    igraph_t Grafo;
-    igraph_empty(&Grafo, BPR_PARAMETERS->N, IGRAPH_DIRECTED);
-    igraph_add_edges(&Grafo, edges, NULL);
+    int i,iteracoes = 0,j;
     
-    igraph_vector_t volumes;
-    igraph_vector_init(&volumes,BPR_PARAMETERS->L);
+    igraph_vector_init(solucao,BPR_PARAMETERS->L);
     igraph_vector_t gradiente;
     igraph_vector_init(&gradiente,BPR_PARAMETERS->L);
     double objetivo = 0,objetivo2 = 0,dx,dy,df;
 
-    atualiza_fluxo(&Grafo,MATRIZ_OD,edge_list,&volumes,fontes,alvos,&BPR_PARAMETERS->cost_time);
+    atualiza_fluxo(Grafo,OD,edge_list,solucao,&BPR_PARAMETERS->cost_time,matrix_solution);
 
     igraph_vector_t novo_fluxo;
     igraph_vector_init(&novo_fluxo,BPR_PARAMETERS->L);
+
+    double** matrix_solution2 = (double**)malloc(BPR_PARAMETERS->L*sizeof(double*));
+    int n = OD->N_ALVOS*OD->N_FONTES;
+    double stp = 0;
+    for (i = 0; i < BPR_PARAMETERS->L; i++)matrix_solution2[i] = (double*)calloc(n,sizeof(double));
     while(true){
-
-        BPR(&tempo,BPR_PARAMETERS,&volumes,&objetivo);
-        atualiza_fluxo(&Grafo,MATRIZ_OD,edge_list,&gradiente,fontes,alvos, &tempo);
+        for ( i = 0; i < BPR_PARAMETERS->L; i++) for (int j = 0; j < n; j++) matrix_solution2[i][j] = 0;
+        BPR(&tempo,BPR_PARAMETERS,solucao,&objetivo);
+        atualiza_fluxo(Grafo,OD,edge_list,&gradiente, &tempo,matrix_solution2);
         
-        for ( i = 0; i < BPR_PARAMETERS->L; i++) VECTOR(gradiente)[i] -= VECTOR(volumes)[i];
+        for ( i = 0; i < BPR_PARAMETERS->L; i++){
+            VECTOR(gradiente)[i] -= VECTOR(*solucao)[i];
+            for (j = 0; j < n; j++) matrix_solution2[i][j] -= matrix_solution[i][j];
+        }
 
-        objetivo2 = frank_wolfe(BPR_PARAMETERS,&volumes,&tempo,&gradiente,&objetivo,&novo_fluxo);
-
+        objetivo2 = frank_wolfe(BPR_PARAMETERS,solucao,&tempo,&gradiente,&objetivo,&novo_fluxo,&stp);
+        for ( i = 0; i < BPR_PARAMETERS->L; i++) for ( j = 0; j < n; j++) matrix_solution[i][j] += stp*matrix_solution2[i][j];
         dx = 0.0;
 		for(i=0;i<BPR_PARAMETERS->L;i++){
-			dy = fabs(VECTOR(volumes)[i]-VECTOR(novo_fluxo)[i]) / (fabs(VECTOR(volumes)[i]) + 1);
+			dy = fabs(VECTOR(*solucao)[i]-VECTOR(novo_fluxo)[i]) / (fabs(VECTOR(*solucao)[i]) + 1);
 			if(dx < dy) dx = dy;
-            VECTOR(volumes)[i] = VECTOR(novo_fluxo)[i];
+            VECTOR(*solucao)[i] = VECTOR(novo_fluxo)[i];
 		}
         df = (objetivo - objetivo2) / objetivo;
         
@@ -117,28 +122,16 @@ void optimize(struct PARAMETERS* BPR_PARAMETERS,int** edge_list,double** MATRIZ_
         iteracoes++;
         if(iteracoes > MAXIMO_ITERACOES) break;
         if(dx < X_TOLERANCIA) break;
-        if(df < 1E-4) break;
-
+        if(df < 1E-10) break;
+        //printf("%d\n",iteracoes);
     }
-    igraph_vector_destroy(&novo_fluxo);
-    /* double* soma = (double*) calloc(BPR_PARAMETERS->N,sizeof(double));
     for (i = 0; i < BPR_PARAMETERS->L; i++){
-        soma[edge_list[i][0]] += VECTOR(volumes)[i];
-        soma[edge_list[i][1]] -= VECTOR(volumes)[i];
+        if(matrix_solution[i][0] != 0) printf("%d %d %f\n",edge_list[i][0],edge_list[i][1],matrix_solution[i][0]);
+        
+        free(matrix_solution2[i]);
     }
-    print_vetor(soma,BPR_PARAMETERS->N,sizeof(double));
-
-    free(soma); */
-
-    igraph_vector_print(&volumes);
-    igraph_vector_destroy(&BPR_PARAMETERS->capacidade);
+    free(matrix_solution2);
+    igraph_vector_destroy(&novo_fluxo);
     igraph_vector_destroy(&tempo);
-    igraph_vector_int_destroy(edges);
     igraph_vector_destroy(&gradiente);
-    igraph_vector_int_destroy(fontes);
-    igraph_vector_int_destroy(alvos);
-    igraph_vector_destroy(&BPR_PARAMETERS->cost_time);
-    igraph_destroy(&Grafo);
-    for (i = 0; i < BPR_PARAMETERS->N; i++) free(MATRIZ_OD[i]);
-    free(MATRIZ_OD);
 }
