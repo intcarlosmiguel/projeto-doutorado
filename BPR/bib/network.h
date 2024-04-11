@@ -37,9 +37,11 @@ void atualiza_fluxo(igraph_t *Grafo,struct MATRIZ_OD* OD,int** edge_list,igraph_
         igraph_vector_int_t parents;
         igraph_vector_int_init(&parents, 0);
         Dijkstra(Grafo,fonte,&OD->alvos,pesos,&parents);
+        //printf("Fonte: %d\n",fonte);
 
         for ( j = 0; j < OD->N_ALVOS; j++){
             alvo = VECTOR(OD->alvos)[j];
+            //printf("Alvo: %d\n",alvo);
             volume = OD->MATRIZ[fonte][alvo];
             while (alvo != fonte){
                 antecessor = VECTOR(parents)[alvo];
@@ -48,7 +50,7 @@ void atualiza_fluxo(igraph_t *Grafo,struct MATRIZ_OD* OD,int** edge_list,igraph_
                 alvo = antecessor;
                 matrix_solution[index][c] = volume;
             }
-            c++;
+            if(VECTOR(OD->alvos)[j]!= fonte) c++;
         }
         igraph_vector_int_destroy(&parents);
     }

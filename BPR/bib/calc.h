@@ -7,6 +7,8 @@ struct MATRIZ_OD{
     int** MATRIZ;
     int N_FONTES;
     int N_ALVOS;
+    int** LIST;
+    int** indexate;
     igraph_vector_int_t fontes;
     igraph_vector_int_t alvos;
 };
@@ -22,8 +24,8 @@ void print_vetor(void* array,int N,int check){
     if(check == sizeof(double)){
         double* doubleArray = (double*)array;
         for (int i = 0; i < N; i++){
-            if(i!=N-1) printf("%.1f ",doubleArray[i]);
-            else printf("%.1f\n",doubleArray[i]);
+            if(i!=N-1) printf("%.20f ",doubleArray[i]);
+            else printf("%.20f\n",doubleArray[i]);
         }
     }
 }
@@ -98,9 +100,13 @@ void load_MATOD(struct MATRIZ_OD *OD){
     double** data = lerArquivo(nomeDoArquivo, 3,&size);
     OD->N_FONTES = 0;
     OD->N_ALVOS = 0;
+    OD->LIST = (int**) malloc(size*sizeof(int*));
     for (i = 0; i < size; i++){
+        OD->LIST[i] = (int*) malloc(2*sizeof(int));
         site1 = data[i][0] - 1;
         site2 = data[i][1] - 1;
+        OD->LIST[i][0] = site1;
+        OD->LIST[i][1] = site2;
         OD->MATRIZ[site1][site2] = data[i][2];
         if(!igraph_vector_int_contains(&OD->fontes,site1)){
             igraph_vector_int_push_back(&OD->fontes,site1 );

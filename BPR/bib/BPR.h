@@ -2,7 +2,6 @@
 #include <igraph.h>
 #include <math.h>
 #include <network.h>
-
 struct PARAMETERS{
     igraph_vector_t capacidade;
     igraph_vector_t cost_time;
@@ -88,19 +87,21 @@ void optimize(struct PARAMETERS* BPR_PARAMETERS,int** edge_list,struct MATRIZ_OD
     igraph_vector_t gradiente;
     igraph_vector_init(&gradiente,BPR_PARAMETERS->L);
     double objetivo = 0,objetivo2 = 0,dx,dy,df;
-
     atualiza_fluxo(Grafo,OD,edge_list,solucao,&BPR_PARAMETERS->cost_time,matrix_solution);
 
     igraph_vector_t novo_fluxo;
     igraph_vector_init(&novo_fluxo,BPR_PARAMETERS->L);
 
     double** matrix_solution2 = (double**)malloc(BPR_PARAMETERS->L*sizeof(double*));
-    int n = OD->N_ALVOS*OD->N_FONTES;
+    int n = OD->N_ALVOS*(OD->N_FONTES-1);
     double stp = 0;
     for (i = 0; i < BPR_PARAMETERS->L; i++)matrix_solution2[i] = (double*)calloc(n,sizeof(double));
     while(true){
+
         for ( i = 0; i < BPR_PARAMETERS->L; i++) for (int j = 0; j < n; j++) matrix_solution2[i][j] = 0;
+
         BPR(&tempo,BPR_PARAMETERS,solucao,&objetivo);
+
         atualiza_fluxo(Grafo,OD,edge_list,&gradiente, &tempo,matrix_solution2);
         
         for ( i = 0; i < BPR_PARAMETERS->L; i++){
@@ -126,10 +127,12 @@ void optimize(struct PARAMETERS* BPR_PARAMETERS,int** edge_list,struct MATRIZ_OD
         //printf("%d\n",iteracoes);
     }
     for (i = 0; i < BPR_PARAMETERS->L; i++){
-        if(matrix_solution[i][0] != 0) printf("%d %d %f\n",edge_list[i][0],edge_list[i][1],matrix_solution[i][0]);
+        //print_vetor(matrix_solution[i],n,sizeof(double));
+        //if(matrix_solution[i][0] != 0) printf("%d %d %f\n",edge_list[i][0],edge_list[i][1],matrix_solution[i][0]);
         
         free(matrix_solution2[i]);
     }
+    
     free(matrix_solution2);
     igraph_vector_destroy(&novo_fluxo);
     igraph_vector_destroy(&tempo);
