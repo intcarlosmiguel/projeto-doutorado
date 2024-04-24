@@ -79,7 +79,10 @@ void calcula_derivada(double** matrix_solution,struct PARAMETERS* BPR_PARAMETERS
     //printf("OD - %d = (%d %d)\n",par,fonte,alvo);
 
     for (i = 0; i < BPR_PARAMETERS->L; i++){
+        //print_vetor(matrix_solution[i],12,sizeof(double));
         if(matrix_solution[i][par] != 0) {
+            //printf("%d %d\n",edge_list[i][0],edge_list[i][1]);
+
             if(!igraph_vector_int_contains(&map,edge_list[i][0])){
                 igraph_vector_int_push_back(&map,edge_list[i][0]);
                 VECTOR(indexate)[edge_list[i][0]] = c;
@@ -141,18 +144,7 @@ void calcula_derivada(double** matrix_solution,struct PARAMETERS* BPR_PARAMETERS
 }
 
 
-void init_OD(struct MATRIZ_OD *OD_i,struct PARAMETERS* BPR_PARAMETERS,igraph_vector_t *solucao,int**edge_list){
-
-    int* soma =(int*) calloc(BPR_PARAMETERS->N,sizeof(int));
-    double* s =(double*) calloc(BPR_PARAMETERS->N,sizeof(double));
-    for (int i = 0; i < BPR_PARAMETERS->L; i++){
-        soma[edge_list[i][0]] += VECTOR(*solucao)[i];
-        soma[edge_list[i][1]] += VECTOR(*solucao)[i];
-        s[edge_list[i][0]] -= VECTOR(*solucao)[i];
-        s[edge_list[i][1]] += VECTOR(*solucao)[i];
-    }
-    
-
+void init_OD(struct MATRIZ_OD *OD_i,struct PARAMETERS* BPR_PARAMETERS,int** indexate){
 
     igraph_vector_int_init(&OD_i->fontes, 0);
     igraph_vector_int_init(&OD_i->alvos, 0);
@@ -163,10 +155,9 @@ void init_OD(struct MATRIZ_OD *OD_i,struct PARAMETERS* BPR_PARAMETERS,igraph_vec
     OD_i->MATRIZ = (int**) malloc(BPR_PARAMETERS->N*sizeof(int*));
     OD_i->LIST = (int**) malloc((BPR_PARAMETERS->N)*(BPR_PARAMETERS->N-1)*sizeof(int*));
     int c = 0;
-    OD_i->indexate = (int**) malloc(BPR_PARAMETERS->N*sizeof(int*));
-     for (int i = 0; i < BPR_PARAMETERS->N; i++)OD_i->MATRIZ[i] = (int*) calloc(BPR_PARAMETERS->N,sizeof(int));
+    
+    for (int i = 0; i < BPR_PARAMETERS->N; i++)OD_i->MATRIZ[i] = (int*) calloc(BPR_PARAMETERS->N,sizeof(int));
     for (int i = 0; i < BPR_PARAMETERS->N; i++){
-        OD_i->indexate[i] = (int*) calloc(BPR_PARAMETERS->N,sizeof(int));
         
         for (int j = 0; j < BPR_PARAMETERS->N; j++){
             if(i !=j){
@@ -174,34 +165,49 @@ void init_OD(struct MATRIZ_OD *OD_i,struct PARAMETERS* BPR_PARAMETERS,igraph_vec
                 OD_i->MATRIZ[i][j] = 500*genrand64_real1();
                 OD_i->LIST[c][0] = i;
                 OD_i->LIST[c][1] = j;
-                OD_i->indexate[i][j] = c;
+                indexate[i][j] = c;
                 c++;
-                if((soma[i] == 0) || (soma[j] == 0)){
-                    OD_i->MATRIZ[i][j] = 0;
-                    OD_i->MATRIZ[j][i] = 0;
-                }
             }
         }
     }
-    free(soma);
-    free(s);
 }
 
 void GM(struct MATRIZ_OD *OD,struct PARAMETERS* BPR_PARAMETERS,int** edge_list,igraph_t *Grafo,igraph_vector_t *solucao){
 
     int i,j;
-    
+    igraph_vector_print(solucao);
     struct MATRIZ_OD OD_i;
-    init_OD(&OD_i,BPR_PARAMETERS,solucao,edge_list);
-
+    int** indexate = (int**) malloc(BPR_PARAMETERS->N*sizeof(int*));
+    /* OD_i.MATRIZ = (int**) malloc(BPR_PARAMETERS->N*sizeof(int*));
+    for (int i = 0; i < BPR_PARAMETERS->N; i++) OD_i.MATRIZ[i] = (int*) calloc(BPR_PARAMETERS->N,sizeof(int));
+    igraph_vector_int_init(&OD_i.fontes, 0);
+    igraph_vector_int_init(&OD_i.alvos, 0);
+    load_MATOD(&OD_i); */
     double** dZ_dOD = (double**)malloc(BPR_PARAMETERS->N*sizeof(double*));
-    for (i = 0; i < BPR_PARAMETERS->N; i++)dZ_dOD[i] = (double*)calloc(BPR_PARAMETERS->N,sizeof(double));
+    for (i = 0; i < BPR_PARAMETERS->N; i++){
+        dZ_dOD[i] = (double*)calloc(BPR_PARAMETERS->N,sizeof(double));
+        indexate[i] = (int*) calloc(BPR_PARAMETERS->N,sizeof(int));
+    }
+    init_OD(&OD_i,BPR_PARAMETERS,indexate);
+    
     int n = OD_i.N_ALVOS*(OD_i.N_FONTES-1);
-    double total,lambda;
-    while (true){  
+    //int fonte,alvo;
+    //int c = 0;
+    /* for ( i = 0; i < OD_i.N_FONTES; i++){
+        fonte = VECTOR(OD_i.fontes)[i];
+        for ( j = 0; j < OD_i.N_ALVOS; j++){
+            alvo = VECTOR(OD_i.alvos)[j];
+            if(fonte!= alvo) {
+                indexate[fonte][alvo] = c;
+                c++;
+            }
+        }
+    } */
+    double total,lambda,Z;
+    while (true){ 
+        Z = 0;
         lambda = 0;
         total = 0;
-
         double** matrix_solution = (double**)malloc(BPR_PARAMETERS->L*sizeof(double*));
         double *derivada = (double*)calloc(BPR_PARAMETERS->L,sizeof(double*));
         igraph_vector_t possivel_solucao;
@@ -211,9 +217,12 @@ void GM(struct MATRIZ_OD *OD,struct PARAMETERS* BPR_PARAMETERS,int** edge_list,i
         optimize(BPR_PARAMETERS,edge_list,&OD_i,Grafo,&possivel_solucao,matrix_solution);
 
         //igraph_vector_print(&possivel_solucao);
-        for ( i = 0; i < BPR_PARAMETERS->L; i++)VECTOR(possivel_solucao)[i] = (VECTOR(possivel_solucao)[i] -VECTOR(*solucao)[i]); 
+        for ( i = 0; i < BPR_PARAMETERS->L; i++){
+            VECTOR(possivel_solucao)[i] = (VECTOR(possivel_solucao)[i] -VECTOR(*solucao)[i]); 
+            Z += VECTOR(possivel_solucao)[i]*VECTOR(possivel_solucao)[i];
+        }
         
-        for ( i = 0; i < n; i++) if(OD_i.MATRIZ[OD_i.LIST[i][0]][OD_i.LIST[i][1]] != 0)calcula_derivada(matrix_solution,BPR_PARAMETERS,edge_list,OD_i.indexate[OD_i.LIST[i][0]][OD_i.LIST[i][1]],OD_i.LIST[i][0],OD_i.LIST[i][1],dZ_dOD,&possivel_solucao);
+        for ( i = 0; i < n; i++) if(OD_i.MATRIZ[OD_i.LIST[i][0]][OD_i.LIST[i][1]] != 0)calcula_derivada(matrix_solution,BPR_PARAMETERS,edge_list,indexate[OD_i.LIST[i][0]][OD_i.LIST[i][1]],OD_i.LIST[i][0],OD_i.LIST[i][1],dZ_dOD,&possivel_solucao);
         for ( i = 0; i < BPR_PARAMETERS->N; i++){
             for (j = 0; j < BPR_PARAMETERS->N; j++) if(( i != j) && (OD_i.MATRIZ[i][j] != 0)) dZ_dOD[i][j] /=OD_i.MATRIZ[i][j]; 
             //printf("%f\n",dZ_dOD[0][1]);
@@ -224,14 +233,15 @@ void GM(struct MATRIZ_OD *OD,struct PARAMETERS* BPR_PARAMETERS,int** edge_list,i
         //print_vetor(derivada,BPR_PARAMETERS->L,sizeof(double));
 
         for ( i = 0; i < BPR_PARAMETERS->L; i++) total += derivada[i]*derivada[i];
+        
         for ( i = 0; i < BPR_PARAMETERS->L; i++) lambda += derivada[i]*VECTOR(possivel_solucao)[i];
-        lambda /= total;
+        lambda = (total != 0)? lambda/total : 0;
         for ( i = 0; i < BPR_PARAMETERS->N; i++){
             for (j = 0; j < BPR_PARAMETERS->N; j++){
-                if(i != j) OD_i.MATRIZ[i][j] -= lambda*dZ_dOD[i][j];
+                if(i != j) OD_i.MATRIZ[i][j] =OD_i.MATRIZ[i][j] - lambda*dZ_dOD[i][j];
                 if(OD_i.MATRIZ[i][j] < 0) OD_i.MATRIZ[i][j] = 0;
             }
-            print_vetor(OD_i.MATRIZ[i],BPR_PARAMETERS->N,sizeof(int));
+            //print_vetor(OD_i.MATRIZ[i],BPR_PARAMETERS->N,sizeof(int));
         }
 
         free(derivada);
@@ -239,7 +249,8 @@ void GM(struct MATRIZ_OD *OD,struct PARAMETERS* BPR_PARAMETERS,int** edge_list,i
         free(matrix_solution);
         //igraph_vector_print(&possivel_solucao);
         igraph_vector_destroy(&possivel_solucao);
-        printf("=====================================%.20f=============================\n",lambda);
+        //printf("=====================================%.20f=============================\n",lambda);
+        printf("%f\n",Z);
         if(lambda == 0) break;
         //if(df - lambda < 1e-2) break;
     }

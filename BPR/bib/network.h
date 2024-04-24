@@ -19,7 +19,7 @@ void Dijkstra(igraph_t* Grafo,int fonte,igraph_vector_int_t* alvos,igraph_vector
     igraph_vector_int_list_init(&evecs, 0);
     
     igraph_vector_int_init(&inbound, 0);
-    igraph_get_shortest_paths_dijkstra(Grafo, &vecs,&evecs,fonte,igraph_vss_all(),pesos, IGRAPH_OUT,parents,&inbound);
+    igraph_get_shortest_paths_dijkstra(Grafo, &vecs,&evecs,fonte,alvos_vs,pesos, IGRAPH_OUT,parents,&inbound);
     //igraph_get_shortest_paths_bellman_ford(Grafo, &vecs,&evecs,*fonte,alvos_vs,pesos, IGRAPH_IN,parents,&inbound);
     //igraph_vector_int_print(parents);
     igraph_vector_int_list_destroy(&vecs);
@@ -36,12 +36,12 @@ void atualiza_fluxo(igraph_t *Grafo,struct MATRIZ_OD* OD,int** edge_list,igraph_
         fonte = VECTOR(OD->fontes)[i];
         igraph_vector_int_t parents;
         igraph_vector_int_init(&parents, 0);
+        printf("Fonte: %d\n",fonte);
         Dijkstra(Grafo,fonte,&OD->alvos,pesos,&parents);
-        //printf("Fonte: %d\n",fonte);
 
         for ( j = 0; j < OD->N_ALVOS; j++){
             alvo = VECTOR(OD->alvos)[j];
-            //printf("Alvo: %d\n",alvo);
+            printf("Alvo: %d\n",alvo);
             volume = OD->MATRIZ[fonte][alvo];
             while (alvo != fonte){
                 antecessor = VECTOR(parents)[alvo];
