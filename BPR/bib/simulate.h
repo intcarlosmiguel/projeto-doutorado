@@ -12,48 +12,63 @@
 //#include "PSO.h"
 #include "GM.h"
 
-void remove_nodes(igraph_t *Grafo,struct PARAMETERS* BPR_PARAMETERS){
-    igraph_set_attribute_table(&igraph_cattribute_table);
-    igraph_vector_t peso1;
-    igraph_vector_init(&peso1,BPR_PARAMETERS->L);
-    for (int i = 0; i < BPR_PARAMETERS->L; i++)VECTOR(peso1)[i] = VECTOR(BPR_PARAMETERS->cost_time)[i];
-    printf("%ld %ld\n",igraph_ecount(Grafo),igraph_vector_size(&BPR_PARAMETERS->cost_time));
-    printf("Erro\n");
-    SETEANV(Grafo, "cost_time", &peso1);
-    SETEANV(Grafo, "capacity", &BPR_PARAMETERS->capacidade);
-    igraph_vector_int_t membership, csize;
-    igraph_integer_t no_of_clusters;
+void obstructed(struct PARAMETERS* BPR_PARAMETERS,int** edge_list,igraph_vector_t* solucao,struct MATRIZ_OD* OD,igraph_vector_int_t* edges){
+    int i,j;
+    struct PARAMETERS BPR_PARAMETERS_obstructed;
 
-    igraph_vector_int_init(&membership, 0);
-    igraph_vector_int_init(&csize, 0);
+    BPR_PARAMETERS_obstructed.N = BPR_PARAMETERS->N;
+    BPR_PARAMETERS_obstructed.L = BPR_PARAMETERS->L;
 
-    igraph_connected_components(Grafo, &membership, &csize, &no_of_clusters, IGRAPH_STRONG);
-    int index_of_largest = 0;
-    int size_of_largest = VECTOR(csize)[0];
+    igraph_vector_init(&BPR_PARAMETERS_obstructed.capacidade, BPR_PARAMETERS_obstructed.L);
+    igraph_vector_init(&BPR_PARAMETERS_obstructed.cost_time, BPR_PARAMETERS_obstructed.L);
 
-    for (int i = 1; i < igraph_vector_int_size(&csize); i++) {
-        if (VECTOR(csize)[i] > size_of_largest) {
-            size_of_largest = VECTOR(csize)[i];
-            index_of_largest = i;
+    for ( i = 0; i < BPR_PARAMETERS->L; i++){
+        VECTOR(BPR_PARAMETERS_obstructed.capacidade)[i] = VECTOR(BPR_PARAMETERS->capacidade)[i];
+        VECTOR(BPR_PARAMETERS_obstructed.cost_time)[i] = VECTOR(BPR_PARAMETERS->cost_time)[i];
+    }
+
+    double** resultados = malloc(BPR_PARAMETERS->L* sizeof(double*));
+    for (i = 0; i < BPR_PARAMETERS->L; i++) resultados[i] = calloc(BPR_PARAMETERS->L, sizeof(double)); // Aloca espaço para cada string
+
+    FILE *file;
+    file = fopen("./output/resultados_1.dat","w");
+
+    double** matrix_solution2 = (double**)malloc((BPR_PARAMETERS->L)*sizeof(double*));
+    for (int i = 0; i < BPR_PARAMETERS->L; i++)matrix_solution2[i] = (double*)calloc(OD->N_ALVOS*(OD->N_FONTES-1),sizeof(double));
+
+    for (i = 0; i < BPR_PARAMETERS->L; i++){
+
+        VECTOR(BPR_PARAMETERS_obstructed.capacidade)[i] = 1;
+
+        igraph_t Grafo_obstructed;
+        igraph_empty(&Grafo_obstructed, BPR_PARAMETERS->N, IGRAPH_DIRECTED);
+        igraph_add_edges(&Grafo_obstructed, edges, NULL);
+        igraph_vector_t solucao_obstructed;
+
+        optimize(&BPR_PARAMETERS_obstructed,edge_list,OD,&Grafo_obstructed,&solucao_obstructed,matrix_solution2);
+
+        for (j = 0; j < BPR_PARAMETERS->L; j++){
+            if(i == j)resultados[i][j] = 0;
+            else resultados[i][j] =  VECTOR(*solucao)[j] - VECTOR(solucao_obstructed)[j];
         }
-    }
-    
-    //printf("O maior cluster é o cluster %d com %d vértices.\n", index_of_largest, size_of_largest);
-    igraph_vs_t vs;
-    igraph_vector_int_t delete_vertices;
-    igraph_vector_int_init(&delete_vertices, 0);
-    for (int i = 0; i < BPR_PARAMETERS->N; i++){
-        if(VECTOR(membership)[i] != index_of_largest) igraph_vector_int_push_back(&delete_vertices, i);
-    }
-    igraph_vs_vector(&vs, &delete_vertices);
 
-    igraph_delete_vertices(Grafo, vs);
-    igraph_vector_int_destroy(&membership);
-    igraph_vector_int_destroy(&csize);
-    igraph_vector_int_destroy(&delete_vertices);
-    igraph_vs_destroy(&vs);
-    BPR_PARAMETERS->N = size_of_largest;
-    BPR_PARAMETERS->L = igraph_ecount(Grafo);
+        igraph_vector_destroy(&solucao_obstructed);
+        igraph_destroy(&Grafo_obstructed);
+        printf("%d/%d\n",i+1,BPR_PARAMETERS->L);
+        //if(i == 1) break;
+        VECTOR(BPR_PARAMETERS_obstructed.capacidade)[i] = VECTOR(BPR_PARAMETERS->capacidade)[i];
+    }
+    for (i = 0; i < BPR_PARAMETERS->L; i++) {
+        for (j = 0; j < BPR_PARAMETERS->L; j++) {
+            fprintf(file, "%.2f ", resultados[i][j]);
+        }
+        fprintf(file, "\n"); // Quebra de linha entre as linhas da matriz
+    }
+    fclose(file);
+    igraph_vector_destroy(&BPR_PARAMETERS_obstructed.capacidade);
+    igraph_vector_destroy(&BPR_PARAMETERS_obstructed.cost_time);
+    free(resultados);
+
 }
 
 void simulate(){
@@ -69,11 +84,8 @@ void simulate(){
     igraph_t Grafo;
     igraph_empty(&Grafo, BPR_PARAMETERS.N, IGRAPH_DIRECTED);
     igraph_add_edges(&Grafo, &edges, NULL);
+    //remove_nodes(&Grafo,&BPR_PARAMETERS);
 
-    remove_nodes(&Grafo,&BPR_PARAMETERS);
-
-    printf("%d %d\n",BPR_PARAMETERS.N,BPR_PARAMETERS.L);
-    exit(0);
     int** indexate = (int**) malloc(BPR_PARAMETERS.N*sizeof(int*));
 
     for (int i = 0; i < BPR_PARAMETERS.N; i++) indexate[i] = (int*) calloc(BPR_PARAMETERS.N,sizeof(int));
@@ -84,8 +96,12 @@ void simulate(){
     for (int i = 0; i < BPR_PARAMETERS.L; i++)matrix_solution[i] = (double*)calloc(OD.N_ALVOS*(OD.N_FONTES-1),sizeof(double));
 
     optimize(&BPR_PARAMETERS,edge_list,&OD,&Grafo,&solucao,matrix_solution);
+    printf("Finalizou a solução!\n");
+    obstructed(&BPR_PARAMETERS,edge_list,&solucao,&OD,&edges);
+    //igraph_vector_print(&solucao);
 
-    igraph_vector_print(&solucao);
+    
+    
     /*load_MATOD(&OD,true);
 
     igraph_vector_t solucao;
@@ -107,4 +123,5 @@ void simulate(){
     for (int i = 0; i < BPR_PARAMETERS.N; i++) free(OD.MATRIZ[i]);
     free(OD.MATRIZ);
     igraph_destroy(&Grafo);*/
+    igraph_destroy(&Grafo);
 }

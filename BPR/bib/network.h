@@ -1,5 +1,15 @@
 #pragma once
 #include <igraph.h>
+
+void print_vector_igraph(igraph_vector_int_t* vetor){
+    int N =igraph_vector_int_size(vetor);
+    for (int i = 0; i < N; i++){
+        if(i != N - 1) printf("%ld,",VECTOR(*vetor)[i]);
+        else printf("%ld\n",VECTOR(*vetor)[i]);
+    }
+    
+}
+
 int find_id(int fonte,int alvo,int** edge_list){
     int i = 0;
     while(true){
@@ -36,18 +46,20 @@ void atualiza_fluxo(igraph_t *Grafo,struct MATRIZ_OD* OD,int** edge_list,igraph_
         fonte = VECTOR(OD->fontes)[i];
         igraph_vector_int_t parents;
         igraph_vector_int_init(&parents, 0);
-        printf("Fonte: %d\n",fonte);
         Dijkstra(Grafo,fonte,&OD->alvos,pesos,&parents);
-
+        //printf("Fonte: %d\n",fonte);
+        //print_vector_igraph(&parents);
         for ( j = 0; j < OD->N_ALVOS; j++){
             alvo = VECTOR(OD->alvos)[j];
-            printf("Alvo: %d\n",alvo);
             volume = OD->MATRIZ[fonte][alvo];
+            //printf("Alvo: %d\n",alvo);
+            if(VECTOR(parents)[alvo] < 0) continue;
             while (alvo != fonte){
                 antecessor = VECTOR(parents)[alvo];
                 index = find_id(antecessor,alvo,edge_list);
                 VECTOR(*fluxo)[index] += volume;
                 alvo = antecessor;
+                //if(fonte == 0)printf("%d %d\n",antecessor,alvo);
                 matrix_solution[index][c] = volume;
             }
             if(VECTOR(OD->alvos)[j]!= fonte) c++;

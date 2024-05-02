@@ -162,7 +162,7 @@ void init_OD(struct MATRIZ_OD *OD_i,struct PARAMETERS* BPR_PARAMETERS,int** inde
         for (int j = 0; j < BPR_PARAMETERS->N; j++){
             if(i !=j){
                 OD_i->LIST[c] = (int*) malloc(2*sizeof(int));
-                OD_i->MATRIZ[i][j] = 500*genrand64_real1();
+                OD_i->MATRIZ[i][j] = 139*genrand64_real1();
                 OD_i->LIST[c][0] = i;
                 OD_i->LIST[c][1] = j;
                 indexate[i][j] = c;

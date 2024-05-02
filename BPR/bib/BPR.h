@@ -11,7 +11,7 @@ struct PARAMETERS{
 int** init_parameters(struct PARAMETERS* BPR_PARAMETERS,igraph_vector_int_t* edges,bool example){
     char nomeDoArquivo[800];
     if(example) sprintf(nomeDoArquivo,"./file/example/dial_edges_algbformat.txt"); 
-    else sprintf(nomeDoArquivo,"./file/edges_1.txt"); 
+    else sprintf(nomeDoArquivo,"./file/edges_61.txt"); 
     int size,i;
     double** data = lerArquivo(nomeDoArquivo, 4,&size);
     igraph_vector_init(&BPR_PARAMETERS->capacidade, 0);
@@ -40,7 +40,6 @@ int** init_parameters(struct PARAMETERS* BPR_PARAMETERS,igraph_vector_int_t* edg
             edge_list[i] = (int*)calloc(2,sizeof(int));
             edge_list[i][0] = data[i][0];
             edge_list[i][1] = data[i][1];
-            
             igraph_vector_int_push_back(edges,edge_list[i][0]);
             igraph_vector_int_push_back(edges,edge_list[i][1]);
             igraph_vector_push_back(&BPR_PARAMETERS->capacidade,data[i][2]);
@@ -121,21 +120,23 @@ void optimize(struct PARAMETERS* BPR_PARAMETERS,int** edge_list,struct MATRIZ_OD
 
     double** matrix_solution2 = (double**)malloc(BPR_PARAMETERS->L*sizeof(double*));
     int n = OD->N_ALVOS*(OD->N_FONTES-1);
+
     double stp = 0;
+
     for (i = 0; i < BPR_PARAMETERS->L; i++)matrix_solution2[i] = (double*)calloc(n,sizeof(double));
+    
+
     while(true){
 
         for ( i = 0; i < BPR_PARAMETERS->L; i++) for (int j = 0; j < n; j++) matrix_solution2[i][j] = 0;
 
         BPR_derivate(&tempo,BPR_PARAMETERS,solucao,&objetivo);
-
         atualiza_fluxo(Grafo,OD,edge_list,&gradiente, &tempo,matrix_solution2);
         
         for ( i = 0; i < BPR_PARAMETERS->L; i++){
             VECTOR(gradiente)[i] -= VECTOR(*solucao)[i];
             for (j = 0; j < n; j++) matrix_solution2[i][j] -= matrix_solution[i][j];
         }
-
         objetivo2 = frank_wolfe(BPR_PARAMETERS,solucao,&tempo,&gradiente,&objetivo,&novo_fluxo,&stp);
         for ( i = 0; i < BPR_PARAMETERS->L; i++) for ( j = 0; j < n; j++) matrix_solution[i][j] += stp*matrix_solution2[i][j];
         dx = 0.0;
@@ -150,8 +151,8 @@ void optimize(struct PARAMETERS* BPR_PARAMETERS,int** edge_list,struct MATRIZ_OD
         iteracoes++;
         if(iteracoes > MAXIMO_ITERACOES) break;
         if(dx < X_TOLERANCIA) break;
-        if(df < 1E-10) break;
-        //printf("%d\n",iteracoes);
+        if(df < 1E-5) break;
+        if(iteracoes%20 == 0) printf("%d %f %f\n",iteracoes,dx,df);
     }
     for (i = 0; i < BPR_PARAMETERS->L; i++){
         //print_vetor(matrix_solution[i],n,sizeof(double));

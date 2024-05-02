@@ -16,6 +16,7 @@
         "gm.h": "c",
         "stdlib.h": "c",
         "random": "c",
-        "stdbool.h": "c"
+        "stdbool.h": "c",
+        "math.h": "c"
     }
 }
