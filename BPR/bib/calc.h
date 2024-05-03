@@ -94,7 +94,11 @@ double** lerArquivo(const char *nomeArquivo, int nColunas,int* size) {
     return data;
 }
 
-void load_MATOD(struct MATRIZ_OD *OD,bool example){
+void load_MATOD_example(struct MATRIZ_OD *OD){
+
+    igraph_vector_int_init(&OD->fontes, 0);
+    igraph_vector_int_init(&OD->alvos, 0);
+
     char nomeDoArquivo[800];
     int size,i,site1,site2;
     sprintf(nomeDoArquivo,"./file/dial_matod.txt");
@@ -103,22 +107,19 @@ void load_MATOD(struct MATRIZ_OD *OD,bool example){
     OD->N_ALVOS = 0;
     OD->LIST = (int**) malloc(size*sizeof(int*));
     for (i = 0; i < size; i++){
-        if(example){
-            OD->LIST[i] = (int*) malloc(2*sizeof(int));
-            site1 = data[i][0] - 1;
-            site2 = data[i][1] - 1;
-            OD->LIST[i][0] = site1;
-            OD->LIST[i][1] = site2;
-            OD->MATRIZ[site1][site2] = data[i][2];
-            if(!igraph_vector_int_contains(&OD->fontes,site1)){
-                igraph_vector_int_push_back(&OD->fontes,site1 );
-                OD->N_FONTES++;
-            }
-            if(!igraph_vector_int_contains(&OD->alvos,site2)){
-                igraph_vector_int_push_back(&OD->alvos,site2 );
-                OD->N_ALVOS++;
-            }
-
+        OD->LIST[i] = (int*) malloc(2*sizeof(int));
+        site1 = data[i][0] - 1;
+        site2 = data[i][1] - 1;
+        OD->LIST[i][0] = site1;
+        OD->LIST[i][1] = site2;
+        OD->MATRIZ[site1][site2] = data[i][2];
+        if(!igraph_vector_int_contains(&OD->fontes,site1)){
+            igraph_vector_int_push_back(&OD->fontes,site1 );
+            OD->N_FONTES++;
+        }
+        if(!igraph_vector_int_contains(&OD->alvos,site2)){
+            igraph_vector_int_push_back(&OD->alvos,site2 );
+            OD->N_ALVOS++;
         }
         free(data[i]);
     }

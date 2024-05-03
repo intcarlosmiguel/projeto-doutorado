@@ -1,5 +1,6 @@
 #pragma once
 #include <igraph.h>
+#include <calc.h>
 
 void print_vector_igraph(igraph_vector_int_t* vetor){
     int N =igraph_vector_int_size(vetor);
@@ -38,7 +39,7 @@ void Dijkstra(igraph_t* Grafo,int fonte,igraph_vector_int_t* alvos,igraph_vector
     igraph_vector_int_destroy(&inbound);
 }
 
-void atualiza_fluxo(igraph_t *Grafo,struct MATRIZ_OD* OD,int** edge_list,igraph_vector_t* fluxo, igraph_vector_t *pesos,double**matrix_solution){
+void atualiza_fluxo(igraph_t *Grafo,struct MATRIZ_OD* OD,int** edge_list,igraph_vector_t* fluxo, igraph_vector_t *pesos){
     int i,j,fonte,alvo,antecessor,index,c = 0;
     double volume;
     igraph_vector_fill(fluxo,0);
@@ -60,7 +61,6 @@ void atualiza_fluxo(igraph_t *Grafo,struct MATRIZ_OD* OD,int** edge_list,igraph_
                 VECTOR(*fluxo)[index] += volume;
                 alvo = antecessor;
                 //if(fonte == 0)printf("%d %d\n",antecessor,alvo);
-                matrix_solution[index][c] = volume;
             }
             if(VECTOR(OD->alvos)[j]!= fonte) c++;
         }

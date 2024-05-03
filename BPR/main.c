@@ -6,7 +6,7 @@
 #include "igraph.h"
 #include "bib/simulate.h"
 
-int main(){
-
-    simulate();
+int main(int argc,char *argv[ ]){
+    int arquivo = atoi(argv[1]);
+    simulate(arquivo);
 }

@@ -5,14 +5,43 @@
 #include <string.h>
 #include <math.h>
 #include "igraph.h"
+#include "example.h"
 #include "calc.h"
 #include "define.h"
 #include "BPR.h"
 #include "network.h"
+#include "mtwister.h"
 //#include "PSO.h"
-#include "GM.h"
+//#include "GM.h"
 
-void obstructed(struct PARAMETERS* BPR_PARAMETERS,int** edge_list,igraph_vector_t* solucao,struct MATRIZ_OD* OD,igraph_vector_int_t* edges){
+void random_OD(struct MATRIZ_OD *OD_i,int N){
+
+    igraph_vector_int_init(&OD_i->fontes, 0);
+    igraph_vector_int_init(&OD_i->alvos, 0);
+    igraph_vector_int_range(&OD_i->fontes,0,N);
+    igraph_vector_int_range(&OD_i->alvos,0,N);
+    OD_i->N_ALVOS = N;
+    OD_i->N_FONTES = N;
+    OD_i->MATRIZ = (int**) malloc(N*sizeof(int*));
+    OD_i->LIST = (int**) malloc((N)*(N-1)*sizeof(int*));
+    int c = 0;
+    
+    for (int i = 0; i < N; i++)OD_i->MATRIZ[i] = (int*) calloc(N,sizeof(int));
+    for (int i = 0; i < N; i++){
+        
+        for (int j = 0; j < N; j++){
+            if(i !=j){
+                OD_i->LIST[c] = (int*) malloc(2*sizeof(int));
+                OD_i->MATRIZ[i][j] = 139*genrand64_real1();
+                OD_i->LIST[c][0] = i;
+                OD_i->LIST[c][1] = j;
+                c++;
+            }
+        }
+    }
+}
+
+void obstructed(struct PARAMETERS* BPR_PARAMETERS,int** edge_list,igraph_vector_t* solucao,struct MATRIZ_OD* OD,igraph_vector_int_t* edges,char* nomeDoArquivo){
     int i,j;
     struct PARAMETERS BPR_PARAMETERS_obstructed;
 
@@ -31,11 +60,7 @@ void obstructed(struct PARAMETERS* BPR_PARAMETERS,int** edge_list,igraph_vector_
     for (i = 0; i < BPR_PARAMETERS->L; i++) resultados[i] = calloc(BPR_PARAMETERS->L, sizeof(double)); // Aloca espaço para cada string
 
     FILE *file;
-    file = fopen("./output/resultados_1.dat","w");
-
-    double** matrix_solution2 = (double**)malloc((BPR_PARAMETERS->L)*sizeof(double*));
-    for (int i = 0; i < BPR_PARAMETERS->L; i++)matrix_solution2[i] = (double*)calloc(OD->N_ALVOS*(OD->N_FONTES-1),sizeof(double));
-
+    file = fopen(nomeDoArquivo,"w");
     for (i = 0; i < BPR_PARAMETERS->L; i++){
 
         VECTOR(BPR_PARAMETERS_obstructed.capacidade)[i] = 1;
@@ -45,7 +70,7 @@ void obstructed(struct PARAMETERS* BPR_PARAMETERS,int** edge_list,igraph_vector_
         igraph_add_edges(&Grafo_obstructed, edges, NULL);
         igraph_vector_t solucao_obstructed;
 
-        optimize(&BPR_PARAMETERS_obstructed,edge_list,OD,&Grafo_obstructed,&solucao_obstructed,matrix_solution2);
+        optimize(&BPR_PARAMETERS_obstructed,edge_list,OD,&Grafo_obstructed,&solucao_obstructed);
 
         for (j = 0; j < BPR_PARAMETERS->L; j++){
             if(i == j)resultados[i][j] = 0;
@@ -71,33 +96,52 @@ void obstructed(struct PARAMETERS* BPR_PARAMETERS,int** edge_list,igraph_vector_
 
 }
 
-void simulate(){
+void init_simulate(struct PARAMETERS* BPR_PARAMETERS,int** edge_list,struct MATRIZ_OD *OD,igraph_vector_t *solucao,igraph_vector_int_t * edges){
+    igraph_t Grafo;
+    igraph_empty(&Grafo, BPR_PARAMETERS->N, IGRAPH_DIRECTED);
+    igraph_add_edges(&Grafo, edges, NULL);
+    optimize(BPR_PARAMETERS,edge_list,OD,&Grafo,solucao);
+    igraph_destroy(&Grafo);
+}
+
+void simulate_example(){
+
     struct PARAMETERS BPR_PARAMETERS;
     struct MATRIZ_OD OD;
-    //igraph_vector_int_init(&OD.fontes, 0);
-    //igraph_vector_int_init(&OD.alvos, 0);
+
+    igraph_vector_int_t edges;
+    igraph_vector_int_init(&edges, 0);
+    int** edge_list = init_parameters_example(&BPR_PARAMETERS,&edges);
+
+    load_MATOD_example(&OD);
+
+    igraph_vector_t solucao;
+    init_simulate(&BPR_PARAMETERS,edge_list,&OD,&solucao,&edges);
+    igraph_vector_print(&solucao);
+}
+
+void simulate(int arquivo){
+
+    char nome_arquivo_edges[100];
+    char nome_arquivo_resultados[100];
+    sprintf(nome_arquivo_edges, "./file/edges_%d.txt", arquivo);
+    sprintf(nome_arquivo_resultados, "./output/resultados_%d.dat", arquivo);
+
+    struct PARAMETERS BPR_PARAMETERS;
+    struct MATRIZ_OD OD;
    
     igraph_vector_int_t edges;
-    
     igraph_vector_int_init(&edges, 0);
-    int** edge_list = init_parameters(&BPR_PARAMETERS,&edges,false);
-    igraph_t Grafo;
-    igraph_empty(&Grafo, BPR_PARAMETERS.N, IGRAPH_DIRECTED);
-    igraph_add_edges(&Grafo, &edges, NULL);
-    //remove_nodes(&Grafo,&BPR_PARAMETERS);
 
-    int** indexate = (int**) malloc(BPR_PARAMETERS.N*sizeof(int*));
+    int** edge_list = init_parameters(&BPR_PARAMETERS,&edges,nome_arquivo_edges);
 
-    for (int i = 0; i < BPR_PARAMETERS.N; i++) indexate[i] = (int*) calloc(BPR_PARAMETERS.N,sizeof(int));
+    random_OD(&OD,BPR_PARAMETERS.N);
 
-    init_OD(&OD,&BPR_PARAMETERS,indexate);
     igraph_vector_t solucao;
-    double** matrix_solution = (double**)malloc(BPR_PARAMETERS.L*sizeof(double*));
-    for (int i = 0; i < BPR_PARAMETERS.L; i++)matrix_solution[i] = (double*)calloc(OD.N_ALVOS*(OD.N_FONTES-1),sizeof(double));
 
-    optimize(&BPR_PARAMETERS,edge_list,&OD,&Grafo,&solucao,matrix_solution);
-    printf("Finalizou a solução!\n");
-    obstructed(&BPR_PARAMETERS,edge_list,&solucao,&OD,&edges);
+    init_simulate(&BPR_PARAMETERS,edge_list,&OD,&solucao,&edges);
+
+    obstructed(&BPR_PARAMETERS,edge_list,&solucao,&OD,&edges,nome_arquivo_resultados);
     //igraph_vector_print(&solucao);
 
     
@@ -123,5 +167,4 @@ void simulate(){
     for (int i = 0; i < BPR_PARAMETERS.N; i++) free(OD.MATRIZ[i]);
     free(OD.MATRIZ);
     igraph_destroy(&Grafo);*/
-    igraph_destroy(&Grafo);
 }
