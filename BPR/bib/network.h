@@ -1,6 +1,7 @@
 #pragma once
 #include <igraph.h>
 #include <calc.h>
+#include <omp.h>
 
 void print_vector_igraph(igraph_vector_int_t* vetor){
     int N =igraph_vector_int_size(vetor);
@@ -40,8 +41,7 @@ void Dijkstra(igraph_t* Grafo,int fonte,igraph_vector_int_t* alvos,igraph_vector
 }
 
 void atualiza_fluxo(igraph_t *Grafo,struct MATRIZ_OD* OD,int** edge_list,igraph_vector_t* fluxo, igraph_vector_t *pesos){
-    int i,j,fonte,alvo,antecessor,index,c = 0;
-    double volume;
+    int i,j,fonte,c = 0;
     igraph_vector_fill(fluxo,0);
     for ( i = 0; i < OD->N_FONTES; i++){
         fonte = VECTOR(OD->fontes)[i];
@@ -50,19 +50,19 @@ void atualiza_fluxo(igraph_t *Grafo,struct MATRIZ_OD* OD,int** edge_list,igraph_
         Dijkstra(Grafo,fonte,&OD->alvos,pesos,&parents);
         //printf("Fonte: %d\n",fonte);
         //print_vector_igraph(&parents);
-        for ( j = 0; j < OD->N_ALVOS; j++){
-            alvo = VECTOR(OD->alvos)[j];
-            volume = OD->MATRIZ[fonte][alvo];
-            //printf("Alvo: %d\n",alvo);
+        #pragma omp parallel for schedule(dynamic) reduction(+:c)
+        for (j = 0; j < OD->N_ALVOS; j++) {
+            int alvo = VECTOR(OD->alvos)[j];
+            double volume = OD->MATRIZ[fonte][alvo];
             if(VECTOR(parents)[alvo] < 0) continue;
-            while (alvo != fonte){
-                antecessor = VECTOR(parents)[alvo];
-                index = find_id(antecessor,alvo,edge_list);
+            while (alvo != fonte) {
+                int antecessor = VECTOR(parents)[alvo];
+                int index = find_id(antecessor, alvo, edge_list);
+                #pragma omp atomic
                 VECTOR(*fluxo)[index] += volume;
                 alvo = antecessor;
-                //if(fonte == 0)printf("%d %d\n",antecessor,alvo);
             }
-            if(VECTOR(OD->alvos)[j]!= fonte) c++;
+            if(VECTOR(OD->alvos)[j] != fonte) c++;
         }
         igraph_vector_int_destroy(&parents);
     }

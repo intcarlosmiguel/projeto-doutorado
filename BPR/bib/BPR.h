@@ -96,7 +96,8 @@ void optimize(struct PARAMETERS* BPR_PARAMETERS,int** edge_list,struct MATRIZ_OD
     igraph_vector_init(solucao,BPR_PARAMETERS->L);
     igraph_vector_t gradiente;
     igraph_vector_init(&gradiente,BPR_PARAMETERS->L);
-    double objetivo = 0,objetivo2 = 0,dx,dy,df;
+    double objetivo = 0,objetivo2 = 0,dx,df,dy;
+
     atualiza_fluxo(Grafo,OD,edge_list,solucao,&BPR_PARAMETERS->cost_time);
 
     igraph_vector_t novo_fluxo;
@@ -116,7 +117,6 @@ void optimize(struct PARAMETERS* BPR_PARAMETERS,int** edge_list,struct MATRIZ_OD
         objetivo2 = frank_wolfe(BPR_PARAMETERS,solucao,&tempo,&gradiente,&objetivo,&novo_fluxo,&stp);
 
         dx = 0.0;
-
 		for( i = 0; i < BPR_PARAMETERS->L; i++){
 			dy = fabs(VECTOR(*solucao)[i]-VECTOR(novo_fluxo)[i]) / (fabs(VECTOR(*solucao)[i]) + 1);
 			if(dx < dy) dx = dy;
@@ -126,10 +126,10 @@ void optimize(struct PARAMETERS* BPR_PARAMETERS,int** edge_list,struct MATRIZ_OD
         df = (objetivo - objetivo2) / objetivo;
         
         iteracoes++;
+        if(iteracoes%100 == 0)printf("%d %f %f\n",iteracoes,dx,df);
         if(iteracoes > MAXIMO_ITERACOES) break;
         if(dx < X_TOLERANCIA) break;
-        if(df < 1E-5) break;
-        printf("%d %f %f\n",iteracoes,dx,df);
+        if(df < 1E-4) break;
     }
     
     igraph_vector_destroy(&novo_fluxo);
