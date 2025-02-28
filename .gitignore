@@ -2,3 +2,6 @@ fortaleza_graph_shapefile/
 cache/
 dados/
 BPR/.vscode/
+.codegpt
+api_token/
+input/

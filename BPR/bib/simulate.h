@@ -25,7 +25,7 @@ void random_OD(struct MATRIZ_OD *OD_i,int N,int seed){
     OD_i->MATRIZ = (int**) malloc(N*sizeof(int*));
     OD_i->LIST = (int**) malloc((N)*(N-1)*sizeof(int*));
     int c = 0;
-    int total = 46699;
+    int total = 4000;
     int i,j;
     for ( i = 0; i < N; i++)OD_i->MATRIZ[i] = (int*) calloc(N,sizeof(int));
     for ( i = 0; i < N; i++){
@@ -42,6 +42,7 @@ void random_OD(struct MATRIZ_OD *OD_i,int N,int seed){
     while(total > 0 ){
         i = genrand64_real1()*N;
         j = genrand64_real1()*N;
+        if(i == j) continue;
         if(OD_i->MATRIZ[i][j] == 0 )OD_i->MATRIZ[i][j] = 5*genrand64_real1();
         else continue;
         if(total - OD_i->MATRIZ[i][j] < 0)OD_i->MATRIZ[i][j] = total;
