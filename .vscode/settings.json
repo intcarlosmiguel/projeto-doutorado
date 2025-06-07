@@ -1,5 +1,11 @@
 {
     "cSpell.words": [
         "Darcy"
-    ]
+    ],
+    "files.associations": {
+        "simulate.h": "c",
+        "example.h": "c",
+        "igraph.h": "c",
+        "calc.h": "c"
+    }
 }

@@ -13,13 +13,15 @@ double gera_lei_potencia(double alpha, double xmin) {
 }
 
 int main(int argc,char *argv[ ]){
-    igraph_t Grafo;
+    char *arquivo1 = argv[1];
+    char *arquivo2 = argv[2];
+    /* igraph_t Grafo;
     igraph_vector_int_t size;
     igraph_vector_int_init(&size,2);
     VECTOR(size)[0] = 10;
     VECTOR(size)[1] = 10;
-    igraph_square_lattice(&Grafo , &size, 1,0, 0,0);
-
+    igraph_square_lattice(&Grafo , &size, 1,0, 0,0); */
+    simulate_example(arquivo1, arquivo2);
     //int arquivo = atoi(argv[1]);
     //int seed = atoi(argv[2]);
     //simulate(arquivo,seed);

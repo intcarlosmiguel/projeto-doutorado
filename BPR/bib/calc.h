@@ -1,18 +1,6 @@
 #pragma once
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h>
-#include <string.h>
 
-struct MATRIZ_OD{
-    int** MATRIZ;
-    int N_FONTES;
-    int N_ALVOS;
-    int** LIST;
-    int** indexate;
-    igraph_vector_int_t fontes;
-    igraph_vector_int_t alvos;
-};
+#include <define.h>
 
 void print_vetor(void* array,int N,int check){
     if(check == sizeof(int)){
@@ -32,27 +20,23 @@ void print_vetor(void* array,int N,int check){
 }
 
 int contarLinhasNoArquivo(const char *nomeArquivo) {
-    FILE *arquivo;
-    char buffer[1024]; // Buffer para armazenar cada linha lida do arquivo
-    int contadorDeLinhas = 0; // Contador para o número de linhas
-
-    // Abre o arquivo para leitura
-    arquivo = fopen(nomeArquivo, "r");
+    FILE *arquivo = fopen(nomeArquivo, "r");
     if (!arquivo) {
         perror("Erro ao abrir o arquivo");
-        return -1; // Retorna -1 em caso de erro ao abrir o arquivo
+        exit(0);
     }
-
-    // Lê o arquivo linha por linha
-    while (fgets(buffer, 1024, arquivo) != NULL) {
-        contadorDeLinhas++; // Incrementa o contador para cada linha lida
+    
+    int linhas = 0;
+    char c;
+    
+    while ((c = fgetc(arquivo)) != EOF) {
+        if (c == '\n') {
+            linhas++;
+        }
     }
-
-    // Fecha o arquivo
+    
     fclose(arquivo);
-
-    // Retorna o número total de linhas
-    return contadorDeLinhas;
+    return linhas + 1;
 }
 
 double** lerArquivo(const char *nomeArquivo, int nColunas,int* size) {
@@ -60,9 +44,8 @@ double** lerArquivo(const char *nomeArquivo, int nColunas,int* size) {
     double** data = (double**) malloc(N*sizeof(double*));
     
     FILE *arquivo;
-    char buffer[1024]; // Buffer para armazenar cada linha do arquivo. Ajuste o tamanho conforme necessário.
+    char buffer[1024];
 
-    // Tentativa de abrir o arquivo para leitura. Se falhar, exibe uma mensagem de erro e termina a função.
     arquivo = fopen(nomeArquivo, "r");
     if (!arquivo) {
         perror("Erro ao abrir o arquivo");
@@ -93,35 +76,39 @@ double** lerArquivo(const char *nomeArquivo, int nColunas,int* size) {
     *size = N;
     return data;
 }
+int** init_parameters(struct PARAMETERS* BPR_PARAMETERS,igraph_vector_int_t* edges, const char* nomeDoArquivo) {
 
-void load_MATOD_example(struct MATRIZ_OD *OD){
+    int i,e1,e2;
+    double capacidade,tempo;
 
-    igraph_vector_int_init(&OD->fontes, 0);
-    igraph_vector_int_init(&OD->alvos, 0);
+    int N = contarLinhasNoArquivo(nomeDoArquivo);
 
-    char nomeDoArquivo[800];
-    int size,i,site1,site2;
-    sprintf(nomeDoArquivo,"./file/dial_matod.txt");
-    double** data = lerArquivo(nomeDoArquivo, 3,&size);
-    OD->N_FONTES = 0;
-    OD->N_ALVOS = 0;
-    OD->LIST = (int**) malloc(size*sizeof(int*));
-    for (i = 0; i < size; i++){
-        OD->LIST[i] = (int*) malloc(2*sizeof(int));
-        site1 = data[i][0] - 1;
-        site2 = data[i][1] - 1;
-        OD->LIST[i][0] = site1;
-        OD->LIST[i][1] = site2;
-        OD->MATRIZ[site1][site2] = data[i][2];
-        if(!igraph_vector_int_contains(&OD->fontes,site1)){
-            igraph_vector_int_push_back(&OD->fontes,site1 );
-            OD->N_FONTES++;
-        }
-        if(!igraph_vector_int_contains(&OD->alvos,site2)){
-            igraph_vector_int_push_back(&OD->alvos,site2 );
-            OD->N_ALVOS++;
-        }
-        free(data[i]);
+    igraph_vector_init(&BPR_PARAMETERS->capacidade, 0);
+    igraph_vector_init(&BPR_PARAMETERS->cost_time, 0);
+
+    int** edge_list = (int**)malloc(N*sizeof(int*));
+    BPR_PARAMETERS->L = N;
+    BPR_PARAMETERS->N = 0;
+    FILE *arquivo;
+    arquivo = fopen(nomeDoArquivo, "r");
+    if (!arquivo) {
+        perror("Erro ao abrir o arquivo");
+        exit(0);
     }
-    free(data);
-}   
+    for (i = 0; i < N; i++){
+        if(fscanf(arquivo, "%d %d %lf %lf\n", &e1, &e2, &capacidade, &tempo));
+        edge_list[i] = (int*)calloc(2,sizeof(int));
+        edge_list[i][0] = e1-1;
+        edge_list[i][1] = e2-1;
+        igraph_vector_int_push_back(edges,edge_list[i][0]);
+        igraph_vector_int_push_back(edges,edge_list[i][1]);
+        igraph_vector_push_back(&BPR_PARAMETERS->capacidade,capacidade);
+        igraph_vector_push_back(&BPR_PARAMETERS->cost_time,tempo);
+        if(BPR_PARAMETERS->N < edge_list[i][0]+1) BPR_PARAMETERS->N = edge_list[i][0]+1;
+
+
+    }
+    fclose(arquivo);
+
+    return edge_list;
+}

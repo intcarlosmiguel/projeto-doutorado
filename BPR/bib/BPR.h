@@ -1,41 +1,8 @@
 #pragma once
-#include <igraph.h>
-#include <math.h>
+
 #include <network.h>
 #include <define.h>
-struct PARAMETERS{
-    igraph_vector_t capacidade;
-    igraph_vector_t cost_time;
-    int L;
-    int N;
-};
-int** init_parameters(struct PARAMETERS* BPR_PARAMETERS,igraph_vector_int_t* edges,char* nomeDoArquivo){
-    int size,i;
-    double** data = lerArquivo(nomeDoArquivo, 4,&size);
-    igraph_vector_init(&BPR_PARAMETERS->capacidade, 0);
-    igraph_vector_init(&BPR_PARAMETERS->cost_time, 0);
-    //igraph_vector_init(&BPR_PARAMETERS->velocidade, 0);
-    int** edge_list = (int**)malloc(size*sizeof(int*));
-    BPR_PARAMETERS->L = 0;
-    BPR_PARAMETERS->N = 0;
-    for (i = 0; i < size; i++){
 
-        
-        edge_list[i] = (int*)calloc(2,sizeof(int));
-        edge_list[i][0] = data[i][0];
-        edge_list[i][1] = data[i][1];
-        igraph_vector_int_push_back(edges,edge_list[i][0]);
-        igraph_vector_int_push_back(edges,edge_list[i][1]);
-        igraph_vector_push_back(&BPR_PARAMETERS->capacidade,data[i][2]);
-        igraph_vector_push_back(&BPR_PARAMETERS->cost_time,data[i][3]);
-        BPR_PARAMETERS->L += 1;
-        if(BPR_PARAMETERS->N < edge_list[i][0]+1) BPR_PARAMETERS->N = edge_list[i][0]+1;
-        
-        free(data[i]);
-    }
-    free(data);
-    return edge_list;
-}
 
 void BPR(igraph_vector_t* tempo,struct PARAMETERS* BPR_PARAMETERS,igraph_vector_t* fluxo){
     double s;
@@ -51,6 +18,11 @@ void BPR_derivate(igraph_vector_t* gradiente,struct PARAMETERS* BPR_PARAMETERS,i
     *total_time = 0;
     for (int i = 0; i < BPR_PARAMETERS->L; i++){
         s = pow(VECTOR(*fluxo)[i]/VECTOR(BPR_PARAMETERS->capacidade)[i],BETA);
+        if(isnan(s)) {
+            printf("Warning: NaN detected in BPR_derivate\n");
+            exit(0);
+            s = 0.0;
+        }
         *total_time += (VECTOR(BPR_PARAMETERS->cost_time)[i] * VECTOR(*fluxo)[i]) * (1.0 + 0.03 * s);
         VECTOR(*gradiente)[i] = (VECTOR(BPR_PARAMETERS->cost_time)[i])*(1 + ALPHA*(1+BETA)*s);
     }
@@ -86,7 +58,7 @@ double frank_wolfe(struct PARAMETERS* BPR_PARAMETERS,igraph_vector_t* fluxo,igra
     
 }
 
-void optimize(struct PARAMETERS* BPR_PARAMETERS,int** edge_list,struct MATRIZ_OD *OD,igraph_t* Grafo,igraph_vector_t *solucao){
+void optimize(struct PARAMETERS* BPR_PARAMETERS,int** edge_list,struct OD_MATRIX *OD,igraph_t* Grafo,igraph_vector_t *solucao){
 
     igraph_vector_t tempo;
     igraph_vector_init(&tempo, BPR_PARAMETERS->L);
@@ -97,9 +69,8 @@ void optimize(struct PARAMETERS* BPR_PARAMETERS,int** edge_list,struct MATRIZ_OD
     igraph_vector_t gradiente;
     igraph_vector_init(&gradiente,BPR_PARAMETERS->L);
     double objetivo = 0,objetivo2 = 0,dx,df,dy;
-
     atualiza_fluxo(Grafo,OD,edge_list,solucao,&BPR_PARAMETERS->cost_time);
-
+    //else parallel_atualiza_fluxo(Grafo,OD,edge_list,solucao,&BPR_PARAMETERS->cost_time);
     igraph_vector_t novo_fluxo;
     igraph_vector_init(&novo_fluxo,BPR_PARAMETERS->L);
 
@@ -109,8 +80,8 @@ void optimize(struct PARAMETERS* BPR_PARAMETERS,int** edge_list,struct MATRIZ_OD
 
 
         BPR_derivate(&tempo,BPR_PARAMETERS,solucao,&objetivo);
-        
-        atualiza_fluxo(Grafo,OD,edge_list,&gradiente, &tempo);
+        atualiza_fluxo(Grafo,OD,edge_list,&gradiente,&tempo);
+        //else parallel_atualiza_fluxo(Grafo,OD,edge_list,solucao,&BPR_PARAMETERS->cost_time);
         
         for ( i = 0; i < BPR_PARAMETERS->L; i++) VECTOR(gradiente)[i] -= VECTOR(*solucao)[i];
 
@@ -122,16 +93,18 @@ void optimize(struct PARAMETERS* BPR_PARAMETERS,int** edge_list,struct MATRIZ_OD
 			if(dx < dy) dx = dy;
             VECTOR(*solucao)[i] = VECTOR(novo_fluxo)[i];
 		}
-
         df = (objetivo - objetivo2) / objetivo;
         
         iteracoes++;
-        if(iteracoes%100 == 0)printf("%d %f %f\n",iteracoes,dx,df);
+        if((iteracoes)%100 == 0)printf("%d %e %e\n",iteracoes,dx,df);
         if(iteracoes > MAXIMO_ITERACOES) break;
         if(dx < X_TOLERANCIA) break;
         if(df < 1E-4) break;
     }
-    
+    FILE *file;
+    file = fopen("./output/solution.dat","w");
+    for ( i = 0; i < BPR_PARAMETERS->L; i++) fprintf(file,"%f ",VECTOR(*solucao)[i]);
+    fclose(file);
     igraph_vector_destroy(&novo_fluxo);
     igraph_vector_destroy(&tempo);
     igraph_vector_destroy(&gradiente);

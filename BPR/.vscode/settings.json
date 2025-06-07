@@ -17,6 +17,7 @@
         "stdlib.h": "c",
         "random": "c",
         "stdbool.h": "c",
-        "math.h": "c"
+        "math.h": "c",
+        "mtwister.h": "c"
     }
 }

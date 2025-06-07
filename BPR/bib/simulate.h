@@ -1,16 +1,12 @@
 #pragma once
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h>
-#include <string.h>
-#include <math.h>
 #include "igraph.h"
-#include "example.h"
-#include "calc.h"
 #include "define.h"
-#include "BPR.h"
+#include "calc.h"
 #include "network.h"
+#include "example.h"
+#include "BPR.h"
 #include "mtwister.h"
+#include "dial.h"
 //#include "PSO.h"
 //#include "GM.h"
 
@@ -50,7 +46,7 @@ void random_OD(struct MATRIZ_OD *OD_i,int N,int seed){
     }
 }
 
-void obstructed(struct PARAMETERS* BPR_PARAMETERS,int** edge_list,igraph_vector_t* solucao,struct MATRIZ_OD* OD,igraph_vector_int_t* edges,char* nomeDoArquivo){
+/* void obstructed(struct PARAMETERS* BPR_PARAMETERS,int** edge_list,igraph_vector_t* solucao,struct MATRIZ_OD* OD,igraph_vector_int_t* edges,char* nomeDoArquivo){
     int i,j;
     struct PARAMETERS BPR_PARAMETERS_obstructed;
 
@@ -98,32 +94,77 @@ void obstructed(struct PARAMETERS* BPR_PARAMETERS,int** edge_list,igraph_vector_
     igraph_vector_destroy(&BPR_PARAMETERS_obstructed.cost_time);
     free(resultados);
 
-}
+} */
 
-void init_simulate(struct PARAMETERS* BPR_PARAMETERS,int** edge_list,struct MATRIZ_OD *OD,igraph_vector_t *solucao,igraph_vector_int_t * edges){
+void init_simulate(struct PARAMETERS* BPR_PARAMETERS,int** edge_list,struct OD_MATRIX *OD,igraph_vector_t *solucao,igraph_vector_int_t * edges){
     igraph_t Grafo;
     igraph_empty(&Grafo, BPR_PARAMETERS->N, IGRAPH_DIRECTED);
     igraph_add_edges(&Grafo, edges, NULL);
-    optimize(BPR_PARAMETERS,edge_list,OD,&Grafo,solucao);
+    Bushes(&Grafo,OD,edge_list,BPR_PARAMETERS,solucao);
+    //optimize(BPR_PARAMETERS,edge_list,OD,&Grafo,solucao);
     igraph_destroy(&Grafo);
 }
 
-void simulate_example(){
+void load_OD_from_file(const char* filename, struct OD_MATRIX* OD_MATRIX) {
+    FILE* file = fopen(filename, "r");
+    if (!file) {
+        printf("Error opening file: %s\n", filename);
+        return;
+    }
+    int current_source = -1;
+
+    int source, target;
+    double flow;
+    OD_MATRIX->size = 0;
+    OD_MATRIX->Elementos = malloc(sizeof(struct ElementOD) * 0);
+    while (fscanf(file, "%d %d %lf", &source, &target, &flow) == 3) {
+        if (current_source != source - 1) {
+            OD_MATRIX->Elementos = realloc(OD_MATRIX->Elementos, sizeof(struct ElementOD) * (OD_MATRIX->size + 1));
+            OD_MATRIX->Elementos[OD_MATRIX->size].fonte = source - 1;
+            igraph_vector_int_init(&OD_MATRIX->Elementos[OD_MATRIX->size].alvos, 0);
+            igraph_vector_int_init(&OD_MATRIX->Elementos[OD_MATRIX->size].volumes, 0);
+            igraph_vector_int_push_back(&OD_MATRIX->Elementos[OD_MATRIX->size].alvos, target - 1);
+            igraph_vector_int_push_back(&OD_MATRIX->Elementos[OD_MATRIX->size].volumes, flow);
+            OD_MATRIX->size++;
+            current_source = source - 1;
+        }
+        else{
+            igraph_vector_int_push_back(&OD_MATRIX->Elementos[OD_MATRIX->size - 1].alvos, target - 1);
+            igraph_vector_int_push_back(&OD_MATRIX->Elementos[OD_MATRIX->size - 1].volumes, flow);
+        }
+    }
+
+    fclose(file);
+}
+
+void print_OD_matrix(struct OD_MATRIX* OD_MATRIX) {
+    printf("Origin-Destination Matrix:\n");
+    for (int i = 0; i < OD_MATRIX->size; i++) {
+        printf("Origin %d -> Destinations: ", OD_MATRIX->Elementos[i].fonte);
+        for (int j = 0; j < igraph_vector_int_size(&OD_MATRIX->Elementos[i].alvos); j++) {
+            printf("(D:%ld, V:%ld) ", VECTOR(OD_MATRIX->Elementos[i].alvos)[j], VECTOR(OD_MATRIX->Elementos[i].volumes)[j]);
+        }
+        printf("\n");
+    }
+}
+
+void simulate_example(const char* nomeDoArquivo,const char* nomeDoArquivo2){
 
     struct PARAMETERS BPR_PARAMETERS;
-    struct MATRIZ_OD OD;
+    struct OD_MATRIX OD_MATRIX;
+
 
     igraph_vector_int_t edges;
     igraph_vector_int_init(&edges, 0);
-    int** edge_list = init_parameters_example(&BPR_PARAMETERS,&edges);
+    int** edge_list = init_parameters(&BPR_PARAMETERS,&edges,nomeDoArquivo);
 
-    load_MATOD_example(&OD);
-
+    load_OD_from_file(nomeDoArquivo2, &OD_MATRIX);
+    print_OD_matrix(&OD_MATRIX);
     igraph_vector_t solucao;
-    init_simulate(&BPR_PARAMETERS,edge_list,&OD,&solucao,&edges);
+    init_simulate(&BPR_PARAMETERS,edge_list,&OD_MATRIX,&solucao,&edges);
 }
 
-void simulate(int arquivo,int seed){
+/* void simulate(int arquivo,int seed){
     omp_set_num_threads(THREADS);
     char nome_arquivo_edges[100];
     char nome_arquivo_resultados[100];
@@ -154,7 +195,7 @@ void simulate(int arquivo,int seed){
 
     
     
-    /*load_MATOD(&OD,true);
+    load_MATOD(&OD,true);
 
     igraph_vector_t solucao;
     double** matrix_solution = (double**)malloc(BPR_PARAMETERS.L*sizeof(double*));
@@ -174,5 +215,5 @@ void simulate(int arquivo,int seed){
     igraph_vector_int_destroy(&edges);
     for (int i = 0; i < BPR_PARAMETERS.N; i++) free(OD.MATRIZ[i]);
     free(OD.MATRIZ);
-    igraph_destroy(&Grafo);*/
-}
+    igraph_destroy(&Grafo);
+} */

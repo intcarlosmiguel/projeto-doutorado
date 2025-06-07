@@ -1,28 +1,8 @@
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include "igraph.h"
-
-
-int get_file_size(const char* filename) {
-    FILE* file = fopen(filename, "r");
-    if (file == NULL) {
-        perror("Unable to open file");
-        exit(EXIT_FAILURE);
-    }
-
-    int lines = 0;
-    char ch;
-    while (!feof(file)) {
-        ch = fgetc(file);
-        if (ch == '\n') {
-            lines++;
-        }
-    }
-
-    fclose(file);
-    return lines;
-}
 
 int main() {
     int Nodes,Edges,i,j,u,v;
@@ -37,10 +17,10 @@ int main() {
 
     igraph_vector_t length;
     igraph_vector_int_t edges;
-    
+
     igraph_vector_init(&length, 0);
     igraph_vector_int_init(&edges, 0);
-    
+
     srand(42);
 
     FILE* file = fopen("./OD/input/densidade.txt", "r");
@@ -53,7 +33,6 @@ int main() {
         densidade[i] = v;
     }
     fclose(file);
-    
     file = fopen("./OD/input/edges_fortaleza.txt", "r");
     for (i = 0; i < Edges; i++) {
         if (fscanf(file, "%d %d %lf\n", &u, &v, &distance) != 3) {
@@ -67,7 +46,7 @@ int main() {
     }
     fclose(file);
 
-    
+
     FILE* nos = fopen("./OD/input/nodes_fortaleza.txt", "r");
     for (i = 0; i < Nodes; i++) {
         if (fscanf(nos, "%d %d\n",&u,&v) != 2) {
@@ -90,7 +69,7 @@ int main() {
     igraph_t Grafo;
     printf("Creating graph with %d nodes and %d edges\n", Nodes, Edges);
     igraph_empty(&Grafo, Nodes, IGRAPH_UNDIRECTED);
-    
+
     //igraph_empty(&Grafo, 22, IGRAPH_UNDIRECTED);
     igraph_add_edges(&Grafo, &edges, NULL);
 
@@ -120,7 +99,7 @@ int main() {
             distance = MATRIX(result, 0, j);
             if(MATRIX(result, 0, j) <= 0.) continue;
             if( MATRIX(result, 0, j) > diameter) continue;
-            
+
             VECTOR(histogram)[(int)round(distance)]++;
             //printf("%e\n", (double) sizes[j]*sizes[i]/(distance*distance));
         }
