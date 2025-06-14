@@ -2,7 +2,7 @@
 
 #include <network.h>
 #include <define.h>
-
+#include "igraph.h"
 
 void BPR(igraph_vector_t* tempo,struct PARAMETERS* BPR_PARAMETERS,igraph_vector_t* fluxo){
     double s;

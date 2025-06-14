@@ -1,7 +1,7 @@
 #pragma once
 
 #include <calc.h>
-
+#include "igraph.h"
 
 void print_vector_igraph(igraph_vector_int_t* vetor){
     int N =igraph_vector_int_size(vetor);

@@ -6,7 +6,7 @@
 #include <string.h>
 #include <math.h>
 #include <omp.h>
-#include <igraph.h>
+#include "igraph.h"
 #include <limits.h> // For INT_MAX
 #include <float.h>  // Para DBL_MAX
 
@@ -45,12 +45,24 @@ struct OD_MATRIX{
 struct min_max_bush{
     double min_cost;
     double max_cost;
+    double derivate_min_cost;
+    double derivate_max_cost;
     igraph_vector_int_t min_parents;
     igraph_vector_int_t max_parents;
+    igraph_vector_t dist_shortest_local;
+    igraph_vector_t dist_longest_local;
+    igraph_vector_t derivate_dist_shortest_local;
+    igraph_vector_t derivate_dist_longest_local;
+    double mu;
 };
 
 struct BUSH{
     igraph_t grafo;
     igraph_vector_t flow;
+    igraph_vector_int_t edge_id;
+    bool* is_ingraph;
     int n_alvos;
+    struct PARAMETERS BPR_PARAMETERS;
+    struct min_max_bush *paths;
+    double* steps;
 };

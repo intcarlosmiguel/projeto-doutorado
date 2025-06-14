@@ -1,0 +1,335 @@
+Origin-Destination Matrix:
+Origin 6 -> Destinations: (D:8, V:500) (D:16, V:500) (D:18, V:500) 
+Origin 8 -> Destinations: (D:6, V:500) (D:16, V:500) (D:18, V:500) 
+Origin 16 -> Destinations: (D:6, V:500) (D:8, V:500) (D:18, V:500) 
+Origin 18 -> Destinations: (D:6, V:500) (D:8, V:500) (D:16, V:500) 
+
+
+🔢🔢🔢🔢🔢🔢🔢🔢 Iteração 1 🔢🔢🔢🔢🔢🔢🔢🔢
+Encontrando caminhos entre 6 ➡️  8
+Fluxo do tempo: 0 0 0 0 0 1000 500 0 500 500 0 0 500 500 0 0 500 0 0 0 0 0 0 0
+Entrou!!!!!!!! 6 7
+Entrou!!!!!!!! 6 11
+Entrou!!!!!!!! 7 8
+Entrou!!!!!!!! 7 12
+Entrou!!!!!!!! 11 16
+Entrou!!!!!!!! 12 13
+Entrou!!!!!!!! 13 18
+
+Custo mínimo: 25.743611(90.438056), Custo máximo: 25.743611(90.438056)
+25.743611
+Encontrando caminhos entre 6 ➡️  16
+Fluxo do tempo: 0 0 0 0 0 1000 500 0 500 500 0 0 500 500 0 0 500 0 0 0 0 0 0 0
+Entrou!!!!!!!! 6 7
+Entrou!!!!!!!! 6 11
+Entrou!!!!!!!! 7 8
+Entrou!!!!!!!! 7 12
+Entrou!!!!!!!! 11 16
+Entrou!!!!!!!! 12 13
+Entrou!!!!!!!! 13 18
+
+Custo mínimo: 11.822222(20.711111), Custo máximo: 11.822222(20.711111)
+11.822222
+Encontrando caminhos entre 6 ➡️  18
+Fluxo do tempo: 0 0 0 0 0 1000 500 0 500 500 0 0 500 500 0 0 500 0 0 0 0 0 0 0
+Entrou!!!!!!!! 6 7
+Entrou!!!!!!!! 6 11
+Entrou!!!!!!!! 7 8
+Entrou!!!!!!!! 7 12
+Entrou!!!!!!!! 11 16
+Entrou!!!!!!!! 12 13
+Entrou!!!!!!!! 13 18
+
+Custo mínimo: 32.799965(112.879826), Custo máximo: 32.799965(112.879826)
+32.799965
+Solução: 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1000 500 0 0 500 500 0 0 0 0 0 0 0 0 0 0 0 0 0 500 0 0 500 0 0 0 0 500 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+
+ Caminho não convergiu para Bush 6,8: Maior tempo: 25.743611, Tempo calculado: 15.126233
+
+Bush 1 não está em equilíbrio, recalculando...🔢🔢🔢🔢🔢🔢🔢🔢🔢
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+
+
+Fluxo anterior: 0 0 0 0 0 1000 500 0 500 500 0 0 500 500 0 0 500 0 0 0 0 0 0 0
+Fluxo novo: 0 0 0 0 500 0 0 0 500 0 500 0 0 0 0 0 0 0 0 0
+
+Encontrando caminhos entre 8 ➡️  6
+Fluxo do tempo: 0 0 0 0 500 0 500 0 1000 0 0 0 0 500 500 0 500 0 0 500 0 0 0 0
+Entrou!!!!!!!! 8 7
+Entrou!!!!!!!! 8 13
+Entrou!!!!!!!! 7 6
+Entrou!!!!!!!! 13 12
+Entrou!!!!!!!! 13 18
+Entrou!!!!!!!! 12 17
+Entrou!!!!!!!! 17 16
+
+Custo mínimo: 11.785278(20.646389), Custo máximo: 11.785278(20.646389)
+11.785278
+Encontrando caminhos entre 8 ➡️  16
+Fluxo do tempo: 0 0 0 0 500 0 500 0 1000 0 0 0 0 500 500 0 500 0 0 500 0 0 0 0
+Entrou!!!!!!!! 8 7
+Entrou!!!!!!!! 8 13
+Entrou!!!!!!!! 7 6
+Entrou!!!!!!!! 13 12
+Entrou!!!!!!!! 13 18
+Entrou!!!!!!!! 12 17
+Entrou!!!!!!!! 17 16
+
+Custo mínimo: 33.648264(117.641319), Custo máximo: 33.648264(117.641319)
+33.648264
+Encontrando caminhos entre 8 ➡️  18
+Fluxo do tempo: 0 0 0 0 500 0 500 0 1000 0 0 0 0 500 500 0 500 0 0 500 0 0 0 0
+Entrou!!!!!!!! 8 7
+Entrou!!!!!!!! 8 13
+Entrou!!!!!!!! 7 6
+Entrou!!!!!!!! 13 12
+Entrou!!!!!!!! 13 18
+Entrou!!!!!!!! 12 17
+Entrou!!!!!!!! 17 16
+
+Custo mínimo: 26.056111(92.000556), Custo máximo: 26.056111(92.000556)
+26.056111
+Solução: 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 500 0 500 0 0 0 500 0 1000 0 0 0 0 0 0 0 0 0 500 0 0 500 500 0 500 0 500 0 0 0 0 0 0 0 0 0 0 0 500 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+
+ Caminho não convergiu para Bush 8,16: Maior tempo: 11.785278, Tempo calculado: 16.855556
+
+Bush 2 não está em equilíbrio, recalculando...🔢🔢🔢🔢🔢🔢🔢🔢🔢
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+
+
+Fluxo anterior: 0 0 0 0 500 0 500 0 1000 0 0 0 0 500 500 0 500 0 0 500 0 0 0 0
+Fluxo novo: 0 0 0 500 0 0 500 0 0 0 0 0 0 500 500 0 0 0 0 0
+
+Encontrando caminhos entre 16 ➡️  6
+Fluxo do tempo: 0 0 0 0 0 0 500 0 0 500 500 0 0 0 500 0 1000 0 500 500 0 0 0 0
+Entrou!!!!!!!! 16 11
+Entrou!!!!!!!! 16 17
+Entrou!!!!!!!! 11 6
+Entrou!!!!!!!! 17 12
+Entrou!!!!!!!! 17 18
+Entrou!!!!!!!! 12 13
+Entrou!!!!!!!! 13 8
+
+Custo mínimo: 11.822222(20.711111), Custo máximo: 11.822222(20.711111)
+11.822222
+Encontrando caminhos entre 16 ➡️  8
+Fluxo do tempo: 0 0 0 0 0 0 500 0 0 500 500 0 0 0 500 0 1000 0 500 500 0 0 0 0
+Entrou!!!!!!!! 16 11
+Entrou!!!!!!!! 16 17
+Entrou!!!!!!!! 11 6
+Entrou!!!!!!!! 17 12
+Entrou!!!!!!!! 17 18
+Entrou!!!!!!!! 12 13
+Entrou!!!!!!!! 13 8
+
+Custo mínimo: 35.002431(124.412153), Custo máximo: 35.002431(124.412153)
+35.002431
+Encontrando caminhos entre 16 ➡️  18
+Fluxo do tempo: 0 0 0 0 0 0 500 0 0 500 500 0 0 0 500 0 1000 0 500 500 0 0 0 0
+Entrou!!!!!!!! 16 11
+Entrou!!!!!!!! 16 17
+Entrou!!!!!!!! 11 6
+Entrou!!!!!!!! 17 12
+Entrou!!!!!!!! 17 18
+Entrou!!!!!!!! 12 13
+Entrou!!!!!!!! 13 8
+
+Custo mínimo: 28.481667(100.648333), Custo máximo: 28.481667(100.648333)
+28.481667
+Solução: 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 500 0 500 0 0 0 500 0 0 0 0 0 0 0 0 500 0 0 500 0 0 1000 500 500 0 0 500 0 0 0 0 0 0 500 0 1000 0 500 0 500 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+
+ Caminho não convergiu para Bush 16,8: Maior tempo: 11.822222, Tempo calculado: 15.570833
+
+Bush 3 não está em equilíbrio, recalculando...🔢🔢🔢🔢🔢🔢🔢🔢🔢
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+
+
+Fluxo anterior: 0 0 0 0 0 0 500 0 0 500 500 0 0 0 500 0 1000 0 500 500 0 0 0 0
+Fluxo novo: 0 0 0 0 0 0 0 0 500 0 0 0 500 0 0 500 0 0 0 0 0
+
+Encontrando caminhos entre 18 ➡️  6
+Fluxo do tempo: 0 0 0 500 0 0 0 0 500 0 500 500 0 0 0 500 0 1000 500 0 0 0 0 0
+Entrou!!!!!!!! 18 13
+Entrou!!!!!!!! 18 17
+Entrou!!!!!!!! 13 8
+Entrou!!!!!!!! 13 12
+Entrou!!!!!!!! 17 16
+Entrou!!!!!!!! 12 7
+Entrou!!!!!!!! 7 6
+
+Custo mínimo: 37.799965(137.879826), Custo máximo: 37.799965(137.879826)
+37.799965
+Encontrando caminhos entre 18 ➡️  8
+Fluxo do tempo: 0 0 0 500 0 0 0 0 500 0 500 500 0 0 0 500 0 1000 500 0 0 0 0 0
+Entrou!!!!!!!! 18 13
+Entrou!!!!!!!! 18 17
+Entrou!!!!!!!! 13 8
+Entrou!!!!!!!! 13 12
+Entrou!!!!!!!! 17 16
+Entrou!!!!!!!! 12 7
+Entrou!!!!!!!! 7 6
+
+Custo mínimo: 30.743611(115.438056), Custo máximo: 30.743611(115.438056)
+30.743611
+Encontrando caminhos entre 18 ➡️  16
+Fluxo do tempo: 0 0 0 500 0 0 0 0 500 0 500 500 0 0 0 500 0 1000 500 0 0 0 0 0
+Entrou!!!!!!!! 18 13
+Entrou!!!!!!!! 18 17
+Entrou!!!!!!!! 13 8
+Entrou!!!!!!!! 13 12
+Entrou!!!!!!!! 17 16
+Entrou!!!!!!!! 12 7
+Entrou!!!!!!!! 7 6
+
+Custo mínimo: 12.856667(22.523333), Custo máximo: 12.856667(22.523333)
+12.856667
+Solução: 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 500 0 1000 0 0 0 500 0 0 0 0 0 0 0 0 500 0 0 500 500 0 500 500 500 500 0 500 0 0 0 0 0 0 500 0 0 0 0 500 500 0 1000 500 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+
+ Caminho não convergiu para Bush 18,6: Maior tempo: 37.799965, Tempo calculado: 16.376389
+
+Bush 4 não está em equilíbrio, recalculando...🔢🔢🔢🔢🔢🔢🔢🔢🔢
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+
+
+Fluxo anterior: 0 0 0 500 0 0 0 0 500 0 500 500 0 0 0 500 0 1000 500 0 0 0 0 0
+Fluxo novo: 0 0 0 0 0 0 500 0 500 0 0 0 0 500 0 500 0 0 0 0
+
+
+
+🔢🔢🔢🔢🔢🔢🔢🔢 Iteração 2 🔢🔢🔢🔢🔢🔢🔢🔢
+Encontrando caminhos entre 6 ➡️  8
+Fluxo do tempo: 0 0 0 0 500 0 0 0 500 0 500 0 0 0 0 0 0 0 0 0
+Entrou!!!!!!!! 6 11
+Entrou!!!!!!!! 11 16
+
+Custo mínimo: 15.126233(27.791163), Custo máximo: 0.000000(0.000000)
+0.000000
+Encontrando caminhos entre 6 ➡️  16
+Fluxo do tempo: 0 0 0 0 500 0 0 0 500 0 500 0 0 0 0 0 0 0 0 0
+Entrou!!!!!!!! 6 11
+Entrou!!!!!!!! 11 16
+
+Custo mínimo: 11.822222(20.711111), Custo máximo: 11.822222(20.711111)
+11.822222
+Encontrando caminhos entre 6 ➡️  18
+Fluxo do tempo: 0 0 0 0 500 0 0 0 500 0 500 0 0 0 0 0 0 0 0 0
+Entrou!!!!!!!! 6 11
+Entrou!!!!!!!! 11 16
+
+Custo mínimo: 15.001389(18.806944), Custo máximo: 0.000000(0.000000)
+0.000000
+Solução: 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 500 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 500 0 0 500 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+
+ Caminho não convergiu para Bush 6,8: Maior tempo: 0.000000, Tempo calculado: 9.570000
+
+Bush 1 não está em equilíbrio, recalculando...🔢🔢🔢🔢🔢🔢🔢🔢🔢
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+
+
+Fluxo anterior: 0 0 0 0 500 0 0 0 500 0 500 0 0 0 0 0 0 0 0 0
+Fluxo novo: 0 1.0326e-321 0 0 0 500 0 0 0 0 0 500 500 0 0 0 0 0 0 0
+
+Encontrando caminhos entre 8 ➡️  6
+Fluxo do tempo: 0 0 0 500 0 0 500 0 0 0 0 0 0 500 500 0 0 0 0 0
+Entrou!!!!!!!! 8 7
+Entrou!!!!!!!! 7 6
+
+Custo mínimo: 11.785278(20.646389), Custo máximo: 11.785278(20.646389)
+11.785278
+Encontrando caminhos entre 8 ➡️  16
+Fluxo do tempo: 0 0 0 500 0 0 500 0 0 0 0 0 0 500 500 0 0 0 0 0
+Entrou!!!!!!!! 8 7
+Entrou!!!!!!!! 7 6
+
+Custo mínimo: 15.584722(20.723611), Custo máximo: 0.000000(0.000000)
+0.000000
+Encontrando caminhos entre 8 ➡️  18
+Fluxo do tempo: 0 0 0 500 0 0 500 0 0 0 0 0 0 500 500 0 0 0 0 0
+Entrou!!!!!!!! 8 7
+Entrou!!!!!!!! 7 6
+
+Custo mínimo: 15.703889(20.759444), Custo máximo: 0.000000(0.000000)
+0.000000
+Solução: 
+0 0 0 0 0 0 0 0 0 1.0326e-321 0 0 0 0 0 0 0 0 0 500 0 500 0 0 0 500 0 0 0 0 0 0 0 0 0 0 0 500 0 0 500 500 0 0 0 500 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+
+ Caminho não convergiu para Bush 8,16: Maior tempo: 11.785278, Tempo calculado: 14.610833
+
+Bush 2 não está em equilíbrio, recalculando...🔢🔢🔢🔢🔢🔢🔢🔢🔢
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+
+
+Fluxo anterior: 0 0 0 500 0 0 500 0 0 0 0 0 0 500 500 0 0 0 0 0
+Fluxo novo: 0 0 500 0 500 0 1.0326e-321 1.0326e-321 0 0 0 0 500 1.0326e-321 1.0326e-321 500 0 0 0 0
+
+Encontrando caminhos entre 16 ➡️  6
+Fluxo do tempo: 0 0 0 0 0 0 0 0 500 0 0 0 500 0 0 500 0 0 0 0 0
+Entrou!!!!!!!! 16 11
+Entrou!!!!!!!! 11 6
+
+Custo mínimo: 11.822222(20.711111), Custo máximo: 11.822222(20.711111)
+11.822222
+Encontrando caminhos entre 16 ➡️  8
+Fluxo do tempo: 0 0 0 0 0 0 0 0 500 0 0 0 500 0 0 500 0 0 0 0 0
+Entrou!!!!!!!! 16 11
+Entrou!!!!!!!! 11 6
+
+Custo mínimo: 15.570833(20.654167), Custo máximo: 0.000000(0.000000)
+0.000000
+Encontrando caminhos entre 16 ➡️  18
+Fluxo do tempo: 0 0 0 0 0 0 0 0 500 0 0 0 500 0 0 500 0 0 0 0 0
+Entrou!!!!!!!! 16 11
+Entrou!!!!!!!! 11 6
+
+Custo mínimo: 17.565000(23.065000), Custo máximo: 0.000000(0.000000)
+0.000000
+Solução: 
+0 0 0 0 0 0 0 0 0 1.0326e-321 0 0 0 0 0 0 0 0 0 500 0 500 0 0 0 500 0 1.0326e-321 0 0 0 1.0326e-321 0 0 500 0 0 500 0 0 500 500 0 1.0326e-321 1.0326e-321 500 0 0 0 0 0 0 500 0 0 0 0 0 500 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+
+ Caminho não convergiu para Bush 16,8: Maior tempo: 11.822222, Tempo calculado: 13.610000
+
+Bush 3 não está em equilíbrio, recalculando...🔢🔢🔢🔢🔢🔢🔢🔢🔢
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+
+
+Fluxo anterior: 0 0 0 0 0 0 0 0 500 0 0 0 500 0 0 500 0 0 0 0 0
+Fluxo novo: 0 0 0 0 0 500 0 1.0326e-321 1.0326e-321 1.0326e-321 0 500 0 1.0326e-321 0 1.0326e-321 500 1.0326e-321 0 0
+
+Encontrando caminhos entre 18 ➡️  6
+Fluxo do tempo: 0 0 0 0 0 0 500 0 500 0 0 0 0 500 0 500 0 0 0 0
+Entrou!!!!!!!! 18 17
+Entrou!!!!!!!! 17 16
+
+Custo mínimo: 15.425000(20.925000), Custo máximo: 0.000000(0.000000)
+0.000000
+Encontrando caminhos entre 18 ➡️  8
+Fluxo do tempo: 0 0 0 0 0 0 500 0 500 0 0 0 0 500 0 500 0 0 0 0
+Entrou!!!!!!!! 18 17
+Entrou!!!!!!!! 17 16
+
+Custo mínimo: 15.151389(18.956944), Custo máximo: 0.000000(0.000000)
+0.000000
+Encontrando caminhos entre 18 ➡️  16
+Fluxo do tempo: 0 0 0 0 0 0 500 0 500 0 0 0 0 500 0 500 0 0 0 0
+Entrou!!!!!!!! 18 17
+Entrou!!!!!!!! 17 16
+
+Custo mínimo: 12.856667(22.523333), Custo máximo: 12.856667(22.523333)
+12.856667
+Solução: 
+0 0 0 0 0 0 0 0 0 1.0326e-321 0 0 0 0 0 0 0 0 0 500 0 500 0 0 0 500 0 1.0326e-321 0 0 0 1.0326e-321 0 0 500 0 0 500 500 0 500 500 500 1.0326e-321 2.06519e-321 500 1.0326e-321 0 0 0 0 0 500 0 1.0326e-321 0 1.0326e-321 500 500 1.0326e-321 0 500 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+
+ Caminho não convergiu para Bush 18,6: Maior tempo: 0.000000, Tempo calculado: 14.261389
+
+Bush 4 não está em equilíbrio, recalculando...🔢🔢🔢🔢🔢🔢🔢🔢🔢
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+
+
+Fluxo anterior: 0 0 0 0 0 0 500 0 500 0 0 0 0 500 0 500 0 0 0 0
+Fluxo novo: 0 0 1.0326e-321 0 0 0 0 500 0 500 1.0326e-321 1.0326e-321 0 500 0 1.0326e-321 500 0 0 0
+
