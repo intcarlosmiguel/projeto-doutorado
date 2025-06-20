@@ -2,31 +2,38 @@
 
 #include <define.h>
 #include "igraph.h"
-
-bool check_inconsistent_edges(const igraph_t *graph, igraph_vector_int_t *edge_id, int **edge_list) {
-    igraph_eit_t edge_it;
-    bool found_inconsistency = false;
-    
-    igraph_eit_create(graph, igraph_ess_all(IGRAPH_EDGEORDER_ID), &edge_it);
-    for (; !IGRAPH_EIT_END(edge_it); IGRAPH_EIT_NEXT(edge_it)) {
-        igraph_integer_t eid = IGRAPH_EIT_GET(edge_it);
-        igraph_integer_t from, to;
-        igraph_edge(graph, eid, &from, &to);
-        int index = VECTOR(*edge_id)[eid];
-        int a = edge_list[index][0];
-        int b = edge_list[index][1];
-        
-        if (a != from || b != to) {
-            printf("Inconsistency found in edge %ld: bush(%ld->%ld) != edge_list(%d->%d)\n", 
-                    eid, from, to, a, b);
-            found_inconsistency = true;
-        }
+void print_flow(
+    igraph_vector_t *flow,
+    igraph_t *Grafo,
+    char* filename
+) {
+    if (igraph_ecount(Grafo) != igraph_vector_size(flow)) {
+        printf("Error: Number of edges (%ld) does not match flow vector size (%ld)\n", 
+               igraph_ecount(Grafo), igraph_vector_size(flow));
+        exit(1);
     }
-    igraph_eit_destroy(&edge_it);
-    return found_inconsistency;
-}
+    if (filename == NULL) {
+        printf("Flow values:\n");
+        for (long i = 0; i < igraph_ecount(Grafo); i++) {
+            igraph_integer_t from, to;
+            igraph_edge(Grafo, i, &from, &to);
+            printf("%ld %ld %f\n", from, to, VECTOR(*flow)[i]);
+        }
+        printf("\n");
+        return;
+    }
+    else{
+        FILE *file = fopen(filename, "w");
+        for (long i = 0; i < igraph_ecount(Grafo); i++) {
+            igraph_integer_t from, to;
+            igraph_edge(Grafo, i, &from, &to);
+            fprintf(file,"%ld %ld %f\n", from, to, VECTOR(*flow)[i]);
+        }
+        fclose(file);
 
-void copy_bush(
+    }
+}
+/* void copy_bush(
     struct BUSH *bush, 
     struct BUSH *anterior_bush
 ) {
@@ -44,17 +51,12 @@ void copy_bush(
     for (int i = 0; i < bush->n_alvos; i++) {
         bush->steps[i] = anterior_bush->steps[i];
     }
-}
+} */
 
 void init_path(struct min_max_bush *path, int N){
-    igraph_vector_int_init(&path->min_parents, N);
-    igraph_vector_int_init(&path->max_parents, N);
-    igraph_vector_int_fill(&path->min_parents, -1); // -1 indica nenhum predecessor
-    igraph_vector_int_fill(&path->max_parents, -1);
-    igraph_vector_init(&path->derivate_dist_shortest_local, N);
-    igraph_vector_fill(&path->derivate_dist_shortest_local, 0); // Inicializa com 0
-    igraph_vector_init(&path->derivate_dist_longest_local, N);
-    igraph_vector_fill(&path->derivate_dist_longest_local, 0); // Inicializa com 0
+    igraph_vector_int_init(&path->min_edges, 0);
+    igraph_vector_int_init(&path->max_edges, 0);
+    
     igraph_vector_init(&path->dist_shortest_local, N);
     igraph_vector_fill(&path->dist_shortest_local, DBL_MAX);
     igraph_vector_init(&path->dist_longest_local, N);
@@ -62,29 +64,12 @@ void init_path(struct min_max_bush *path, int N){
 }
 
 void erase_path(struct min_max_bush *path){
-    igraph_vector_int_destroy(&path->min_parents);
-    igraph_vector_int_destroy(&path->max_parents);
+    igraph_vector_int_destroy(&path->min_edges);
+    igraph_vector_int_destroy(&path->max_edges);
     igraph_vector_destroy(&path->dist_shortest_local);
     igraph_vector_destroy(&path->dist_longest_local);
-    igraph_vector_destroy(&path->derivate_dist_shortest_local);
-    igraph_vector_destroy(&path->derivate_dist_longest_local);
-    path->derivate_min_cost = 0.0;
-    path->derivate_max_cost = 0.0;
+    path->derivate = 0.0;
 
-}
-
-void reverse_parents(igraph_vector_int_t *parent,int from, int to){
-    igraph_vector_int_t reverse_parent;
-    igraph_vector_int_init(&reverse_parent, 0);
-    int alvo = to;
-    while(alvo != from && alvo != -1) {
-        igraph_integer_t prev = VECTOR(*parent)[alvo];
-        igraph_vector_int_insert(&reverse_parent, 0, alvo); // Insere no início para reverter a ordem
-        alvo = prev;
-    }
-    igraph_vector_int_insert(&reverse_parent, 0, from);
-    igraph_vector_int_update(parent, &reverse_parent);
-    igraph_vector_int_destroy(&reverse_parent);
 }
 
 void print_vetor(void* array,int N,int check){

@@ -45,24 +45,20 @@ struct OD_MATRIX{
 struct min_max_bush{
     double min_cost;
     double max_cost;
-    double derivate_min_cost;
-    double derivate_max_cost;
-    igraph_vector_int_t min_parents;
-    igraph_vector_int_t max_parents;
+    double derivate;
+    igraph_vector_int_t min_edges;
+    igraph_vector_int_t max_edges;
     igraph_vector_t dist_shortest_local;
     igraph_vector_t dist_longest_local;
-    igraph_vector_t derivate_dist_shortest_local;
-    igraph_vector_t derivate_dist_longest_local;
     double mu;
 };
 
 struct BUSH{
-    igraph_t grafo;
-    igraph_vector_t flow;
     igraph_vector_int_t edge_id;
-    bool* is_ingraph;
+    bool* is_ingraph; // Indica se o nó está no grafo
+    igraph_t Grafo; // Grafo da bush
     int n_alvos;
-    struct PARAMETERS BPR_PARAMETERS;
     struct min_max_bush *paths;
     double* steps;
+    double* flow_per_alvo; // Fluxo por alvo
 };

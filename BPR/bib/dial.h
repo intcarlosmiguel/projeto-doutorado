@@ -6,130 +6,205 @@
 
 void find_dag_shortest_longest_costs_and_parents(
     struct BUSH *bush,
+    igraph_t *Grafo,
     igraph_integer_t from,
     igraph_integer_t to,
-    struct min_max_bush *result
+    struct min_max_bush *result,
+    struct PARAMETERS *BPR_PARAMETERS,
+    igraph_vector_t *flow
 ) {
 
-    printf("Encontrando caminhos entre %ld ➡️  %ld\n", from, to);
-    igraph_integer_t N = igraph_vcount(&bush->grafo);
-
+    //printf("Encontrando caminhos entre %ld ➡️  %ld\n", from, to);
+    int N = igraph_vcount(Grafo);
     // Garante que os vetores de saída estejam dimensionados e inicializados
     // Vetores locais para armazenar distâncias para todos os nós
     init_path(result, N);
     result->mu = 1e6;
     VECTOR(result->dist_shortest_local)[from] = 0.0;
     VECTOR(result->dist_longest_local)[from] = 0.0;
+
     result->min_cost = 0.0;
     result->max_cost = 0.0;
+
     igraph_vector_int_t topological_order;
     igraph_vector_int_init(&topological_order, 0); // Inicializa para evitar problemas no destroy
-    if (igraph_topological_sorting(&bush->grafo, &topological_order, IGRAPH_OUT) != IGRAPH_SUCCESS) {
+
+    int L = igraph_ecount(&bush->Grafo);
+    //printf("Número de arestas no grafo da bush: %d\n", L);
+    if (igraph_topological_sorting(&bush->Grafo, &topological_order, IGRAPH_OUT) != IGRAPH_SUCCESS) {
         printf("Erro ao ordenar topologicamente o grafo.\n");
         exit(0); // Falha ao ordenar topologicamente, encerra o programa
     }
-
+    
+    
     igraph_vector_int_t incident_edges;
     igraph_vector_int_init(&incident_edges, 0);
+    igraph_vector_t flow_bush;
+    igraph_vector_init(&flow_bush, 0);
     igraph_vector_t time;
-    igraph_vector_init(&time, bush->BPR_PARAMETERS.L);
+    igraph_vector_init(&time, L);
     igraph_vector_t dtime;
-    igraph_vector_init(&dtime, bush->BPR_PARAMETERS.L);
+    igraph_vector_init(&dtime, BPR_PARAMETERS->L);
+    struct PARAMETERS bush_PARAMETERS;
+    igraph_vector_init(&bush_PARAMETERS.capacidade, 0);
+    igraph_vector_init(&bush_PARAMETERS.cost_time, 0);
+    bush_PARAMETERS.L = L;
+    bush_PARAMETERS.N = N;
 
-    BPR(&time, &bush->BPR_PARAMETERS, &bush->flow); // Calcula o tempo de cada aresta
+    int i,index,id,edge_id;
+    double fluxo;
+    for(i = 0; i < L; i++) {
+        index = VECTOR(bush->edge_id)[i];
+        igraph_vector_push_back(&flow_bush, VECTOR(*flow)[index]);
+        igraph_vector_push_back(&bush_PARAMETERS.capacidade, VECTOR(BPR_PARAMETERS->capacidade)[index]);
+        igraph_vector_push_back(&bush_PARAMETERS.cost_time, VECTOR(BPR_PARAMETERS->cost_time)[index]);
+
+    }
+    BPR(&time, &bush_PARAMETERS, &flow_bush); // Calcula o tempo de cada aresta
     double _ = 0;
     BPR_derivate(
         &dtime, 
-        &bush->BPR_PARAMETERS,
-        &bush->flow,
+        &bush_PARAMETERS,
+        flow,
         &_ // Passa um ponteiro para o total_time, mas não é usado aqui
     );
-    printf("Fluxo do tempo: ");
-    igraph_vector_print(&bush->flow);
-    for (int i = 0; i < igraph_vector_int_size(&topological_order); ++i) {
+    //printf("Custo do tempo: \n");
+    //igraph_vector_print(&time); // Imprime o tempo de cada aresta
+    igraph_vector_int_t min_edges, max_edges;
+    igraph_vector_int_init(&min_edges, N);
+    igraph_vector_int_init(&max_edges, N);
+    igraph_vector_int_fill(&min_edges, -1); // -1 indica nenhum predecessor
+    igraph_vector_int_fill(&max_edges, -1); // -1 indica nenhum predecessor
+
+    //printf("Fluxo do tempo: \n");
+    //print_flow(&flow_bush, &bush->Grafo, NULL); // Imprime o fluxo do tempo
+    for (i = 0; i < igraph_vector_int_size(&topological_order); ++i) {
         igraph_integer_t u = VECTOR(topological_order)[i];
         // Se 'u' não é alcançável a partir de 'from' (para menor caminho),
         // não pode contribuir para caminhos subsequentes.
         if (VECTOR(result->dist_shortest_local)[u] == DBL_MAX) continue;
-
-        igraph_incident(&bush->grafo, &incident_edges, u, IGRAPH_OUT);
+        
+        igraph_incident(&bush->Grafo, &incident_edges, u, IGRAPH_OUT);
+        
         for (long j = 0; j < igraph_vector_int_size(&incident_edges); ++j) {
+
             igraph_integer_t eid = VECTOR(incident_edges)[j];
-            igraph_integer_t v_node = IGRAPH_TO(&bush->grafo, eid);
+            id = VECTOR(bush->edge_id)[eid]; // Acessa o id da aresta
+            igraph_integer_t v_node = IGRAPH_TO(&bush->Grafo, eid);
             igraph_real_t weight,flow,derivate_weight;
 
             weight = VECTOR(time)[eid]; // Acessa o peso da aresta
-            flow = VECTOR(bush->flow)[eid]; // Acessa o fluxo da aresta
+            fluxo = bush->flow_per_alvo[id]; // Acessa o fluxo da aresta
             derivate_weight = VECTOR(dtime)[eid]; // Acessa o derivado do tempo da aresta
-            // Relaxamento para o menor caminho
             if (VECTOR(result->dist_shortest_local)[u] + weight < VECTOR(result->dist_shortest_local)[v_node]) {
                 
                 VECTOR(result->dist_shortest_local)[v_node] = VECTOR(result->dist_shortest_local)[u] + weight;
                 // Atualiza o predecessor para o menor caminho
-                VECTOR(result->min_parents)[v_node] = u;
+                VECTOR(min_edges)[v_node] = id;
                 if(v_node == to) result->min_cost = VECTOR(result->dist_shortest_local)[v_node];
                 // Atualiza o derivado do menor caminho
-                VECTOR(result->derivate_dist_shortest_local)[v_node] = VECTOR(result->derivate_dist_shortest_local)[u] + derivate_weight;
-                if(v_node == to)result->derivate_min_cost = VECTOR(result->derivate_dist_shortest_local)[v_node];
             }
 
             // Relaxamento para o maior caminho
             // Só estender de 'u' se 'u' já tem um caminho mais longo válido (não -DBL_MAX)
-            if ((VECTOR(result->dist_longest_local)[u] != -DBL_MAX) && (flow > 0)) {
+            if ((VECTOR(result->dist_longest_local)[u] != -DBL_MAX) && (fluxo > 0)) {
                  if (VECTOR(result->dist_longest_local)[u] + weight > VECTOR(result->dist_longest_local)[v_node]) {
-                    printf("Entrou!!!!!!!! %ld %ld\n",u,v_node);
+                    //printf("Entrou!!!!!!!! %ld %ld\n",u,v_node);
                     VECTOR(result->dist_longest_local)[v_node] = VECTOR(result->dist_longest_local)[u] + weight;
-                    VECTOR(result->max_parents)[v_node] = u;
+                    VECTOR(max_edges)[v_node] = id;
                     if(v_node == to) result->max_cost = VECTOR(result->dist_longest_local)[v_node];
-
-                    VECTOR(result->derivate_dist_longest_local)[v_node] = VECTOR(result->derivate_dist_longest_local)[u] + derivate_weight;
-                    if(v_node == to) result->derivate_max_cost = VECTOR(result->derivate_dist_longest_local)[v_node];
-
-                    if(flow < result->mu) result->mu = flow; // Atualiza o valor de mu se necessário
-
-
                 }
             }
         }
         igraph_vector_int_clear(&incident_edges); // Reutiliza o vetor de arestas
     }
-    reverse_parents(
-        &result->min_parents, from, to
-    );
-    //igraph_vector_int_print(&result->min_parents);
-    reverse_parents(
-        &result->max_parents, from, to
-    );
-    //igraph_vector_int_print(&result->max_parents);
-    //exit(0); // Encerra o programa após encontrar o caminho mínimo
-    // Reverse min_parents and max_parents vectors for convenience
-    //igraph_vector_int_print(&result->min_parents);
-    //igraph_vector_int_print(&result->max_parents);
-    // Print path from 'to' to 'from' using max_parents
-    //printf("Caminho mais longo de %ld até %ld: ", from, to);
-    /* igraph_integer_t current = to;
-    while (current != from && current != -1) {
-        igraph_integer_t prev = VECTOR(result->min_parents)[current];
-        if (prev != -1) {
-            // Find edge id between prev and current
-            igraph_integer_t eid;
-            igraph_get_eid(&bush->grafo, &eid, prev, current, IGRAPH_DIRECTED, 0);
-            printf("%ld <- %ld (flow: %.2f)\n", prev,current, VECTOR(bush->time)[eid]);
+
+    //igraph_vector_int_print(&min_edges);
+    //igraph_vector_int_print(&max_edges);
+    //printf("Caminho mínimo encontrado: ");
+    //igraph_vector_int_print(&result->min_edges);
+    if(result->max_cost != 0){
+        int alvo = to;
+        while(VECTOR(min_edges)[alvo] != -1) {
+            id = VECTOR(min_edges)[alvo];
+            igraph_vector_int_push_back(&result->min_edges, id); // Adiciona a aresta ao caminho mínimo
+            //printf("(%ld,%ld, %f)",IGRAPH_FROM(Grafo, id), IGRAPH_TO(Grafo, id),VECTOR(dtime)[id]);
+            alvo = IGRAPH_FROM(Grafo, id);
         }
-        current = prev;
+        //printf("\n");
+        alvo = to;
+        while(VECTOR(max_edges)[alvo] != -1) {
+            id = VECTOR(max_edges)[alvo];
+            igraph_vector_int_push_back(&result->max_edges, id); // Adiciona a aresta ao caminho mínimo
+            fluxo = bush->flow_per_alvo[id]; // Acessa o fluxo da aresta
+            //printf("(%ld,%ld, %f)",IGRAPH_FROM(Grafo, id), IGRAPH_TO(Grafo, id),VECTOR(dtime)[id]);
+            //printf("%d,%f\n",alvo,fluxo);
+            if(fluxo < result->mu) result->mu = fluxo; // Atualiza o valor de mu se o fluxo for menor
+            alvo = IGRAPH_FROM(Grafo, id);
+        }
+        //printf("\n");
+        int node_M,node_N,node1,node2,index_m;
+        node1 = IGRAPH_TO(Grafo, VECTOR(result->min_edges)[0]);
+        node2 = IGRAPH_TO(Grafo, VECTOR(result->max_edges)[0]);
+        i = 0;
+        while(node1 == node2) {
+            node_M = node1;
+            index_m = i;
+            if(node1 == from) break;
+            node1 = IGRAPH_FROM(Grafo, VECTOR(result->min_edges)[i]);
+            node2 = IGRAPH_FROM(Grafo, VECTOR(result->max_edges)[i]);
+            i++;
+        }
+        int l_min = igraph_vector_int_size(&result->min_edges);
+        int l_max = igraph_vector_int_size(&result->max_edges);
+        node1 = IGRAPH_FROM(Grafo, VECTOR(result->min_edges)[l_min-1]);
+        node2 = IGRAPH_FROM(Grafo, VECTOR(result->max_edges)[l_max-1]);
+        i = 0;
+        //printf("%d %d\n", node1, node2);
+        while(node1 == node2) {
+            node_N = node1;
+            if(node1 == to) break;
+            node1 = IGRAPH_TO(Grafo, VECTOR(result->min_edges)[l_min-1 - i]);
+            node2 = IGRAPH_TO(Grafo, VECTOR(result->max_edges)[l_max-1 - i]);
+            i++;
+        }
+        if((node_M != from) || (node_N != to)) {
+            //printf("m = %d,n = %d, i = %d\n", node_M, node_N,index_m);
+            //printf("Caminho mínimo e máximo não são iguais, Bush não é ótima!\n");
+            result->derivate = 0.0; // Zera o derivado se os caminhos não forem iguais
+            for(i = index_m; i < igraph_vector_int_size(&result->min_edges); i++) {
+                index = VECTOR(result->min_edges)[i];
+                //printf("Removendo aresta %f (%ld,%ld)\n", VECTOR(dtime)[index], IGRAPH_FROM(Grafo, index), IGRAPH_TO(Grafo, index));
+                result->derivate += VECTOR(dtime)[index];
+                if(IGRAPH_FROM(Grafo, index) == from) break;
+            }
+            for(i = index_m; i < igraph_vector_int_size(&result->max_edges); i++) {
+                index = VECTOR(result->max_edges)[i];
+                //printf("Removendo aresta %f (%ld,%ld)\n", VECTOR(dtime)[index], IGRAPH_FROM(Grafo, index), IGRAPH_TO(Grafo, index));
+                result->derivate += VECTOR(dtime)[index];
+                if(IGRAPH_FROM(Grafo, index) == from) break;
+            }
+            //printf("Derivada: %f\n", result->derivate);
+            //exit(0);
+        }
+
     }
-    if (current == from) {
-        printf("%ld\n", from);
-    } else {
-        printf("(caminho não encontrado)\n");
-    } */
-    //igraph_vector_int_print(&topological_order);
-    // Define os custos finais para o nó 'to' na estrutura de resultado
+    //exit(0);
+    //igraph_vector_int_print(&result->max_parents);
+    //igraph_vector_int_print(&inbound_edges);
+    
 
     // Libera memória dos vetores locais
     igraph_vector_int_destroy(&topological_order);
     igraph_vector_int_destroy(&incident_edges);
     igraph_vector_destroy(&time);
+    igraph_vector_destroy(&dtime);
+    igraph_vector_destroy(&flow_bush);
+    igraph_vector_destroy(&bush_PARAMETERS.capacidade);
+    igraph_vector_destroy(&bush_PARAMETERS.cost_time);
+    igraph_vector_int_destroy(&min_edges);
+    igraph_vector_int_destroy(&max_edges);
+    
 
 }
 
@@ -140,130 +215,71 @@ void init_bush(
     int** edge_list,
     struct PARAMETERS* BPR_PARAMETERS,
     struct OD_MATRIX* OD,
-    igraph_vector_t *flow,
-    bool with_assignments
+    igraph_vector_t *flow
 ) {
-    igraph_set_attribute_table(&igraph_cattribute_table);
-    igraph_vector_int_list_t evecs;
-    igraph_vector_int_t inbound,parents;
-    igraph_vector_t time;
+    igraph_vector_int_t inbound;
     
-    igraph_vector_init(&time, BPR_PARAMETERS->L);
-    igraph_vector_int_list_init(&evecs, 0);
     igraph_vector_int_init(&inbound, 0);
-    igraph_vector_int_init(&parents, 0);
     
     int fonte = OD->Elementos[i].fonte,j,k,id;
     //printf("Fonte: %d!!!!!!!!!!!!!!!!!!!!!!!!!!!\n", fonte);
     
-    BPR(&time, BPR_PARAMETERS, flow);
-    
+    //BPR(&time, BPR_PARAMETERS, flow);
     igraph_get_shortest_paths_dijkstra(
-        Grafo, NULL,&evecs,fonte,igraph_vss_all(),&time, IGRAPH_OUT,&parents,&inbound
+        Grafo, NULL,NULL,fonte,igraph_vss_all(),&BPR_PARAMETERS->cost_time, IGRAPH_OUT,NULL,&inbound
     );
-
-    //printf("%ld %ld\n",igraph_vector_int_list_size(&evecs),igraph_ecount(Grafo));
-    igraph_vector_int_destroy(&inbound);
-    
-    igraph_es_t edges;
+    igraph_vector_int_init(&bush->edge_id, 0);
+    bush->is_ingraph = (bool*) calloc(BPR_PARAMETERS->L, sizeof(bool)); // Inicializa o vetor de arestas no grafo
+    int index,target,antecessor;
     igraph_vector_int_t edges_vec;
     igraph_vector_int_init(&edges_vec, 0);
-    
-    bush->is_ingraph = (bool*) calloc(BPR_PARAMETERS->L, sizeof(bool));
-    
-    for (k = 0; k < igraph_vector_int_list_size(&evecs); k++) {
-
-        igraph_vector_int_t* vec = igraph_vector_int_list_get_ptr(&evecs, k);
-        for (j = 0; j < igraph_vector_int_size(vec); j++) {
-            id = VECTOR(*vec)[j];
-            if(bush->is_ingraph[id]) continue; // Se já foi adicionado, pula
-            
-            igraph_vector_int_push_back(&edges_vec, id);
-            //printf("Adicionando aresta %d: (%d,%d) - %f, %f\n", id, edge_list[id][0], edge_list[id][1],VECTOR(*flow)[id], VECTOR(time)[id]);
-            bush->is_ingraph[id] = true; // Marca como adicionado
-        }
+    for (k = 0; k < BPR_PARAMETERS->N; k++) {
+        if(k == fonte) continue; // Pula a fonte
+        index = VECTOR(inbound)[k];
+        igraph_vector_int_push_back(&edges_vec, index);
+        bush->is_ingraph[index] = true; // Marca a aresta como parte do grafo da bush
     }
     //printf("Size of bush->flow: %ld\n", igraph_vector_size(&bush->flow));
     //igraph_vector_int_print(&edges_vec);
-
-    igraph_vector_int_list_destroy(&evecs);
-    igraph_es_vector(&edges, &edges_vec);
+    igraph_es_t edges;
+    igraph_es_vector(&edges,&edges_vec);
     
     igraph_subgraph_from_edges(
-        Grafo, &bush->grafo, edges, false
+        Grafo, &bush->Grafo, edges, false
     );
-    //printf("Grafo Bush:\n");
     //printf("Number of edges in Bush: %ld\n", igraph_ecount(&bush->grafo));
-    igraph_vector_int_destroy(&edges_vec);
-    igraph_es_destroy(&edges);
+    for(j = 0; j < bush->n_alvos; j++) {
+        antecessor = VECTOR(OD->Elementos[i].alvos)[j];
+        bush->steps[j] = 1.; // Inicializa o passo para cada alvo
+        while(antecessor != fonte) {
+            index = VECTOR(inbound)[antecessor];
+            VECTOR(*flow)[index] += VECTOR(OD->Elementos[i].volumes)[j];
+            //printf("Adicionando fluxo %ld na aresta %d (%ld,%ld)\n", VECTOR(OD->Elementos[i].volumes)[j],index, IGRAPH_FROM(Grafo, index), IGRAPH_TO(Grafo, index));
+            bush->flow_per_alvo[index] += VECTOR(OD->Elementos[i].volumes)[j];
+            antecessor = IGRAPH_FROM(Grafo, index);
 
-    int L = igraph_ecount(&bush->grafo);
-
-    igraph_vector_init(&bush->flow, L);
-    igraph_vector_init(&bush->BPR_PARAMETERS.capacidade, L);
-    igraph_vector_init(&bush->BPR_PARAMETERS.cost_time, L);
-    igraph_vector_int_init(&bush->edge_id, L);
-
-    int** edge_list_bush = (int**) malloc(L * sizeof(int*));
-    for (int j = 0; j < L; j++) edge_list_bush[j] = (int*) malloc(2 * sizeof(int));
-
-    bush->BPR_PARAMETERS.L = L;
-    bush->BPR_PARAMETERS.N = BPR_PARAMETERS->N;
-
-
-    int target,antecessor,index;
-    igraph_eit_t edge_it;
-    j = 0;
-    igraph_eit_create(&bush->grafo, igraph_ess_all(IGRAPH_EDGEORDER_ID), &edge_it);
-    for (; !IGRAPH_EIT_END(edge_it); IGRAPH_EIT_NEXT(edge_it)) {
-        igraph_integer_t eid = IGRAPH_EIT_GET(edge_it);
+        }
+    }
+    char filename[100];
+    sprintf(filename, "bush_%d.txt", fonte);
+    FILE* file = fopen(filename, "w");
+    for (long e = 0; e < igraph_ecount(&bush->Grafo); e++) {
         igraph_integer_t from, to;
-        igraph_edge(&bush->grafo, eid, &from, &to);
-        //printf("Edge %ld: %ld -> %ld\n", eid, from, to);
-        edge_list_bush[eid][0] = from;
-        edge_list_bush[eid][1] = to;
-        index = find_id_log(from, to, edge_list,BPR_PARAMETERS->L);
-
-        VECTOR(bush->edge_id)[j] = index; // Armazena o id da aresta na bush
-        VECTOR(bush->flow)[j] = 0.0; // Inicializa o fluxo da arest
-        VECTOR(bush->BPR_PARAMETERS.capacidade)[j] = VECTOR(BPR_PARAMETERS->capacidade)[index];
-        VECTOR(bush->BPR_PARAMETERS.cost_time)[j] = VECTOR(BPR_PARAMETERS->cost_time)[index];
-
-        j++;
+        igraph_edge(&bush->Grafo, e, &from, &to);
+        index = find_id_log(from, to, edge_list, BPR_PARAMETERS->L);
+        igraph_vector_int_push_back(&bush->edge_id, index);
+        //printf("Aresta %d (%ld,%ld) - %f %f\n",index, from, to, VECTOR(*flow)[index],bush->flow_per_alvo[index]);
+        fprintf(file,"%ld %ld %f\n", IGRAPH_FROM(Grafo,index), IGRAPH_TO(Grafo,index), VECTOR(*flow)[index]);
     }
-    //igraph_vector_int_print(&parents);
-    igraph_eit_destroy(&edge_it);
-    if(with_assignments){
-        for(j = 0; j < bush->n_alvos; j++) {
-            target = VECTOR(OD->Elementos[i].alvos)[j];
-            //printf("Alvo %d: %d\n", j, target);
-            antecessor = target;
-            while(target != fonte) {
-                antecessor = VECTOR(parents)[target];
-                //printf("(%d , %d)\n", antecessor,target);
-                index = find_id_log(antecessor, target, edge_list_bush,L);
-                VECTOR(bush->flow)[index] += VECTOR(OD->Elementos[i].volumes)[j];
-                target = antecessor;
-            }
-        }
-        char filename[100];
-        sprintf(filename, "bush_%d.txt", fonte);
-        FILE* file = fopen(filename, "w");
-        for(j = 0; j < L; j++) {
-            fprintf(file,"%d %d %f\n", edge_list_bush[j][0], edge_list_bush[j][1], VECTOR(bush->flow)[j]);
-        }
-        fclose(file);
-    } 
-    igraph_vector_destroy(&time);
-    igraph_vector_int_destroy(&parents);
-    for(int j = 0; j < L; j++) {
-       free(edge_list_bush[j]); // Libera cada linha do edge_list
-    }
-    free(edge_list_bush); // Libera o array de ponteiros
-
+    
+    fclose(file);
+    igraph_vector_int_destroy(&inbound);
+    //exit(0); // Encerra o programa após inicializar a bush
 }
 
-bool equilibrium(
+
+
+bool ε_optimum(
     struct BUSH *bush, 
     struct BUSH *anterior_bush, 
     igraph_t *Grafo, 
@@ -281,17 +297,21 @@ bool equilibrium(
     int fonte = OD->Elementos[i].fonte;
     
     BPR(&time, BPR_PARAMETERS, flow);
-    
+    //print_flow(flow, Grafo, NULL); // Imprime o fluxo atual
     igraph_get_shortest_paths_dijkstra(
         Grafo, NULL,NULL,fonte,igraph_vss_all(),&time, IGRAPH_OUT,NULL,&inbound
     );
+
     
     bool converged = true;
     double tempo = 0;
     int edge_id,alvo,j;
 
     for ( j = 0; j< bush->n_alvos; j++){
+
         alvo = VECTOR(OD->Elementos[i].alvos)[j];
+        tempo = 0;
+
         while(alvo!=fonte){
             edge_id = VECTOR(inbound)[alvo];
             tempo += VECTOR(time)[edge_id];
@@ -300,34 +320,37 @@ bool equilibrium(
         }
         if(fabs(tempo - anterior_bush->paths->max_cost) > EPSILON) {
             converged = false;
-            printf("\n Caminho não convergiu para Bush %d,%d: Maior tempo: %f, Tempo calculado: %f\n\n", fonte,(int)VECTOR(OD->Elementos[i].alvos)[j], anterior_bush->paths->max_cost, tempo);
-            converged = false;
-            //exit(0); // Encerra o programa se não convergir
+            //printf("\n\t\tCaminho não convergiu para Bush %d,%d: Maior tempo: %f, Tempo calculado: %f\n\n", fonte,(int)VECTOR(OD->Elementos[i].alvos)[j], anterior_bush->paths->max_cost, tempo);
             break;
         }
-        tempo = 0;
+        
     }
     
     if(!converged) {
-        printf("Bush %d não está em equilíbrio, recalculando...🔢🔢🔢🔢🔢🔢🔢🔢🔢\n", i+1);
+        //printf("\t\tBush %d não está em equilíbrio, recalculando...🔢🔢🔢🔢🔢🔢🔢🔢🔢\n", i+1);
 
-        double* total_time = (double*) calloc(bush->BPR_PARAMETERS.N , sizeof(double));
-        bush->is_ingraph = (bool*) calloc(BPR_PARAMETERS->L, sizeof(bool));
+        double* total_time = (double*) calloc(BPR_PARAMETERS->N , sizeof(double));
         bool* keep_flow = (bool*) calloc(BPR_PARAMETERS->L , sizeof(bool));
+        bool* is_ingraph = calloc(BPR_PARAMETERS->L,sizeof(bool));
+        bush->is_ingraph = calloc(BPR_PARAMETERS->L,sizeof(bool));
+        bush->flow_per_alvo = (double*) calloc(BPR_PARAMETERS->L , sizeof(double));
+        igraph_vector_int_init(&bush->edge_id, 0);
+
         igraph_vector_int_t edges_vec;
         igraph_vector_int_init(&edges_vec, 0);
         int from, to;
         bool check;
-        
-        for ( j = 0; j< bush->BPR_PARAMETERS.N; j++){
+        for ( j = 0; j< BPR_PARAMETERS->N; j++){
             if(j == fonte) continue; // Pula a fonte
             alvo = j;
             tempo = 0;
             while(alvo!=fonte){
                 edge_id = VECTOR(inbound)[alvo];
                 tempo += VECTOR(time)[edge_id];
+                
                 alvo = IGRAPH_FROM(Grafo, edge_id);
-                bush->is_ingraph[edge_id] = true; // Marca a aresta como parte do grafo da bush
+                bush->is_ingraph[edge_id] = true; // Marca a aresta como não parte do grafo da bush
+                
             }
             total_time[j] = tempo;
         }
@@ -335,95 +358,64 @@ bool equilibrium(
         for ( j = 0; j< BPR_PARAMETERS->L; j++){
             from = edge_list[j][0];
             to = edge_list[j][1];
-            edge_id = VECTOR(inbound)[from];
             check = (total_time[from] < total_time[to]);
-            //printf("%d/%d\n", j,BPR_PARAMETERS->L);
             
             if(check) {
-                if(anterior_bush->is_ingraph[edge_id]) {
-                    
-                    if(bush->is_ingraph[edge_id]){
-                        //printf("Aresta %d (%d,%d) está na bush!!!\n", edge_id, from, to);
-                        igraph_vector_int_push_back(&edges_vec, edge_id);
-                        //printf("Aresta %d (%d,%d) está na bush!!!\n", edge_id, from, to);
-                        bush->is_ingraph[edge_id] = true; // Marca a aresta como parte do grafo da bush
-                        keep_flow[edge_id] = 1; // Marca a aresta para manter o fluxo
-                    }
-                    
+                
+                if(anterior_bush->is_ingraph[j]) {
+                    igraph_vector_int_push_back(&edges_vec,j);
+                    is_ingraph[j] = true; // Marca a aresta como parte do grafo da bush
+                    keep_flow[j] = true; // Marca a aresta para manter o fluxo
                 }
                 else{
-                    if(bush->is_ingraph[edge_id]){
-                        //printf("Aresta %d (%d,%d) está na bush!!!\n", edge_id, from, to);
-                        igraph_vector_int_push_back(&edges_vec, edge_id);
-                        bush->is_ingraph[edge_id] = true; // Marca a aresta como parte do grafo da bush
-                        keep_flow[edge_id] = 0; // Marca a aresta para manter o fluxo
-                    }
+                    igraph_vector_int_push_back(&edges_vec,j);
+                    is_ingraph[j] = true; // Marca a aresta como parte do grafo da bush
+                    keep_flow[j] = false; 
+                    //printf("%d %d %f %d\n",from,to,VECTOR(*flow)[j],keep_flow[j]);
                 }
             }
+            bush->is_ingraph[j] = false;
+            bush->flow_per_alvo[j] = anterior_bush->flow_per_alvo[j]; // Zera o fluxo por alvo na bush
         }
+        //print_flow(flow, Grafo, NULL); // Imprime o fluxo atual
+        int index;
         igraph_es_t edges;
-        igraph_es_vector(&edges, &edges_vec);
-    
-        igraph_subgraph_from_edges(
-            Grafo, &bush->grafo, edges, false
-        );
-        //printf("Grafo Bush:\n");
-        //printf("Number of edges in Bush: %ld\n", igraph_ecount(&bush->grafo));
-        bush->BPR_PARAMETERS.L = igraph_ecount(&bush->grafo);
-        int L = bush->BPR_PARAMETERS.L;
-        igraph_vector_init(&bush->flow, L);
-        igraph_vector_print(&bush->flow);
-        printf("\n");
-        igraph_vector_init(&bush->BPR_PARAMETERS.capacidade, L);
-        igraph_vector_init(&bush->BPR_PARAMETERS.cost_time, L);
-        igraph_vector_int_init(&bush->edge_id, L);
-
-        igraph_eit_t edge_it;
-        int id;
-        j = 0;
-        igraph_eit_create(&bush->grafo, igraph_ess_all(IGRAPH_EDGEORDER_ID), &edge_it);
-
-        for (; !IGRAPH_EIT_END(edge_it); IGRAPH_EIT_NEXT(edge_it)) {
-
-            igraph_integer_t eid = IGRAPH_EIT_GET(edge_it);
+        igraph_es_vector(&edges,&edges_vec);
+        igraph_subgraph_from_edges(Grafo, &bush->Grafo, edges, false);
+        for (long e = 0; e < igraph_ecount(&bush->Grafo); e++) {
             igraph_integer_t from, to;
-            igraph_edge(&bush->grafo, eid, &from, &to);
-
-            edge_id = find_id_log(from, to, edge_list,BPR_PARAMETERS->L);
-
-            VECTOR(bush->edge_id)[j] = edge_id; // Armazena o id da aresta na bush
-
-            id = VECTOR(anterior_bush->edge_id)[j];
-
+            igraph_edge(&bush->Grafo, e, &from, &to);
             
-            igraph_integer_t new_edge_id;
-            igraph_get_eid(&anterior_bush->grafo, &new_edge_id, from, to, IGRAPH_DIRECTED, 0);
-            VECTOR(bush->flow)[j] = keep_flow[edge_id] ? VECTOR(anterior_bush->flow)[new_edge_id] : 0.0;
-            //printf("Aresta %d: (%ld,%ld) - %f\n", j, from, to, VECTOR(anterior_bush->flow)[new_edge_id]);
-            VECTOR(bush->BPR_PARAMETERS.capacidade)[j] = VECTOR(BPR_PARAMETERS->capacidade)[edge_id];
-            VECTOR(bush->BPR_PARAMETERS.cost_time)[j] = VECTOR(BPR_PARAMETERS->cost_time)[edge_id];
-            //printf("%ld,%ld %f %f\n",from,to,VECTOR(BPR_PARAMETERS->cost_time)[edge_id],VECTOR(anterior_bush->BPR_PARAMETERS.cost_time)[new_edge_id]);
-            j++;
+            index = find_id_log(from, to, edge_list, BPR_PARAMETERS->L);
+            igraph_vector_int_push_back(&bush->edge_id, index);
+            is_ingraph[index] = true; // Marca a aresta como parte do grafo da bush
+            if(!keep_flow[index]) bush->flow_per_alvo[index] = 0; // Zera o fluxo por alvo na bush
 
+            //printf("\n Final Edges = (%ld,%ld) %f\n", from, to, VECTOR(*flow)[index]);
         }
-        
-        printf("\nFluxo anterior: ");
-        igraph_vector_print(&anterior_bush->flow);
-        printf("Fluxo novo: ");
-        igraph_vector_print(&bush->flow);
-        printf("\n");
-        free(total_time);
 
+        
+        //exit(0);
+        free(total_time);
+        free(is_ingraph);
+        free(keep_flow);
+        igraph_vector_int_update(&anterior_bush->edge_id, &bush->edge_id);
+        memcpy(bush->is_ingraph, is_ingraph, BPR_PARAMETERS->L * sizeof(bool));
+        igraph_copy(&anterior_bush->Grafo,&bush->Grafo);
+        anterior_bush->n_alvos = bush->n_alvos; // Atualiza o número de alvos da bush anterior
+        memcpy(anterior_bush->flow_per_alvo, bush->flow_per_alvo, BPR_PARAMETERS->L * sizeof(double));
+
+        
+        //print_flow(&bush->flow,&bush->grafo,NULL);
         igraph_vector_int_destroy(&edges_vec);
-        igraph_es_destroy(&edges);
-        igraph_eit_destroy(&edge_it);
+
+
         // Copy new bush to anterior_bush
-        copy_bush(
-            anterior_bush,
-            bush
-        );
-        //exit(0); // Encerra o programa se não convergir
+        //igraph_vector_int_print(&inbound);
+        igraph_vector_int_destroy(&inbound);
+        igraph_vector_destroy(&time);
         return false;
+
     }
     printf("Bush %d é ótima! ✅\n", i+1);
     igraph_vector_int_print(&inbound);
@@ -447,32 +439,28 @@ void Bushes(
     
     for ( i = 0; i < OD->size; i++){
 
-        //printf("Iniciando Bush %d\n",i+1);
-
+        
         bushes[i].n_alvos = igraph_vector_int_size(&OD->Elementos[i].alvos);
         bushes[i].paths = (struct min_max_bush*) malloc(bushes[i].n_alvos * sizeof(struct min_max_bush));
-        init_bush(&bushes[i], Grafo, i,edge_list, BPR_PARAMETERS,OD,solucao,true);
+        bushes[i].flow_per_alvo = (double*) calloc(BPR_PARAMETERS->L , sizeof(double));
+        
+        //printf("Iniciando Bush %d\n",i+1);
         bushes[i].steps = (double*) calloc(bushes[i].n_alvos , sizeof(double));
-
-        if (check_inconsistent_edges(&bushes[i].grafo, &bushes[i].edge_id, edge_list)) {
-            printf("Bush %d has inconsistent edges!\n", i+1);
-            exit(1);
-        }
+        init_bush(&bushes[i], Grafo, i,edge_list, BPR_PARAMETERS,OD,solucao);
+        printf("\n\n🎉🎉🎉🎉🎉🎉 Bush Iniciada! %d 🎉🎉🎉🎉🎉🎉\n", i+1);
     }
-
     bool IS_EPSLION_GLOBAL_CONVERGED = false;
 
     while (!IS_EPSLION_GLOBAL_CONVERGED){
         
         iter++;
-        if(iter > 2) exit(0); // Encerra o programa se não convergir após 3 iterações
+        if(iter > 50) break; // Encerra o programa se não convergir após 3 iterações
         IS_EPSLION_GLOBAL_CONVERGED = true; // Assume que todas as bushes estão convergidas
-        printf("\n\n🔢🔢🔢🔢🔢🔢🔢🔢 Iteração %d 🔢🔢🔢🔢🔢🔢🔢🔢\n", iter);
+        printf("🔢🔢🔢🔢🔢🔢🔢🔢 Iteração %d 🔢🔢🔢🔢🔢🔢🔢🔢\n", iter);
         // Verifica se todas as bushes convergiram
 
         for ( i = 0; i < OD->size; i++){
 
-            igraph_vector_fill(solucao, 0.0);
             converged_bush = 0;
             fonte = OD->Elementos[i].fonte;
             bool* bush_is_converged = (bool*) calloc(bushes[i].n_alvos , sizeof(bool));
@@ -481,71 +469,65 @@ void Bushes(
             while(converged_bush < bushes[i].n_alvos){
                 converged_bush = 0; // Reseta o contador de bushes convergidas
                 for ( j = 0; j < bushes[i].n_alvos; j++) {
-                    
+                    //printf("\n Equilibrando Bush %d, Alvo %d:\n", i+1, j+1);
                     alvo = VECTOR(OD->Elementos[i].alvos)[j];
                     if(bush_is_converged[j]){
                         converged_bush++;
                         continue; // Se já está convergida, pula para o próximo alvo
                     }
                     find_dag_shortest_longest_costs_and_parents(
-                        &bushes[i], fonte, alvo, &bushes[i].paths[j]
+                        &bushes[i],Grafo, fonte, alvo, &bushes[i].paths[j],BPR_PARAMETERS, solucao
                     );
-                    //exit(0);
-                    printf("\nCusto mínimo: %f(%f), Custo máximo: %f(%f)\n", bushes[i].paths[j].min_cost,bushes[i].paths[j].derivate_min_cost, bushes[i].paths[j].max_cost,bushes[i].paths[j].derivate_max_cost);
+                    //printf("\nCusto mínimo: %f(%f), Custo máximo: %f(%f)\n", bushes[i].paths[j].min_cost,bushes[i].paths[j].derivate_min_cost, bushes[i].paths[j].max_cost,bushes[i].paths[j].derivate_max_cost);
                     bush_is_converged[j] = (bushes[i].paths[j].max_cost - bushes[i].paths[j].min_cost < EPSILON);
-                    printf("%f\n",bushes[i].paths[j].max_cost);
+                    //printf("%f\n",bushes[i].paths[j].max_cost);
                     if(!bush_is_converged[j]){
-                        printf("\nCaminho com custo diferente encontrado entre %d e %d\n", fonte, alvo);
-                        printf("\nCusto mínimo: %f(%f), Custo máximo: %f(%f)\n", bushes[i].paths[j].min_cost,bushes[i].paths[j].derivate_min_cost, bushes[i].paths[j].max_cost,bushes[i].paths[j].derivate_max_cost);
-                        printf("Pais mínimos: ");
-                        igraph_vector_int_print(&bushes[i].paths[j].min_parents);
-                        printf("Pais máximos: ");
-                        igraph_vector_int_print(&bushes[i].paths[j].max_parents);
-                        exit(0); // Encerra o programa se não convergir
-                        if(bushes[i].paths[j].max_cost,bushes[i].paths[j].derivate_max_cost ==0){
-                            printf("Custo máximo é zero, encerrando o programa.\n");
-                            exit(0); // Encerra o programa se o custo máximo for zero
-                        }
-
-                        int node1 = 0,node2 = 0,l,k = 0;
-                        node1 = VECTOR(bushes[i].paths[j].min_parents)[k];
-                        node2 = VECTOR(bushes[i].paths[j].max_parents)[k];
-                        while(VECTOR(bushes[i].paths[j].min_parents)[k+1] == VECTOR(bushes[i].paths[j].max_parents)[k+1]){
-                            node1 = VECTOR(bushes[i].paths[j].min_parents)[k];
-                            node2 = VECTOR(bushes[i].paths[j].max_parents)[k];
-                            k++;
-                        }
-
-                        //printf("Nó divergente: %d %d - %d\n", node1,node2,k);
-                        double Denominator = (bushes[i].paths[j].derivate_max_cost + bushes[i].paths[j].derivate_min_cost);
+                        //printf("\nCaminho com custo diferente encontrado entre %d e %d\n", fonte, alvo);
+                        //printf("\nCusto mínimo: %f, Custo máximo: %f Derivada: %f\n", bushes[i].paths[j].min_cost, bushes[i].paths[j].max_cost, bushes[i].paths[j].derivate);
+                        //printf("Pais mínimos: ");
+                        // Remove first and last elements from min_parents vector
+                        int l_min = igraph_vector_int_size(&bushes[i].paths[j].min_edges);
+                        int l_max = igraph_vector_int_size(&bushes[i].paths[j].max_edges);
+                        //igraph_vector_int_print(&bushes[i].paths[j].min_parents);
+                        //printf("Pais máximos: ");
+                        // Remove first and last elements from max_parents vector
+                        //igraph_vector_int_print(&bushes[i].paths[j].max_parents);
+                        
+                        
+                        int edge_id,l,k = 0;
+                        
                         double Numerator = bushes[i].paths[j].max_cost - bushes[i].paths[j].min_cost;
-                        double step = bushes[i].steps[j] + Numerator / Denominator;
+                        double step = bushes[i].steps[j] + Numerator / bushes[i].paths[j].derivate; // Calcula o passo
                         step = fmin(step, bushes[i].paths[j].mu); // Limita o passo ao valor de mu
+                        //exit(0); // Encerra o programa para depuração
+                        if(bushes[i].paths[j].derivate == 0.0) {
+                            //print_flow(solucao, Grafo, NULL); // Imprime o fluxo atual
+                            erase_path(&bushes[i].paths[j]); // Libera a memória da estrutura de caminho
+                            continue;
+                        }
                         if(step < 0) {
                             printf("Passo negativo encontrado: %f, ajustando para 0\n", step);
                             exit(0); // Encerra o programa se o passo for negativo
                             step = 0.0; // Ajusta o passo para 0 se for negativo
                         }
-                        igraph_integer_t new_edge_id;
-
-                        for(l = k+1; l < igraph_vector_int_size(&bushes[i].paths[j].min_parents); l++) {
-                            node1 = VECTOR(bushes[i].paths[j].min_parents)[l-1];
-                            node2 = VECTOR(bushes[i].paths[j].min_parents)[l];
-                            igraph_get_eid(&bushes[i].grafo, &new_edge_id, node1, node2, IGRAPH_DIRECTED, 0);
-                            VECTOR(bushes[i].flow)[new_edge_id] += step;
+                        int to = alvo;
+                        for(k = 0; k < l_min; k++){
+                            edge_id = VECTOR(bushes[i].paths[j].min_edges)[k];
+                            //printf("Atualizando aresta (%d,%d) com passo %f\n", node1, node2, step);
+                            VECTOR(*solucao)[edge_id] += step;
+                            bushes[i].flow_per_alvo[edge_id] += step; // Atualiza o fluxo por alvo
                         }
-
-                        for(l = k+1; l < igraph_vector_int_size(&bushes[i].paths[j].max_parents); l++) {
-                            node1 = VECTOR(bushes[i].paths[j].max_parents)[l-1];
-                            node2 = VECTOR(bushes[i].paths[j].max_parents)[l];
-                            igraph_get_eid(&bushes[i].grafo, &new_edge_id, node1, node2, IGRAPH_DIRECTED, 0);
-                            VECTOR(bushes[i].flow)[new_edge_id] -= step;
+                        for(k = 0; k < l_max; k++){
+                            edge_id = VECTOR(bushes[i].paths[j].max_edges)[k];
+                            VECTOR(*solucao)[edge_id] -= step;
+                            bushes[i].flow_per_alvo[edge_id] -= step; // Atualiza o fluxo por alvo
                         }
                         
                         //igraph_vector_print(&bushes[i].flow);
                         bushes[i].steps[j] = step;
-                        if(i == 0) printf("\nDenominator: %e, Numerator: %e, step: %e %f\n", Denominator, Numerator, bushes[i].steps[j],bushes[i].paths[j].mu);
-                        if(i == 0) igraph_vector_print(&bushes[i].flow);
+                        //printf("\nDenominator: %e, Numerator: %e, step: %e %f\n", Denominator, Numerator, bushes[i].steps[j],bushes[i].paths[j].mu);
+                        //print_flow(solucao, Grafo, NULL); // Imprime o fluxo atualizado
+                        //exit(0); // Encerra o programa após encontrar o passo
 
                     }
                     else converged_bush += bush_is_converged[j];
@@ -553,42 +535,30 @@ void Bushes(
                 }
             }
             free(bush_is_converged);
-            //printf("\n👌👌👌👌👌👌👌👌👌👌👌👌 Bush %d está em equilíbrio 👌👌👌👌👌👌👌👌👌👌👌👌\n\n", i+1);
-            
+            //printf("\n\t\t👌👌👌👌👌👌👌👌👌👌👌👌 Bush %d está em equilíbrio 👌👌👌👌👌👌👌👌👌👌👌👌\n\n", i+1);
+            //print_flow(solucao, Grafo, NULL); // Imprime o fluxo final 
             
             //exit(0); // Se não encontrar caminho, encerra o programa
             //printf("Bush %d convergiu com %d alvos\n", i, n_alvos);
 
             //ε-ótima
             //igraph_vector_print(&bushes[i].flow);
-            int id;
-            for (int k = 0; k < i+1; k++){
-                for ( j = 0; j < bushes[k].BPR_PARAMETERS.L; j++){
-                    id = VECTOR(bushes[k].edge_id)[j];
-                    VECTOR(*solucao)[id] += VECTOR(bushes[k].flow)[j];
-                    if(VECTOR(*solucao)[id] < 0) {
-                        printf("Fluxo negativo encontrado na aresta %d: %f\n", id, VECTOR(*solucao)[id]);
-                        exit(0); // Encerra o programa se encontrar fluxo negativo
-                    }
-
-                }
-            }
             
             struct BUSH new_bushes;
             new_bushes.n_alvos = bushes[i].n_alvos;
-            new_bushes.BPR_PARAMETERS.N = BPR_PARAMETERS->N;
             new_bushes.paths = (struct min_max_bush*) malloc(new_bushes.n_alvos * sizeof(struct min_max_bush));
 
-            printf("Solução: \n");
-            igraph_vector_print(solucao);
+            //if(i == 0) print_flow(solucao, Grafo);
+            //if(i == 0) print_flow(&bushes[i].flow, &bushes[i].grafo);
 
-            bool s = equilibrium( &new_bushes,&bushes[i], Grafo, i, edge_list, BPR_PARAMETERS, OD, solucao);
+            bool s = ε_optimum( &new_bushes,&bushes[i], Grafo, i, edge_list, BPR_PARAMETERS, OD, solucao);
             IS_EPSLION_GLOBAL_CONVERGED = IS_EPSLION_GLOBAL_CONVERGED && s;
-            if (check_inconsistent_edges(&bushes[i].grafo, &bushes[i].edge_id, edge_list)) {
-                printf("Bush %d has inconsistent edges!\n", i+1);
-                exit(1);
-            }
             //exit(0); // Encerra o programa se não convergir após 3 iterações
+            //printf("\n\n\t\t🎉🎉🎉🎉🎉🎉 Bush %d é ótima! 🎉🎉🎉🎉🎉🎉\n", i+1);
+            //print_flow(solucao, Grafo, NULL); // Imprime o fluxo final 
+            //exit(0); // Encerra o programa após equilibrar a bush
+            
         }
     }
+    igraph_vector_print(solucao);
 }
