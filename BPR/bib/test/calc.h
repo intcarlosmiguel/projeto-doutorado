@@ -5,6 +5,7 @@
 
 
 
+
 void print_flow(
     igraph_vector_t *flow,
     igraph_t *Grafo,

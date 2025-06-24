@@ -49,6 +49,54 @@ double BPR_single_edge_gradient(double flow, double capacity, double cost_time) 
     return cost_time * ALPHA * BETA * s / capacity;
 }
 
+double relative_gap(
+    igraph_vector_t *flow,
+    igraph_t *Grafo,
+    struct PARAMETERS* BPR_PARAMETERS,
+    struct OD_MATRIX* OD
+) {
+
+    double gap = 0.0;
+    double total_cost = 0.0;
+    double total_flow = 0.0;
+    int i,j,alvo,edge_id,fonte,size;
+
+    igraph_vector_t time;
+    igraph_vector_init(&time, BPR_PARAMETERS->L);
+    BPR(&time, BPR_PARAMETERS, flow); // Calcula o tempo de cada aresta
+    for ( i = 0; i < BPR_PARAMETERS->L; i++) total_flow += VECTOR(*flow)[i]*VECTOR(time)[i];
+
+    
+    
+    for( i = 0; i<OD->size; i++) {
+        fonte = OD->Elementos[i].fonte;
+        size = igraph_vector_int_size(&OD->Elementos[i].alvos);
+
+        igraph_vector_int_t inbound;
+        igraph_vector_int_init(&inbound, 0);
+        igraph_get_shortest_paths_dijkstra(
+            Grafo, NULL,NULL,fonte,igraph_vss_all(),&time, IGRAPH_OUT,NULL,&inbound
+        );
+
+        for (j = 0; j < size; j++) {
+            alvo = VECTOR(OD->Elementos[i].alvos)[j];
+            while(alvo != fonte) {
+                edge_id = VECTOR(inbound)[alvo];
+                total_cost += VECTOR(time)[edge_id] * VECTOR(OD->Elementos[i].volumes)[j];
+                alvo = IGRAPH_FROM(Grafo, edge_id);
+            }
+        }
+
+        igraph_vector_int_destroy(&inbound);
+    }
+    if (total_flow > 0) gap = 1 - total_cost / total_flow;
+    else gap = 1.0; // Evita divisão por zero, assume que o gap é 1 se não houver fluxo
+    igraph_vector_destroy(&time);
+
+
+    return gap;
+}
+
 double frank_wolfe(struct PARAMETERS* BPR_PARAMETERS,igraph_vector_t* fluxo,igraph_vector_t* tempo,igraph_vector_t* direcao,const double* objetivo_incial,igraph_vector_t* y,double* stp){
     double direcao_gradiente = 0, passo = 1.0;
     int i,iteracoes = 0;
