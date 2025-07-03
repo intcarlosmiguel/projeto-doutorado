@@ -3,7 +3,21 @@
 #include <define.h>
 #include "igraph.h"
 
-
+void print_edges(
+    int fonte,
+    int alvo,
+    igraph_vector_int_t *edges,
+    igraph_t *Grafo
+){
+    int k = alvo,edge_id;
+    printf("%d -> ",k);
+    while(k != fonte) {
+        edge_id = VECTOR(*edges)[k];
+        printf("%ld -> ", IGRAPH_FROM(Grafo, edge_id));
+        k = IGRAPH_FROM(Grafo, edge_id);
+    }
+    printf("\n");
+}
 
 void print_flow(
     igraph_vector_t *flow,

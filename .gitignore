@@ -6,3 +6,5 @@ BPR/.vscode/
 api_token/
 input/
 igraph/
+*.md
+!**/README.md

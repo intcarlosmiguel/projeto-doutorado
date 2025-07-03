@@ -15,7 +15,7 @@
 const double decresse = 0.9, min_step = 1E-8, max_step = 1.0, ftol = 0.2,X_TOLERANCIA = 0.0001;
 const int MAXIMO_ITERACOES = 10000;
 const int THREADS = 10;
-const double EPSILON = 1e-2;
+const double EPSILON = 1e-10;
 
 struct MATRIZ_OD{
     int** MATRIZ;
