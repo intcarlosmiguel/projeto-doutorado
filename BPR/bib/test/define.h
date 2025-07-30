@@ -59,5 +59,5 @@ struct BUSH{
     int n_alvos;
     struct min_max_bush paths;
     double* steps;
-    igraph_vector_t flow_per_alvo; // Fluxo por alvo
+    igraph_vector_t flow_per_origin; // Fluxo por alvo
 };

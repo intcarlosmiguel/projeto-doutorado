@@ -5,17 +5,2022 @@ Origin 16 -> Destinations: (D:6, V:500) (D:8, V:500) (D:18, V:500)
 Origin 18 -> Destinations: (D:6, V:500) (D:8, V:500) (D:16, V:500) 
 🔢🔢🔢🔢🔢🔢🔢🔢 Iteração 0 🔢🔢🔢🔢🔢🔢🔢🔢
 Encontrando caminhos entre 6 ➡️  8
-
-Custo mínimo: 15.810000, Custo máximo: 90.438056
-
-🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑 Caminho não equilibrado 6 e 8 🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑
-
-Encontrando caminhos entre 6 ➡️  16
-
-Custo mínimo: 20.711111, Custo máximo: 20.711111
+Step: 213.731901 Mu:500.000000
+Encontrando caminhos entre 6 ➡️  8
+Step: 134.428151 Mu:286.268099
+Encontrando caminhos entre 6 ➡️  8
+Step: 22.144724 Mu:151.839948
+Encontrando caminhos entre 6 ➡️  8
+Step: 0.086264 Mu:370.304776
 Encontrando caminhos entre 6 ➡️  18
+Step: 203.381322 Mu:500.000000
+Step: 82.258963 Mu:500.000000
+Encontrando caminhos entre 6 ➡️  8
+Step: 45.977166 Mu:370.218512
+Encontrando caminhos entre 6 ➡️  8
+Step: 1.353391 Mu:324.241346
+Encontrando caminhos entre 6 ➡️  18
+Step: 35.199088 Mu:296.618678
+Step: 25.111050 Mu:417.741037
+Encontrando caminhos entre 6 ➡️  8
+Step: 15.262201 Mu:322.887955
+Encontrando caminhos entre 6 ➡️  18
+Step: 0.090632 Mu:261.419590
+Step: 5.910264 Mu:392.629987
+Encontrando caminhos entre 6 ➡️  8
+Step: 3.681983 Mu:307.625754
+Encontrando caminhos entre 6 ➡️  18
+Step: 0.000000 Mu:238.671042
+Step: 1.356984 Mu:386.719723
+Encontrando caminhos entre 6 ➡️  8
+Step: 0.842061 Mu:303.943770
+Encontrando caminhos entre 6 ➡️  18
+Step: 0.000000 Mu:261.328958
+Step: 0.308166 Mu:385.362739
+Encontrando caminhos entre 6 ➡️  8
+Step: 0.191566 Mu:303.101709
+Encontrando caminhos entre 6 ➡️  18
+Step: 0.070008 Mu:385.054574
+Encontrando caminhos entre 6 ➡️  8
+Step: 0.043544 Mu:302.910144
 
-Custo mínimo: 38.279601, Custo máximo: 373.784774
+		👌👌👌👌👌👌👌👌👌👌👌👌 Bush 1 está em equilíbrio 👌👌👌👌👌👌👌👌👌👌👌👌
 
-🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑 Caminho não equilibrado 6 e 18 🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑
 
+
+		🎉🎉🎉🎉🎉🎉 Bush 1 é ótima! 🎉🎉🎉🎉🎉🎉
+Encontrando caminhos entre 6 ➡️  8
+Step: 3.973760 Mu:582.117966
+Encontrando caminhos entre 6 ➡️  8
+Step: 19.046505 Mu:302.866600
+Encontrando caminhos entre 6 ➡️  8
+Step: 0.891010 Mu:283.820095
+Encontrando caminhos entre 6 ➡️  16
+Step: 89.706717 Mu:500.000000
+Encontrando caminhos entre 6 ➡️  16
+Step: 31.854865 Mu:410.293283
+Encontrando caminhos entre 6 ➡️  16
+Step: 3.350559 Mu:378.438417
+Encontrando caminhos entre 6 ➡️  18
+Aresta 26 (8,9) - 0.000000
+Step: 115.015434 Mu:115.015434
+Aresta 26 (8,9) - 115.015434,115.015434
+Encontrando caminhos entre 6 ➡️  8
+Step: 36.164910 Mu:138.926709
+Encontrando caminhos entre 6 ➡️  8
+Step: 39.342878 Mu:102.761799
+Encontrando caminhos entre 6 ➡️  8
+Step: 0.279380 Mu:63.418921
+Encontrando caminhos entre 6 ➡️  8
+Step: 0.077198 Mu:292.743471
+Encontrando caminhos entre 6 ➡️  8
+Step: 0.077101 Mu:63.139541
+Encontrando caminhos entre 6 ➡️  8
+Step: 0.062185 Mu:292.666272
+Encontrando caminhos entre 6 ➡️  8
+Step: 0.062112 Mu:63.062440
+Encontrando caminhos entre 6 ➡️  8
+Step: 0.050095 Mu:292.604087
+Encontrando caminhos entre 6 ➡️  8
+Step: 0.050036 Mu:63.000328
+Encontrando caminhos entre 6 ➡️  8
+Step: 0.040355 Mu:292.553992
+Encontrando caminhos entre 6 ➡️  8
+Step: 0.040308 Mu:62.950292
+Encontrando caminhos entre 6 ➡️  8
+Step: 0.032509 Mu:292.513637
+Encontrando caminhos entre 6 ➡️  8
+Step: 0.032471 Mu:62.909984
+Encontrando caminhos entre 6 ➡️  8
+Step: 0.026188 Mu:292.481128
+Encontrando caminhos entre 6 ➡️  16
+Step: 72.386990 Mu:124.912142
+Encontrando caminhos entre 6 ➡️  16
+Step: 12.451773 Mu:447.474848
+Encontrando caminhos entre 6 ➡️  16
+Step: 0.537169 Mu:435.023076
+Encontrando caminhos entre 6 ➡️  18
+Aresta 26 (8,9) - 115.015434
+Step: 50.625076 Mu:62.877514
+Fluxo de 26 (8,9) - 115.0154339936885463657745276577770709991455,115.0154339936885463657745276577770709991455
+Fluxo de 26 (8,9) - 64.39035816184588156830,64.39035816184588156830
+Encontrando caminhos entre 6 ➡️  8
+Step: 17.387308 Mu:614.561992
+Encontrando caminhos entre 6 ➡️  8
+Step: 18.394359 Mu:322.560494
+Encontrando caminhos entre 6 ➡️  8
+Step: 0.134808 Mu:597.174685
+Encontrando caminhos entre 6 ➡️  8
+Step: 0.527557 Mu:304.166135
+Encontrando caminhos entre 6 ➡️  16
+Step: 0.800669 Mu:116.139170
+Encontrando caminhos entre 6 ➡️  18
+Aresta 26 (8,9) - 64.390358
+Step: 24.401698 Mu:64.390358
+Fluxo de 26 (8,9) - 64.3903581618458815682970453053712844848633,64.3903581618458815682970453053712844848633
+Fluxo de 26 (8,9) - 39.98866063514368818232,39.98866063514368818232
+Encontrando caminhos entre 6 ➡️  8
+Step: 9.067051 Mu:260.751780
+Encontrando caminhos entre 6 ➡️  8
+Step: 6.994104 Mu:48.696469
+Encontrando caminhos entre 6 ➡️  8
+Step: 1.175792 Mu:295.298036
+Encontrando caminhos entre 6 ➡️  8
+Step: 1.121534 Mu:41.702365
+Encontrando caminhos entre 6 ➡️  8
+Step: 0.193075 Mu:295.243777
+Encontrando caminhos entre 6 ➡️  8
+Step: 0.191169 Mu:40.580831
+Encontrando caminhos entre 6 ➡️  8
+Step: 0.032968 Mu:295.241871
+Encontrando caminhos entre 6 ➡️  16
+Step: 0.972509 Mu:139.740198
+Encontrando caminhos entre 6 ➡️  18
+Aresta 26 (8,9) - 39.988661
+Step: 13.013885 Mu:39.988661
+Fluxo de 26 (8,9) - 39.9886606351436881823246949352324008941650,39.9886606351436881823246949352324008941650
+Fluxo de 26 (8,9) - 26.97477576355629480531,26.97477576355629480531
+Encontrando caminhos entre 6 ➡️  8
+Step: 3.832440 Mu:589.374661
+Encontrando caminhos entre 6 ➡️  8
+Step: 4.162046 Mu:295.208903
+Encontrando caminhos entre 6 ➡️  16
+Step: 0.744315 Mu:151.781574
+Encontrando caminhos entre 6 ➡️  18
+Aresta 26 (8,9) - 26.974776
+Step: 1.916475 Mu:26.974776
+Fluxo de 26 (8,9) - 26.9747757635562948053120635449886322021484,26.9747757635562948053120635449886322021484
+Fluxo de 26 (8,9) - 25.05830090738634652325,25.05830090738634652325
+Encontrando caminhos entre 6 ➡️  8
+Step: 1.236311 Mu:291.046857
+Encontrando caminhos entre 6 ➡️  8
+Step: 0.604413 Mu:35.370263
+Encontrando caminhos entre 6 ➡️  8
+Step: 0.101373 Mu:290.414959
+Encontrando caminhos entre 6 ➡️  16
+Step: 0.123509 Mu:152.953734
+Encontrando caminhos entre 6 ➡️  18
+Aresta 26 (8,9) - 25.058301
+Step: 2.487619 Mu:25.058301
+Fluxo de 26 (8,9) - 25.0583009073863465232534508686512708663940,25.0583009073863465232534508686512708663940
+Fluxo de 26 (8,9) - 22.57068200886310549436,22.57068200886310549436
+Encontrando caminhos entre 6 ➡️  8
+Step: 0.689898 Mu:584.963430
+Encontrando caminhos entre 6 ➡️  8
+Step: 0.677690 Mu:290.313586
+Encontrando caminhos entre 6 ➡️  16
+Step: 0.168206 Mu:155.317844
+Encontrando caminhos entre 6 ➡️  18
+Aresta 26 (8,9) - 22.570682
+Step: 0.517590 Mu:22.570682
+Fluxo de 26 (8,9) - 22.5706820088631054943562048720195889472961,22.5706820088631054943562048720195889472961
+Fluxo de 26 (8,9) - 22.05309201683634157121,22.05309201683634157121
+Encontrando caminhos entre 6 ➡️  8
+Step: 0.181982 Mu:232.934786
+Encontrando caminhos entre 6 ➡️  18
+Aresta 26 (8,9) - 22.053092
+Step: 0.129515 Mu:22.053092
+Fluxo de 26 (8,9) - 22.0530920168363415712065034313127398490906,22.0530920168363415712065034313127398490906
+Fluxo de 26 (8,9) - 21.92357653341341006126,21.92357653341341006126
+Encontrando caminhos entre 6 ➡️  16
+Step: 0.084685 Mu:437.424630
+Encontrando caminhos entre 6 ➡️  18
+Aresta 26 (8,9) - 21.923577
+Step: 0.073946 Mu:21.923577
+Fluxo de 26 (8,9) - 21.9235765334134100612573092803359031677246,21.9235765334134100612573092803359031677246
+Fluxo de 26 (8,9) - 21.84963008499760306336,21.84963008499760306336
+Encontrando caminhos entre 6 ➡️  8
+Step: 0.051186 Mu:33.516304
+Encontrando caminhos entre 6 ➡️  18
+Aresta 26 (8,9) - 21.849630
+Step: 0.026893 Mu:21.849630
+Fluxo de 26 (8,9) - 21.8496300849976030633570189820602536201477,21.8496300849976030633570189820602536201477
+Fluxo de 26 (8,9) - 21.82273662510204204068,21.82273662510204204068
+
+		👌👌👌👌👌👌👌👌👌👌👌👌 Bush 1 está em equilíbrio 👌👌👌👌👌👌👌👌👌👌👌👌
+
+
+
+		🎉🎉🎉🎉🎉🎉 Bush 1 é ótima! 🎉🎉🎉🎉🎉🎉
+Encontrando caminhos entre 6 ➡️  16
+Step: 12.709721 Mu:437.366838
+Encontrando caminhos entre 6 ➡️  16
+Step: 16.431998 Mu:155.825859
+Encontrando caminhos entre 6 ➡️  16
+Step: 0.523461 Mu:424.657117
+Encontrando caminhos entre 6 ➡️  18
+Aresta 26 (8,9) - 21.822737
+Step: 0.116802 Mu:21.822737
+Fluxo de 26 (8,9) - 21.8227366251020420406803168589249253273010,21.8227366251020420406803168589249253273010
+Fluxo de 26 (8,9) - 21.70593507889730133797,21.70593507889730133797
+Encontrando caminhos entre 6 ➡️  18
+Aresta 26 (8,9) - 21.705935
+Step: 0.053872 Mu:29.141719
+Aresta 26 (8,9) - 21.759807,21.759807
+Encontrando caminhos entre 6 ➡️  18
+Aresta 26 (8,9) - 21.759807
+Step: 0.037265 Mu:21.759807
+Fluxo de 26 (8,9) - 21.7598068862356974761951278196647763252258,21.7598068862356974761951278196647763252258
+Fluxo de 26 (8,9) - 21.72254208604016056938,21.72254208604016056938
+
+		👌👌👌👌👌👌👌👌👌👌👌👌 Bush 1 está em equilíbrio 👌👌👌👌👌👌👌👌👌👌👌👌
+
+Bush 1 é ótima! ✅
+
+
+		🎉🎉🎉🎉🎉🎉 Bush 1 é ótima! 🎉🎉🎉🎉🎉🎉
+
+		👌👌👌👌👌👌👌👌👌👌👌👌 Bush 1 está em equilíbrio 👌👌👌👌👌👌👌👌👌👌👌👌
+
+Bush 1 é ótima! ✅
+
+
+		🎉🎉🎉🎉🎉🎉 Bush 1 é ótima! 🎉🎉🎉🎉🎉🎉
+Encontrando caminhos entre 8 ➡️  6
+Step: 197.531017 Mu:500.000000
+Encontrando caminhos entre 8 ➡️  6
+Step: 229.927267 Mu:500.000000
+Encontrando caminhos entre 8 ➡️  6
+Step: 82.135437 Mu:270.072733
+Encontrando caminhos entre 8 ➡️  6
+Step: 3.488551 Mu:187.937296
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.233095 Mu:302.468983
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.024889 Mu:513.315367
+Encontrando caminhos entre 8 ➡️  16
+Step: 200.226941 Mu:500.000000
+Step: 0.000000 Mu:184.473634
+Encontrando caminhos entre 8 ➡️  6
+Step: 10.967464 Mu:197.764112
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.939067 Mu:184.473634
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.399143 Mu:183.534568
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.595868 Mu:314.142419
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.065232 Mu:503.318025
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.011737 Mu:313.546550
+Encontrando caminhos entre 8 ➡️  16
+Step: 71.219203 Mu:299.773059
+Step: 0.001286 Mu:503.264530
+Encontrando caminhos entre 8 ➡️  6
+Step: 4.294786 Mu:183.201943
+Encontrando caminhos entre 8 ➡️  6
+Step: 6.005608 Mu:182.170401
+Encontrando caminhos entre 8 ➡️  6
+Step: 3.193402 Mu:497.257635
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.501769 Mu:323.835208
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.050946 Mu:494.566002
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.008221 Mu:323.333439
+Encontrando caminhos entre 8 ➡️  16
+Step: 3.886227 Mu:228.553857
+Step: 0.000861 Mu:494.523276
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.282097 Mu:176.674782
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.396889 Mu:176.392685
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.211095 Mu:494.125527
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.034545 Mu:324.004204
+Encontrando caminhos entre 8 ➡️  16
+Step: 0.101235 Mu:224.667630
+Step: 0.003600 Mu:493.948977
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.007155 Mu:176.030341
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.010072 Mu:176.023187
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.005356 Mu:493.935305
+
+		👌👌👌👌👌👌👌👌👌👌👌👌 Bush 2 está em equilíbrio 👌👌👌👌👌👌👌👌👌👌👌👌
+
+
+
+		🎉🎉🎉🎉🎉🎉 Bush 2 é ótima! 🎉🎉🎉🎉🎉🎉
+Encontrando caminhos entre 8 ➡️  6
+Step: 189.187885 Mu:323.986885
+Encontrando caminhos entre 8 ➡️  6
+Step: 115.599800 Mu:134.799000
+Encontrando caminhos entre 8 ➡️  6
+Step: 56.463775 Mu:513.129150
+Encontrando caminhos entre 8 ➡️  6
+Step: 3.819067 Mu:456.665375
+Encontrando caminhos entre 8 ➡️  6
+Step: 1.873540 Mu:304.787684
+Encontrando caminhos entre 8 ➡️  16
+Step: 115.954603 Mu:182.083166
+Encontrando caminhos entre 8 ➡️  6
+Step: 37.912143 Mu:302.914144
+Encontrando caminhos entre 8 ➡️  6
+Step: 9.100619 Mu:62.156382
+Encontrando caminhos entre 8 ➡️  6
+Step: 4.552553 Mu:58.984884
+Encontrando caminhos entre 8 ➡️  6
+Step: 5.133393 Mu:53.055763
+Encontrando caminhos entre 8 ➡️  6
+Step: 4.519474 Mu:47.922370
+Encontrando caminhos entre 8 ➡️  16
+Aresta 26 (8,9) - 0.000000
+Step: 66.128563 Mu:66.128563
+Aresta 26 (8,9) - 66.128563,87.851105
+Encontrando caminhos entre 8 ➡️  16
+Aresta 26 (8,9) - 66.128563
+Step: 54.402890 Mu:209.305042
+Aresta 26 (8,9) - 120.531453,142.253995
+Encontrando caminhos entre 8 ➡️  6
+Step: 15.345215 Mu:274.687948
+Encontrando caminhos entre 8 ➡️  6
+Step: 15.228920 Mu:43.402896
+Encontrando caminhos entre 8 ➡️  6
+Step: 16.195913 Mu:28.173976
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.047673 Mu:49.415232
+Encontrando caminhos entre 8 ➡️  16
+Step: 51.116593 Mu:108.611792
+Step: 0.011899 Mu:11.978063
+Encontrando caminhos entre 8 ➡️  16
+Step: 64.774721 Mu:154.902153
+Step: 0.000000 Mu:476.928454
+Encontrando caminhos entre 8 ➡️  16
+Step: 26.043358 Mu:115.954603
+Encontrando caminhos entre 8 ➡️  6
+Step: 16.733873 Mu:49.367559
+Encontrando caminhos entre 8 ➡️  6
+Step: 9.266732 Mu:486.237940
+Encontrando caminhos entre 8 ➡️  6
+Step: 9.202996 Mu:291.353199
+Encontrando caminhos entre 8 ➡️  16
+Aresta 26 (8,9) - 120.531453
+Step: 45.651187 Mu:89.911244
+Aresta 26 (8,9) - 166.182639,187.905181
+Encontrando caminhos entre 8 ➡️  6
+Step: 14.694285 Mu:41.836682
+Encontrando caminhos entre 8 ➡️  6
+Step: 3.484620 Mu:462.276923
+Encontrando caminhos entre 8 ➡️  6
+Step: 3.126174 Mu:296.844488
+Encontrando caminhos entre 8 ➡️  16
+Step: 15.596035 Mu:44.260058
+Encontrando caminhos entre 8 ➡️  6
+Step: 9.464840 Mu:30.268571
+Encontrando caminhos entre 8 ➡️  6
+Step: 6.091972 Mu:464.923499
+Encontrando caminhos entre 8 ➡️  6
+Step: 5.988194 Mu:303.183154
+Encontrando caminhos entre 8 ➡️  16
+Step: 29.081718 Mu:90.127432
+Step: 0.006407 Mu:49.126851
+Encontrando caminhos entre 8 ➡️  16
+Aresta 26 (8,9) - 166.182639
+Step: 8.851414 Mu:83.538557
+Aresta 26 (8,9) - 175.034054,196.756596
+Encontrando caminhos entre 8 ➡️  6
+Step: 5.445901 Mu:49.120444
+Encontrando caminhos entre 8 ➡️  16
+Step: 12.063948 Mu:28.664023
+Encontrando caminhos entre 8 ➡️  6
+Step: 2.510076 Mu:26.791925
+Encontrando caminhos entre 8 ➡️  16
+Aresta 26 (8,9) - 175.034054
+Step: 6.384675 Mu:53.228414
+Aresta 26 (8,9) - 181.418729,203.141271
+Encontrando caminhos entre 8 ➡️  6
+Step: 2.403397 Mu:455.432421
+Encontrando caminhos entre 8 ➡️  16
+Aresta 26 (8,9) - 181.418729
+Step: 9.641085 Mu:16.600074
+Aresta 26 (8,9) - 191.059814,212.782356
+Encontrando caminhos entre 8 ➡️  6
+Step: 2.703816 Mu:24.281848
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.898815 Mu:450.325208
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.844909 Mu:302.408853
+Encontrando caminhos entre 8 ➡️  16
+Step: 3.244799 Mu:6.958990
+Encontrando caminhos entre 8 ➡️  6
+Step: 1.893376 Mu:22.422941
+Encontrando caminhos entre 8 ➡️  6
+Step: 1.339515 Mu:450.777816
+Encontrando caminhos entre 8 ➡️  6
+Step: 1.274961 Mu:303.457320
+Encontrando caminhos entre 8 ➡️  16
+Step: 5.318643 Mu:61.045714
+Step: 0.006204 Mu:53.605337
+Encontrando caminhos entre 8 ➡️  16
+Aresta 26 (8,9) - 191.059814
+Step: 1.146576 Mu:74.687143
+Aresta 26 (8,9) - 192.206390,213.928932
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.718091 Mu:53.599133
+Encontrando caminhos entre 8 ➡️  16
+Step: 1.993418 Mu:3.714190
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.371748 Mu:21.804526
+Encontrando caminhos entre 8 ➡️  16
+Aresta 26 (8,9) - 192.206390
+Step: 0.764268 Mu:54.502712
+Aresta 26 (8,9) - 192.970658,214.693200
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.276345 Mu:449.016020
+Encontrando caminhos entre 8 ➡️  16
+Aresta 26 (8,9) - 192.970658
+Step: 1.408650 Mu:1.720772
+Aresta 26 (8,9) - 194.379308,216.101850
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.383300 Mu:21.432778
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.135776 Mu:448.356375
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.128477 Mu:302.937407
+Encontrando caminhos entre 8 ➡️  16
+Step: 0.239648 Mu:0.312122
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.138753 Mu:21.177955
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.099557 Mu:448.321493
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.094323 Mu:302.947682
+Encontrando caminhos entre 8 ➡️  16
+Step: 0.424320 Mu:55.727071
+Step: 0.000550 Mu:54.472922
+Encontrando caminhos entre 8 ➡️  16
+Step: 0.072474 Mu:0.072474
+Encontrando caminhos entre 8 ➡️  16
+Aresta 26 (8,9) - 194.379308
+Step: 0.023416 Mu:54.544846
+Aresta 26 (8,9) - 194.402724,216.125266
+Encontrando caminhos entre 8 ➡️  18
+Aresta 26 (8,9) - 194.402724
+Step: 91.237947 Mu:500.000000
+Aresta 26 (8,9) - 285.640671,307.363213
+Encontrando caminhos entre 8 ➡️  16
+Aresta 26 (8,9) - 285.640671
+Step: 8.917153 Mu:194.402724
+Fluxo de 26 (8,9) - 285.6406711092240584548562765121459960937500,307.3632131952641657335334457457065582275391
+Fluxo de 26 (8,9) - 276.72351823862851460945,298.44606032466862188812
+Encontrando caminhos entre 8 ➡️  6
+Step: 3.343339 Mu:63.438583
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.026311 Mu:21.133526
+Encontrando caminhos entre 8 ➡️  16
+Aresta 26 (8,9) - 276.723518
+Step: 10.888603 Mu:185.485571
+Fluxo de 26 (8,9) - 276.7235182386285146094451192766427993774414,298.4460603246686218881222885102033615112305
+Fluxo de 26 (8,9) - 265.83491549923371621844,287.55745758527382349712
+Encontrando caminhos entre 8 ➡️  6
+Step: 3.075257 Mu:302.879670
+Encontrando caminhos entre 8 ➡️  6
+Step: 1.056039 Mu:24.182472
+Encontrando caminhos entre 8 ➡️  6
+Step: 1.044463 Mu:59.039205
+Encontrando caminhos entre 8 ➡️  16
+Step: 5.715051 Mu:186.146673
+Step: 0.000409 Mu:455.659235
+Encontrando caminhos entre 8 ➡️  16
+Step: 3.046393 Mu:180.431622
+Encontrando caminhos entre 8 ➡️  6
+Step: 1.819046 Mu:300.860452
+Encontrando caminhos entre 8 ➡️  6
+Step: 1.212461 Mu:24.945479
+Encontrando caminhos entre 8 ➡️  6
+Step: 1.213396 Mu:56.782690
+Encontrando caminhos entre 8 ➡️  16
+Step: 2.739318 Mu:78.803471
+Step: 0.000556 Mu:455.644875
+Encontrando caminhos entre 8 ➡️  16
+Step: 1.747501 Mu:177.385230
+Encontrando caminhos entre 8 ➡️  6
+Step: 1.045810 Mu:300.253867
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.690891 Mu:24.778828
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.694109 Mu:54.878960
+Encontrando caminhos entre 8 ➡️  16
+Aresta 26 (8,9) - 265.834915
+Step: 1.484069 Mu:174.596968
+Fluxo de 26 (8,9) - 265.8349154992337162184412591159343719482422,287.5574575852738234971184283494949340820312
+Fluxo de 26 (8,9) - 264.35084612853751195871,286.07338821457761923739
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.570994 Mu:55.668920
+Encontrando caminhos entre 8 ➡️  16
+Step: 1.453753 Mu:175.637729
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.868463 Mu:299.898949
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.577433 Mu:24.956400
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.578919 Mu:54.520493
+Encontrando caminhos entre 8 ➡️  16
+Aresta 26 (8,9) - 264.350846
+Step: 0.812981 Mu:173.112899
+Fluxo de 26 (8,9) - 264.3508461285375119587115477770566940307617,286.0733882145776192373887170106172561645508
+Fluxo de 26 (8,9) - 263.53786475005739475819,285.26040683609750203686
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.313237 Mu:54.754555
+Encontrando caminhos entre 8 ➡️  16
+Step: 0.969384 Mu:174.183976
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.580526 Mu:299.607918
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.384012 Mu:24.959493
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.384718 Mu:54.057306
+Encontrando caminhos entre 8 ➡️  16
+Aresta 26 (8,9) - 263.537865
+Step: 0.624592 Mu:172.299917
+Fluxo de 26 (8,9) - 263.5378647500573947581870015710592269897461,285.2604068360975020368641708046197891235352
+Fluxo de 26 (8,9) - 262.91327266773333803940,284.63581475377344531807
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.240924 Mu:54.297180
+Encontrando caminhos entre 8 ➡️  16
+Step: 0.537221 Mu:173.214592
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.321931 Mu:299.411404
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.212825 Mu:24.897412
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.213003 Mu:53.843431
+Encontrando caminhos entre 8 ➡️  16
+Aresta 26 (8,9) - 262.913273
+Step: 0.493097 Mu:171.675325
+Fluxo de 26 (8,9) - 262.9132726677333380393974948674440383911133,284.6358147537734453180746641010046005249023
+Fluxo de 26 (8,9) - 262.42017559539505100474,284.14271768143515828342
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.190380 Mu:54.123525
+Encontrando caminhos entre 8 ➡️  16
+Step: 0.468195 Mu:172.677371
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.280544 Mu:299.302298
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.185649 Mu:24.965131
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.185671 Mu:53.747497
+Encontrando caminhos entre 8 ➡️  16
+Step: 0.928195 Mu:172.209175
+Step: 0.000013 Mu:456.937493
+Encontrando caminhos entre 8 ➡️  16
+Aresta 26 (8,9) - 262.420176
+Step: 0.414385 Mu:171.182228
+Fluxo de 26 (8,9) - 262.4201755953950510047434363514184951782227,284.1427176814351582834206055849790573120117
+Fluxo de 26 (8,9) - 262.00579043802980550026,283.72833252406991277894
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.121642 Mu:299.207403
+Encontrando caminhos entre 8 ➡️  16
+Step: 0.183136 Mu:53.561839
+Encontrando caminhos entre 8 ➡️  16
+Aresta 26 (8,9) - 262.005790
+Step: 0.062845 Mu:170.767843
+Fluxo de 26 (8,9) - 262.0057904380298055002640467137098312377930,283.7283325240699127789412159472703933715820
+Fluxo de 26 (8,9) - 261.94294517821276713221,283.66548726425287441089
+Encontrando caminhos entre 8 ➡️  16
+Step: 0.092173 Mu:171.097845
+Step: 0.002611 Mu:457.121967
+Encontrando caminhos entre 8 ➡️  16
+Step: 0.024993 Mu:61.892015
+Encontrando caminhos entre 8 ➡️  16
+Step: 0.016907 Mu:171.005672
+Step: 0.024862 Mu:53.381315
+Encontrando caminhos entre 8 ➡️  18
+Aresta 26 (8,9) - 261.942945
+Step: 22.724831 Mu:408.762053
+Aresta 26 (8,9) - 284.667776,306.390318
+Encontrando caminhos entre 8 ➡️  16
+Aresta 26 (8,9) - 284.667776
+Step: 2.692781 Mu:170.704998
+Fluxo de 26 (8,9) - 284.6677761463122919849411118775606155395508,306.3903182323523992636182811111211776733398
+Fluxo de 26 (8,9) - 281.97499487267720041928,303.69753695871730769795
+Encontrando caminhos entre 8 ➡️  16
+Step: 1.914336 Mu:2.692781
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.565294 Mu:299.085761
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.168365 Mu:25.466418
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.167693 Mu:53.188088
+Encontrando caminhos entre 8 ➡️  16
+Aresta 26 (8,9) - 281.974995
+Step: 2.267422 Mu:168.012216
+Fluxo de 26 (8,9) - 281.9749948726772004192753229290246963500977,303.6975369587173076979524921625852584838867
+Fluxo de 26 (8,9) - 279.70757313667206744867,301.43011522271217472735
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.880510 Mu:55.287816
+Encontrando caminhos entre 8 ➡️  16
+Aresta 26 (8,9) - 279.707573
+Step: 1.280354 Mu:165.744795
+Fluxo de 26 (8,9) - 279.7075731366720674486714415252208709716797,301.4301152227121747273486107587814331054688
+Fluxo de 26 (8,9) - 278.42721953111293942129,300.14976161715304669997
+Encontrando caminhos entre 8 ➡️  16
+Step: 1.061804 Mu:78.973074
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.637282 Mu:298.688832
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.423453 Mu:25.935335
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.419844 Mu:53.983853
+Encontrando caminhos entre 8 ➡️  16
+Step: 0.775711 Mu:2.058799
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.230860 Mu:298.475004
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.068367 Mu:25.742742
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.067688 Mu:53.495641
+Encontrando caminhos entre 8 ➡️  16
+Aresta 26 (8,9) - 278.427220
+Step: 0.725825 Mu:164.464441
+Fluxo de 26 (8,9) - 278.4272195311129394212912302464246749877930,300.1497616171530466999683994799852371215820
+Fluxo de 26 (8,9) - 277.70139414422118306902,299.42393623026129034770
+Encontrando caminhos entre 8 ➡️  16
+Step: 0.534507 Mu:2.008914
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.158843 Mu:298.312510
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.047611 Mu:25.833218
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.047113 Mu:53.380342
+Encontrando caminhos entre 8 ➡️  16
+Aresta 26 (8,9) - 277.701394
+Step: 1.108526 Mu:163.738616
+Fluxo de 26 (8,9) - 277.7013941442211830690212082117795944213867,299.4239362302612903476983774453401565551758
+Fluxo de 26 (8,9) - 276.59286824708499352710,298.31541033312510080577
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.330041 Mu:298.201279
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.098837 Mu:26.115647
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.097623 Mu:53.234392
+Encontrando caminhos entre 8 ➡️  16
+Step: 1.067488 Mu:170.988765
+Step: 0.233486 Mu:459.660213
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.072022 Mu:297.970075
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.071158 Mu:26.088832
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.070395 Mu:53.065611
+Encontrando caminhos entre 8 ➡️  16
+Step: 0.207915 Mu:64.217599
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.126044 Mu:297.969211
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.081894 Mu:26.143718
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.081047 Mu:52.913322
+Encontrando caminhos entre 8 ➡️  16
+Aresta 26 (8,9) - 276.592868
+Step: 0.233563 Mu:162.630090
+Fluxo de 26 (8,9) - 276.5928682470849935270962305366992950439453,298.3154103331251008057733997702598571777344
+Fluxo de 26 (8,9) - 276.35930549831732605526,298.08184758435743333393
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.091099 Mu:53.065838
+Encontrando caminhos entre 8 ➡️  16
+Step: 0.227212 Mu:169.921277
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.137432 Mu:297.925061
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.089835 Mu:26.199256
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.088877 Mu:52.884904
+Encontrando caminhos entre 8 ➡️  16
+Aresta 26 (8,9) - 276.359305
+Step: 0.233162 Mu:162.396527
+Fluxo de 26 (8,9) - 276.3593054983173260552575811743736267089844,298.0818475843574333339347504079341888427734
+Fluxo de 26 (8,9) - 276.12614308454686806726,297.84868517058697534594
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.069789 Mu:297.877464
+Encontrando caminhos entre 8 ➡️  16
+Step: 0.267506 Mu:169.694064
+Step: 0.020360 Mu:52.796027
+Encontrando caminhos entre 8 ➡️  16
+Step: 0.045180 Mu:64.277190
+Encontrando caminhos entre 8 ➡️  16
+Aresta 26 (8,9) - 276.126143
+Step: 0.040854 Mu:162.163365
+Fluxo de 26 (8,9) - 276.1261430845468680672638583928346633911133,297.8486851705869753459410276263952255249023
+Fluxo de 26 (8,9) - 276.08528886070826047217,297.80783094674836775084
+Encontrando caminhos entre 8 ➡️  16
+Step: 0.068831 Mu:52.775667
+Encontrando caminhos entre 8 ➡️  16
+Aresta 26 (8,9) - 276.085289
+Step: 0.040450 Mu:162.122510
+Fluxo de 26 (8,9) - 276.0852888607082604721654206514358520507812,297.8078309467483677508425898849964141845703
+Fluxo de 26 (8,9) - 276.04483929287198407110,297.76738137891209134978
+Encontrando caminhos entre 8 ➡️  16
+Step: 0.018608 Mu:78.377006
+Encontrando caminhos entre 8 ➡️  16
+Step: 0.019775 Mu:1.707893
+Encontrando caminhos entre 8 ➡️  16
+Step: 0.020664 Mu:169.337952
+Step: 0.008606 Mu:52.706837
+Encontrando caminhos entre 8 ➡️  18
+Aresta 26 (8,9) - 276.044839
+Step: 3.167649 Mu:386.037222
+Aresta 26 (8,9) - 279.212488,300.935030
+Encontrando caminhos entre 8 ➡️  16
+Aresta 26 (8,9) - 279.212488
+Step: 0.627810 Mu:162.082061
+Fluxo de 26 (8,9) - 279.2124879634090461877349298447370529174805,300.9350300494491534664120990782976150512695
+Fluxo de 26 (8,9) - 278.58467809097317058331,300.30722017701327786199
+Encontrando caminhos entre 8 ➡️  16
+Step: 0.334012 Mu:78.986207
+Step: 0.061680 Mu:2.324534
+Encontrando caminhos entre 8 ➡️  16
+Aresta 26 (8,9) - 278.584678
+Step: 0.589591 Mu:161.454251
+Fluxo de 26 (8,9) - 278.5846780909731705833110027015209197998047,300.3072201770132778619881719350814819335938
+Fluxo de 26 (8,9) - 277.99508712927280384974,299.71762921531291112842
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.172120 Mu:297.807675
+Encontrando caminhos entre 8 ➡️  16
+Step: 0.332899 Mu:169.651300
+Step: 0.047820 Mu:52.698231
+Encontrando caminhos entre 8 ➡️  16
+Aresta 26 (8,9) - 277.995087
+Step: 0.165603 Mu:160.864660
+Fluxo de 26 (8,9) - 277.9950871292728038497443776577711105346680,299.7176292153129111284215468913316726684570
+Fluxo de 26 (8,9) - 277.82948375332608748067,299.55202583936619475935
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.081403 Mu:52.650410
+Encontrando caminhos entre 8 ➡️  16
+Step: 0.059978 Mu:169.318401
+Step: 0.010125 Mu:460.081382
+Encontrando caminhos entre 8 ➡️  16
+Step: 0.039656 Mu:52.569007
+Encontrando caminhos entre 8 ➡️  16
+Step: 0.024288 Mu:78.712174
+Step: 0.011588 Mu:2.320800
+Encontrando caminhos entre 8 ➡️  16
+Aresta 26 (8,9) - 277.829484
+Step: 0.030213 Mu:160.699057
+Fluxo de 26 (8,9) - 277.8294837533260874806728679686784744262695,299.5520258393661947593500372022390365600586
+Fluxo de 26 (8,9) - 277.79927084727250985452,299.52181293331261713320
+Encontrando caminhos entre 8 ➡️  18
+Aresta 26 (8,9) - 277.799271
+Step: 0.485026 Mu:382.869573
+Aresta 26 (8,9) - 278.284297,300.006839
+Encontrando caminhos entre 8 ➡️  16
+Aresta 26 (8,9) - 278.284297
+Step: 0.100997 Mu:160.668844
+Fluxo de 26 (8,9) - 278.2842972200274971328326500952243804931641,300.0068393060676044115098193287849426269531
+Fluxo de 26 (8,9) - 278.18330061162885158410,299.90584269766895886278
+Encontrando caminhos entre 8 ➡️  16
+Step: 0.049164 Mu:78.788882
+Step: 0.011553 Mu:2.410208
+Encontrando caminhos entre 8 ➡️  16
+Aresta 26 (8,9) - 278.183301
+Step: 0.099446 Mu:160.567847
+Fluxo de 26 (8,9) - 278.1833006116288515841006301343441009521484,299.9058426976689588627777993679046630859375
+Fluxo de 26 (8,9) - 278.08385421433649753453,299.80639630037660481321
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.038355 Mu:297.635555
+Encontrando caminhos entre 8 ➡️  16
+Step: 0.014598 Mu:169.218766
+Step: 0.009193 Mu:52.529351
+Encontrando caminhos entre 8 ➡️  18
+Aresta 26 (8,9) - 278.083854
+Step: 0.069558 Mu:382.384547
+Aresta 26 (8,9) - 278.153413,299.875955
+Encontrando caminhos entre 8 ➡️  16
+Aresta 26 (8,9) - 278.153413
+Step: 0.021663 Mu:160.468401
+Fluxo de 26 (8,9) - 278.1534126032391895932960323989391326904297,299.8759546892792968719732016324996948242188
+Fluxo de 26 (8,9) - 278.13174987498194923319,299.85429196102205651187
+Encontrando caminhos entre 8 ➡️  16
+Step: 0.021670 Mu:2.429511
+Encontrando caminhos entre 8 ➡️  16
+Aresta 26 (8,9) - 278.131750
+Step: 0.014180 Mu:160.446738
+Fluxo de 26 (8,9) - 278.1317498749819492331880610436201095581055,299.8542919610220565118652302771806716918945
+Fluxo de 26 (8,9) - 278.11756959366255159694,299.84011167970265887561
+
+		👌👌👌👌👌👌👌👌👌👌👌👌 Bush 2 está em equilíbrio 👌👌👌👌👌👌👌👌👌👌👌👌
+
+
+
+		🎉🎉🎉🎉🎉🎉 Bush 2 é ótima! 🎉🎉🎉🎉🎉🎉
+Encontrando caminhos entre 8 ➡️  16
+Step: 32.799230 Mu:169.182499
+Step: 0.008491 Mu:52.520158
+Encontrando caminhos entre 8 ➡️  16
+Step: 48.884270 Mu:78.754316
+Step: 0.000086 Mu:460.141244
+Encontrando caminhos entre 8 ➡️  16
+Aresta 26 (8,9) - 278.117570
+Step: 13.350959 Mu:160.432558
+Fluxo de 26 (8,9) - 278.1175695936625515969353727996349334716797,299.8401116797026588756125420331954956054688
+Fluxo de 26 (8,9) - 264.76661016969592310488,286.48915225573603038356
+Encontrando caminhos entre 8 ➡️  6
+Step: 8.055264 Mu:473.492117
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.035876 Mu:26.389685
+Encontrando caminhos entre 8 ➡️  16
+Step: 10.872949 Mu:60.566931
+Encontrando caminhos entre 8 ➡️  6
+Step: 4.282364 Mu:465.400976
+Encontrando caminhos entre 8 ➡️  16
+Aresta 26 (8,9) - 264.766610
+Step: 13.652378 Mu:157.954547
+Fluxo de 26 (8,9) - 264.7666101696959231048822402954101562500000,286.4891522557360303835594095289707183837891
+Fluxo de 26 (8,9) - 251.11423241044920473541,272.83677449648934043580
+Encontrando caminhos entre 8 ➡️  6
+Step: 5.407958 Mu:67.628725
+Encontrando caminhos entre 8 ➡️  16
+Step: 8.216531 Mu:29.870046
+Encontrando caminhos entre 8 ➡️  6
+Step: 4.948418 Mu:62.220767
+Encontrando caminhos entre 8 ➡️  16
+Aresta 26 (8,9) - 251.114232
+Step: 7.136189 Mu:152.518700
+Fluxo de 26 (8,9) - 251.1142324104492047354142414405941963195801,272.8367744964893404358008410781621932983398
+Fluxo de 26 (8,9) - 243.97804354400827264726,265.70058563004840834765
+Encontrando caminhos entre 8 ➡️  16
+Step: 6.853707 Mu:9.558297
+Encontrando caminhos entre 8 ➡️  16
+Aresta 26 (8,9) - 243.978044
+Step: 42.652302 Mu:243.978044
+Fluxo de 26 (8,9) - 243.9780435440082726472610374912619590759277,265.7005856300484083476476371288299560546875
+Fluxo de 26 (8,9) - 201.32574188190389463671,223.04828396794403033709
+Encontrando caminhos entre 8 ➡️  16
+Step: 1.088744 Mu:53.862369
+Step: 2.704590 Mu:2.704590
+Encontrando caminhos entre 8 ➡️  6
+Step: 1.065144 Mu:59.976939
+Encontrando caminhos entre 8 ➡️  16
+Step: 3.959242 Mu:26.895309
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.843999 Mu:26.353809
+Encontrando caminhos entre 8 ➡️  16
+Step: 1.316072 Mu:22.936068
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.797682 Mu:25.509809
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.495920 Mu:464.841990
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.519920 Mu:299.274758
+Encontrando caminhos entre 8 ➡️  16
+Step: 4.140131 Mu:56.732867
+Step: 0.003391 Mu:63.042877
+Encontrando caminhos entre 8 ➡️  16
+Step: 0.961518 Mu:21.619996
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.201949 Mu:25.232047
+Encontrando caminhos entre 8 ➡️  16
+Step: 0.711967 Mu:95.335878
+Step: 0.005170 Mu:63.799055
+Encontrando caminhos entre 8 ➡️  16
+Step: 0.646444 Mu:20.658479
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.194458 Mu:25.030098
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.059228 Mu:464.160173
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.062135 Mu:299.151245
+Encontrando caminhos entre 8 ➡️  16
+Step: 0.195771 Mu:20.012034
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.119706 Mu:24.897775
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.075107 Mu:464.177010
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.078850 Mu:299.208816
+Encontrando caminhos entre 8 ➡️  16
+Step: 0.258381 Mu:52.592736
+Step: 0.000546 Mu:64.069204
+Encontrando caminhos entre 8 ➡️  16
+Step: 0.068850 Mu:19.816263
+Encontrando caminhos entre 8 ➡️  16
+Step: 0.069307 Mu:64.137508
+Encontrando caminhos entre 8 ➡️  16
+Aresta 26 (8,9) - 201.325742
+Step: 0.069266 Mu:152.951970
+Fluxo de 26 (8,9) - 201.3257418819038946367072639986872673034668,223.0482839679440303370938636362552642822266
+Fluxo de 26 (8,9) - 201.25647573821035507535,222.97901782425049077574
+Encontrando caminhos entre 8 ➡️  16
+Step: 0.083870 Mu:19.747413
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.031988 Mu:24.856919
+Encontrando caminhos entre 8 ➡️  16
+Aresta 26 (8,9) - 201.256476
+Step: 0.027818 Mu:152.966574
+Fluxo de 26 (8,9) - 201.2564757382103550753527088090777397155762,222.9790178242504907757393084466457366943359
+Fluxo de 26 (8,9) - 201.22865765082644884387,222.95119973686658454426
+Encontrando caminhos entre 8 ➡️  16
+Step: 0.032148 Mu:64.165285
+Encontrando caminhos entre 8 ➡️  16
+Aresta 26 (8,9) - 201.228658
+Step: 0.020806 Mu:152.970904
+Fluxo de 26 (8,9) - 201.2286576508264488438726402819156646728516,222.9511997368665845442592399194836616516113
+Fluxo de 26 (8,9) - 201.20785162871564466514,222.93039371475578036552
+Encontrando caminhos entre 8 ➡️  16
+Step: 0.017386 Mu:64.153944
+Encontrando caminhos entre 8 ➡️  18
+Step: 33.712720 Mu:382.314988
+Encontrando caminhos entre 8 ➡️  16
+Step: 2.137704 Mu:103.157364
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.849516 Mu:66.274261
+Encontrando caminhos entre 8 ➡️  16
+Aresta 26 (8,9) - 201.207852
+Step: 2.470042 Mu:150.829780
+Fluxo de 26 (8,9) - 201.2078516287156446651351870968937873840332,222.9303937147557803655217867344617843627930
+Fluxo de 26 (8,9) - 198.73780986619763666567,220.46035195223777236606
+Encontrando caminhos entre 8 ➡️  16
+Step: 1.552498 Mu:2.470042
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.464410 Mu:299.161954
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.156518 Mu:25.289341
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.145435 Mu:65.268227
+Encontrando caminhos entre 8 ➡️  16
+Aresta 26 (8,9) - 198.737810
+Step: 0.992179 Mu:148.359738
+Fluxo de 26 (8,9) - 198.7378098661976366656745085492730140686035,220.4603519522377723660611081868410110473633
+Fluxo de 26 (8,9) - 197.74563070714637547098,219.46817279318651117137
+Encontrando caminhos entre 8 ➡️  16
+Step: 1.616753 Mu:101.019660
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.491153 Mu:298.854062
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.157041 Mu:25.623976
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.145606 Mu:64.965751
+Encontrando caminhos entre 8 ➡️  16
+Step: 0.860255 Mu:155.722768
+Step: 0.365936 Mu:466.166581
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.114797 Mu:298.519950
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.112853 Mu:25.581732
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.104876 Mu:64.707292
+Encontrando caminhos entre 8 ➡️  16
+Step: 0.538097 Mu:25.391986
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.331949 Mu:298.518006
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.218449 Mu:25.800827
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.203222 Mu:64.383967
+Encontrando caminhos entre 8 ➡️  16
+Step: 0.457046 Mu:2.275659
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.139821 Mu:298.404506
+Encontrando caminhos entre 8 ➡️  16
+Aresta 26 (8,9) - 197.745631
+Step: 0.308116 Mu:145.750806
+Fluxo de 26 (8,9) - 197.7456307071463754709839122369885444641113,219.4681727931865111713705118745565414428711
+Fluxo de 26 (8,9) - 197.43751430184551054481,219.16005638788564624519
+Encontrando caminhos entre 8 ➡️  16
+Step: 0.267831 Mu:2.126730
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.081599 Mu:298.264686
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.069301 Mu:25.803798
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.064419 Mu:64.111444
+Encontrando caminhos entre 8 ➡️  16
+Step: 0.153335 Mu:154.137636
+Step: 0.146500 Mu:466.303229
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.045942 Mu:298.252388
+Encontrando caminhos entre 8 ➡️  16
+Aresta 26 (8,9) - 197.437514
+Step: 0.368761 Mu:145.442689
+Fluxo de 26 (8,9) - 197.4375143018455105448083486407995223999023,219.1600563878856462451949482783675193786621
+Fluxo de 26 (8,9) - 197.06875314838896429137,218.79129523442909999176
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.112439 Mu:298.206447
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.080723 Mu:25.892877
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.075037 Mu:63.966303
+Encontrando caminhos entre 8 ➡️  16
+Step: 0.303992 Mu:153.984300
+Step: 0.042852 Mu:466.390147
+Encontrando caminhos entre 8 ➡️  16
+Step: 0.097582 Mu:24.853888
+Encontrando caminhos entre 8 ➡️  16
+Aresta 26 (8,9) - 197.068753
+Step: 0.117311 Mu:145.171510
+Fluxo de 26 (8,9) - 197.0687531483889642913709394633769989013672,218.7912952344290999917575391009449958801270
+Fluxo de 26 (8,9) - 196.95144248935559971869,218.67398457539573541908
+Encontrando caminhos entre 8 ➡️  16
+Step: 0.074958 Mu:24.756306
+Encontrando caminhos entre 8 ➡️  16
+Step: 0.064854 Mu:2.048250
+Encontrando caminhos entre 8 ➡️  16
+Aresta 26 (8,9) - 196.951442
+Step: 0.055632 Mu:145.129158
+Fluxo de 26 (8,9) - 196.9514424893555997186922468245029449462891,218.6739845753957354190788464620709419250488
+Fluxo de 26 (8,9) - 196.89581087128479452986,218.61835295732493023024
+Encontrando caminhos entre 8 ➡️  16
+Step: 0.057639 Mu:153.680308
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.022748 Mu:298.174731
+Encontrando caminhos entre 8 ➡️  16
+Aresta 26 (8,9) - 196.895811
+Step: 0.139108 Mu:145.131165
+Fluxo de 26 (8,9) - 196.8958108712847945298562990501523017883301,218.6183529573249302302428986877202987670898
+Fluxo de 26 (8,9) - 196.75670252248997371680,218.47924460853010941719
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.042443 Mu:298.151983
+Encontrando caminhos entre 8 ➡️  16
+Step: 0.051122 Mu:63.836036
+Encontrando caminhos entre 8 ➡️  16
+Aresta 26 (8,9) - 196.756703
+Step: 0.062532 Mu:145.043179
+Fluxo de 26 (8,9) - 196.7567025224899737168016145005822181701660,218.4792446085301094171882141381502151489258
+Fluxo de 26 (8,9) - 196.69417056155620571190,218.41671264759634141228
+Encontrando caminhos entre 8 ➡️  16
+Step: 0.038974 Mu:24.681348
+Encontrando caminhos entre 8 ➡️  16
+Aresta 26 (8,9) - 196.694171
+Step: 0.033830 Mu:145.019621
+Fluxo de 26 (8,9) - 196.6941705615562057118950178846716880798340,218.4167126475963414122816175222396850585938
+Fluxo de 26 (8,9) - 196.66034057486731967401,218.38288266090745537440
+Encontrando caminhos entre 8 ➡️  16
+Step: 0.039583 Mu:1.983396
+Encontrando caminhos entre 8 ➡️  16
+Aresta 26 (8,9) - 196.660341
+Step: 0.165368 Mu:196.660341
+Fluxo de 26 (8,9) - 196.6603405748673196740128332749009132385254,218.3828826609074553743994329124689102172852
+Fluxo de 26 (8,9) - 196.49497236314294923432,218.21751444918308493470
+Encontrando caminhos entre 8 ➡️  16
+Step: 0.017198 Mu:1.943813
+Encontrando caminhos entre 8 ➡️  16
+Aresta 26 (8,9) - 196.494972
+Step: 0.015643 Mu:145.025374
+Fluxo de 26 (8,9) - 196.4949723631429492343158926814794540405273,218.2175144491830849347024923190474510192871
+Fluxo de 26 (8,9) - 196.47932916685039117510,218.20187125289052687549
+Encontrando caminhos entre 8 ➡️  18
+Step: 3.412895 Mu:348.602268
+Encontrando caminhos entre 8 ➡️  16
+Step: 0.446479 Mu:103.341028
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.128611 Mu:298.109540
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.053330 Mu:26.005955
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.049538 Mu:63.770786
+Encontrando caminhos entre 8 ➡️  16
+Aresta 26 (8,9) - 196.479329
+Step: 0.314081 Mu:144.563252
+Fluxo de 26 (8,9) - 196.4793291668503911751031409949064254760742,218.2018712528905268754897406324744224548340
+Fluxo de 26 (8,9) - 196.16524820656391625562,217.88779029260405195600
+Encontrando caminhos entre 8 ➡️  16
+Step: 0.070145 Mu:24.642374
+Step: 0.073678 Mu:2.240696
+Encontrando caminhos entre 8 ➡️  16
+Aresta 26 (8,9) - 196.165248
+Step: 0.077592 Mu:144.249171
+Fluxo de 26 (8,9) - 196.1652482065639162556180963292717933654785,217.8877902926040519560046959668397903442383
+Fluxo de 26 (8,9) - 196.08765668112798152833,217.81019876716811722872
+Encontrando caminhos entre 8 ➡️  16
+Step: 0.105728 Mu:153.531964
+Step: 0.028406 Mu:466.700048
+Encontrando caminhos entre 8 ➡️  16
+Aresta 26 (8,9) - 196.087657
+Step: 0.087913 Mu:144.171580
+Fluxo de 26 (8,9) - 196.0876566811279815283342031762003898620605,217.8101987671681172287208028137683868408203
+Fluxo de 26 (8,9) - 195.99974393686278517634,217.72228602290292087673
+Encontrando caminhos entre 8 ➡️  6
+Step: 0.026785 Mu:298.034259
+Encontrando caminhos entre 8 ➡️  16
+Step: 0.031871 Mu:63.794926
+Encontrando caminhos entre 8 ➡️  16
+Step: 0.027309 Mu:2.195424
+Encontrando caminhos entre 8 ➡️  16
+Aresta 26 (8,9) - 195.999744
+Step: 0.021768 Mu:144.115538
+Fluxo de 26 (8,9) - 195.9997439368627851763449143618345260620117,217.7222860229029208767315139994025230407715
+Fluxo de 26 (8,9) - 195.97797569821901220166,217.70051778425914790205
+Encontrando caminhos entre 8 ➡️  18
+Step: 0.226085 Mu:345.189373
+Encontrando caminhos entre 8 ➡️  16
+Aresta 26 (8,9) - 195.977976
+Step: 0.053433 Mu:144.093770
+Fluxo de 26 (8,9) - 195.9779756982190122016618261113762855529785,217.7005177842591479020484257489442825317383
+Fluxo de 26 (8,9) - 195.92454284083743232259,217.64708492687756802297
+Encontrando caminhos entre 8 ➡️  16
+Step: 0.021203 Mu:153.367057
+Step: 0.027024 Mu:63.763054
+Encontrando caminhos entre 8 ➡️  16
+Step: 0.014270 Mu:103.152505
+Encontrando caminhos entre 8 ➡️  16
+Step: 0.010900 Mu:24.572228
+Step: 0.007564 Mu:63.750300
+
+		👌👌👌👌👌👌👌👌👌👌👌👌 Bush 2 está em equilíbrio 👌👌👌👌👌👌👌👌👌👌👌👌
+
+Bush 2 é ótima! ✅
+
+
+		🎉🎉🎉🎉🎉🎉 Bush 2 é ótima! 🎉🎉🎉🎉🎉🎉
+
+		👌👌👌👌👌👌👌👌👌👌👌👌 Bush 2 está em equilíbrio 👌👌👌👌👌👌👌👌👌👌👌👌
+
+Bush 2 é ótima! ✅
+
+
+		🎉🎉🎉🎉🎉🎉 Bush 2 é ótima! 🎉🎉🎉🎉🎉🎉
+Encontrando caminhos entre 16 ➡️  8
+Step: 171.957380 Mu:500.000000
+Step: 183.291483 Mu:500.000000
+Encontrando caminhos entre 16 ➡️  8
+Step: 32.323061 Mu:328.042620
+Step: 47.056828 Mu:316.708517
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.138691 Mu:295.719559
+Step: 0.603304 Mu:269.651689
+Encontrando caminhos entre 16 ➡️  18
+Step: 25.579472 Mu:500.000000
+Encontrando caminhos entre 16 ➡️  8
+Step: 3.834466 Mu:295.580868
+Step: 24.164198 Mu:256.531088
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.000194 Mu:291.746402
+Step: 0.052831 Mu:232.366890
+Encontrando caminhos entre 16 ➡️  18
+Step: 13.199205 Mu:474.420528
+Encontrando caminhos entre 16 ➡️  8
+Step: 2.157439 Mu:291.746208
+Step: 12.360223 Mu:245.513264
+Encontrando caminhos entre 16 ➡️  18
+Step: 13.226205 Mu:461.221324
+Encontrando caminhos entre 16 ➡️  8
+Step: 2.285139 Mu:289.588769
+Step: 0.939410 Mu:318.851841
+Encontrando caminhos entre 16 ➡️  18
+Step: 0.285799 Mu:447.995119
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.050906 Mu:287.303630
+Step: 0.264267 Mu:234.378249
+Encontrando caminhos entre 16 ➡️  18
+Step: 0.145663 Mu:447.709319
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.025886 Mu:287.252724
+Step: 0.134703 Mu:234.259645
+Encontrando caminhos entre 16 ➡️  18
+Step: 0.074244 Mu:447.563656
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.013200 Mu:287.226837
+Step: 0.068654 Mu:234.199185
+Encontrando caminhos entre 16 ➡️  18
+Step: 0.037842 Mu:447.489413
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.006729 Mu:287.213637
+Step: 0.034992 Mu:234.168373
+Encontrando caminhos entre 16 ➡️  18
+Step: 0.019288 Mu:447.451571
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.003430 Mu:287.206908
+Step: 0.017835 Mu:234.152669
+Encontrando caminhos entre 16 ➡️  18
+Step: 0.009831 Mu:447.432283
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.001749 Mu:287.203478
+Step: 0.009090 Mu:234.144665
+Encontrando caminhos entre 16 ➡️  18
+Step: 0.005011 Mu:447.422453
+
+		👌👌👌👌👌👌👌👌👌👌👌👌 Bush 3 está em equilíbrio 👌👌👌👌👌👌👌👌👌👌👌👌
+
+
+
+		🎉🎉🎉🎉🎉🎉 Bush 3 é ótima! 🎉🎉🎉🎉🎉🎉
+Encontrando caminhos entre 16 ➡️  6
+Step: 140.524208 Mu:500.000000
+Encontrando caminhos entre 16 ➡️  6
+Step: 108.440276 Mu:593.616377
+Encontrando caminhos entre 16 ➡️  6
+Step: 116.804784 Mu:140.524208
+Encontrando caminhos entre 16 ➡️  6
+Step: 30.627170 Mu:476.280575
+Encontrando caminhos entre 16 ➡️  6
+Step: 2.186634 Mu:445.653405
+Encontrando caminhos entre 16 ➡️  6
+Step: 2.783948 Mu:225.245060
+Encontrando caminhos entre 16 ➡️  6
+Step: 1.340471 Mu:222.461112
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.186281 Mu:59.317177
+Encontrando caminhos entre 16 ➡️  8
+Step: 163.468805 Mu:287.201729
+Step: 113.281057 Mu:318.441973
+Encontrando caminhos entre 16 ➡️  6
+Step: 55.093989 Mu:440.869104
+Encontrando caminhos entre 16 ➡️  6
+Step: 22.119143 Mu:511.889836
+Encontrando caminhos entre 16 ➡️  6
+Step: 43.325836 Mu:114.224885
+Encontrando caminhos entre 16 ➡️  6
+Step: 4.341042 Mu:286.751901
+Encontrando caminhos entre 16 ➡️  6
+Step: 4.613121 Mu:282.410859
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.509006 Mu:424.487831
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.110205 Mu:493.602729
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.083149 Mu:76.021175
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.073252 Mu:493.575673
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.055469 Mu:75.938026
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.048863 Mu:493.557890
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.036999 Mu:75.882557
+Encontrando caminhos entre 16 ➡️  8
+Step: 74.481852 Mu:212.798271
+Step: 100.393682 Mu:652.578357
+Encontrando caminhos entre 16 ➡️  8
+Step: 48.592629 Mu:123.732925
+Encontrando caminhos entre 16 ➡️  6
+Step: 36.748924 Mu:75.845558
+Encontrando caminhos entre 16 ➡️  6
+Step: 24.247298 Mu:278.030058
+Encontrando caminhos entre 16 ➡️  6
+Step: 8.120047 Mu:253.782760
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.708040 Mu:245.662713
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.043142 Mu:435.948027
+Encontrando caminhos entre 16 ➡️  8
+Step: 43.742145 Mu:138.316419
+Encontrando caminhos entre 16 ➡️  8
+Step: 20.531700 Mu:75.140295
+Encontrando caminhos entre 16 ➡️  6
+Step: 9.904902 Mu:64.095115
+Encontrando caminhos entre 16 ➡️  6
+Step: 7.670902 Mu:244.954673
+Encontrando caminhos entre 16 ➡️  6
+Step: 2.717131 Mu:237.283771
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.286552 Mu:61.861115
+Encontrando caminhos entre 16 ➡️  8
+Step: 4.270621 Mu:94.574273
+Step: 16.608997 Mu:234.853191
+Encontrando caminhos entre 16 ➡️  6
+Step: 6.261497 Mu:481.869559
+Encontrando caminhos entre 16 ➡️  6
+Step: 1.843707 Mu:61.574563
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.130365 Mu:226.349398
+Encontrando caminhos entre 16 ➡️  8
+Step: 5.150131 Mu:58.879216
+Encontrando caminhos entre 16 ➡️  6
+Step: 3.681602 Mu:59.730856
+Encontrando caminhos entre 16 ➡️  6
+Step: 2.962973 Mu:226.219033
+Encontrando caminhos entre 16 ➡️  6
+Step: 1.137868 Mu:223.256060
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.150415 Mu:59.012227
+Encontrando caminhos entre 16 ➡️  8
+Step: 5.264862 Mu:90.303652
+Encontrando caminhos entre 16 ➡️  6
+Step: 1.247286 Mu:58.861812
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.965305 Mu:222.268607
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.366439 Mu:221.303303
+Encontrando caminhos entre 16 ➡️  8
+Step: 2.184315 Mu:237.950657
+Encontrando caminhos entre 16 ➡️  6
+Step: 1.582520 Mu:58.579831
+Encontrando caminhos entre 16 ➡️  6
+Step: 1.240206 Mu:220.936864
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.473221 Mu:219.696658
+Encontrando caminhos entre 16 ➡️  8
+Step: 1.109614 Mu:85.038790
+Step: 1.497536 Mu:254.353870
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.738108 Mu:58.237517
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.557110 Mu:219.223437
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.213896 Mu:218.666326
+Encontrando caminhos entre 16 ➡️  8
+Step: 1.508146 Mu:235.766342
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.730759 Mu:58.056519
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.587664 Mu:218.452430
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.227195 Mu:217.864767
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.757585 Mu:59.007622
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.228759 Mu:475.797192
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.824508 Mu:175.018026
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.248997 Mu:217.866331
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.586627 Mu:58.250037
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.177235 Mu:475.817430
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.609586 Mu:83.929176
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.143480 Mu:57.913423
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.111005 Mu:217.794568
+Encontrando caminhos entre 16 ➡️  8
+Step: 1.322456 Mu:57.663411
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.277683 Mu:442.119052
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.097562 Mu:475.505993
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.199018 Mu:58.158631
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.816703 Mu:95.128820
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.201886 Mu:57.959613
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.157843 Mu:217.980143
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.061070 Mu:217.822300
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.336875 Mu:56.340955
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.101650 Mu:475.671388
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.303502 Mu:56.519786
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.091575 Mu:217.862879
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.358051 Mu:56.004080
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.280981 Mu:56.574334
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.109406 Mu:218.129355
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.579101 Mu:55.646029
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.146866 Mu:442.084430
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.368235 Mu:83.319590
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.086377 Mu:58.062436
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.212088 Mu:55.066928
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.176368 Mu:83.163443
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.060494 Mu:218.232036
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.798675 Mu:54.854840
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.034902 Mu:82.987075
+Step: 0.037117 Mu:251.918326
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.051385 Mu:218.171543
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.025607 Mu:54.056166
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.021159 Mu:172.598761
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.009952 Mu:82.952174
+Step: 0.019535 Mu:475.759215
+Encontrando caminhos entre 16 ➡️  18
+Step: 93.220147 Mu:93.220147
+Encontrando caminhos entre 16 ➡️  8
+Step: 2.365874 Mu:67.756093
+Encontrando caminhos entre 16 ➡️  8
+Step: 1.370456 Mu:85.308095
+Step: 0.202344 Mu:526.774896
+Encontrando caminhos entre 16 ➡️  8
+Step: 3.140060 Mu:65.390219
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.742175 Mu:57.976059
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.577718 Mu:218.139693
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.221792 Mu:217.561975
+Encontrando caminhos entre 16 ➡️  8
+Step: 1.520708 Mu:62.250159
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.476990 Mu:56.363814
+Step: 0.969795 Mu:251.855431
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.473210 Mu:57.811602
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.370180 Mu:217.340183
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.142717 Mu:216.970003
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.821065 Mu:60.729451
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.202153 Mu:57.708571
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.136479 Mu:216.827286
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.052520 Mu:216.690807
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.085785 Mu:84.414629
+Step: 0.670222 Mu:250.885636
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.321889 Mu:57.642897
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.266360 Mu:216.638287
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.102844 Mu:216.371927
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.140232 Mu:55.886824
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.038406 Mu:57.587367
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.204748 Mu:57.170618
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.048596 Mu:442.451039
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.155347 Mu:55.951341
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.110865 Mu:57.597557
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.144910 Mu:56.965870
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.034392 Mu:442.513307
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.138981 Mu:178.313627
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.061652 Mu:216.269084
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.231099 Mu:59.908386
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.129167 Mu:235.758416
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.120564 Mu:216.207431
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.084314 Mu:56.820960
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.093154 Mu:235.713562
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.061252 Mu:216.086867
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.038738 Mu:84.328844
+Step: 0.097061 Mu:526.293340
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.152015 Mu:59.677287
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.035486 Mu:57.521085
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.093444 Mu:56.736646
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.059108 Mu:55.795994
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.049326 Mu:56.643202
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.066151 Mu:216.025615
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.044891 Mu:56.593876
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.033660 Mu:55.786212
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.027532 Mu:59.525272
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.126398 Mu:56.548985
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.018768 Mu:84.290106
+Encontrando caminhos entre 16 ➡️  18
+Step: 62.299411 Mu:354.197294
+Encontrando caminhos entre 16 ➡️  8
+Step: 23.552345 Mu:59.497740
+Encontrando caminhos entre 16 ➡️  8
+Step: 10.058315 Mu:259.283675
+Step: 6.678735 Mu:6.678735
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.846981 Mu:249.225360
+Step: 15.426969 Mu:215.925804
+Encontrando caminhos entre 16 ➡️  6
+Step: 5.598565 Mu:476.267423
+Encontrando caminhos entre 16 ➡️  6
+Step: 1.356969 Mu:57.485599
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.073436 Mu:207.454369
+Encontrando caminhos entre 16 ➡️  8
+Step: 4.359385 Mu:94.329654
+Encontrando caminhos entre 16 ➡️  6
+Step: 3.058896 Mu:56.128630
+Encontrando caminhos entre 16 ➡️  6
+Step: 2.556112 Mu:207.380933
+Encontrando caminhos entre 16 ➡️  6
+Step: 1.066275 Mu:204.824821
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.110674 Mu:55.625846
+Encontrando caminhos entre 16 ➡️  8
+Step: 4.563355 Mu:203.869220
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.649788 Mu:55.515172
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.161982 Mu:445.134616
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.067468 Mu:470.346100
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.133483 Mu:55.027366
+Encontrando caminhos entre 16 ➡️  8
+Step: 3.279797 Mu:35.945394
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.754380 Mu:54.893883
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.590640 Mu:200.156604
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.246719 Mu:199.565964
+Encontrando caminhos entre 16 ➡️  8
+Step: 2.182050 Mu:56.627065
+Step: 0.792058 Mu:225.329118
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.383310 Mu:54.730143
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.310737 Mu:199.319245
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.130262 Mu:199.008508
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.798727 Mu:32.665598
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.083180 Mu:246.795799
+Step: 0.242198 Mu:219.256582
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.086312 Mu:199.120444
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.341958 Mu:31.866871
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.077272 Mu:54.657569
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.088083 Mu:31.524913
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.027042 Mu:64.403726
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.032382 Mu:90.080491
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.020759 Mu:64.376684
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.042795 Mu:31.436830
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.013270 Mu:64.355926
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.016491 Mu:54.546368
+Encontrando caminhos entre 16 ➡️  18
+Step: 24.933382 Mu:291.897883
+Encontrando caminhos entre 16 ➡️  8
+Step: 7.259350 Mu:31.394035
+Encontrando caminhos entre 16 ➡️  8
+Step: 3.841851 Mu:61.789228
+Step: 8.429885 Mu:199.017642
+Encontrando caminhos entre 16 ➡️  6
+Step: 2.967381 Mu:471.212630
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.552586 Mu:54.580297
+Encontrando caminhos entre 16 ➡️  8
+Step: 4.242931 Mu:24.134685
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.974040 Mu:54.027710
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.765087 Mu:194.107724
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.328497 Mu:193.342637
+Encontrando caminhos entre 16 ➡️  8
+Step: 3.917351 Mu:57.947377
+Step: 1.167657 Mu:216.380684
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.560668 Mu:53.818758
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.467523 Mu:193.014141
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.201800 Mu:192.546618
+Encontrando caminhos entre 16 ➡️  8
+Step: 1.312665 Mu:93.910719
+Step: 0.000012 Mu:469.142597
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.391440 Mu:447.587052
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.766476 Mu:192.344831
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.333161 Mu:191.578354
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.735142 Mu:19.891754
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.404652 Mu:236.675388
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.102951 Mu:54.883529
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.666597 Mu:19.156612
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.224293 Mu:191.245193
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.216785 Mu:92.598054
+Step: 0.163784 Mu:213.900363
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.106319 Mu:191.020900
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.087605 Mu:68.585587
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.097580 Mu:18.490015
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.060116 Mu:68.497982
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.069174 Mu:446.629666
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.102169 Mu:92.468874
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.051288 Mu:68.437866
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.034790 Mu:446.560493
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.254783 Mu:68.386578
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.036183 Mu:92.417993
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.023057 Mu:1.410244
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.018922 Mu:190.909992
+Encontrando caminhos entre 16 ➡️  18
+Step: 8.533419 Mu:266.964501
+Encontrando caminhos entre 16 ➡️  8
+Step: 2.491360 Mu:18.392435
+Encontrando caminhos entre 16 ➡️  8
+Step: 1.315850 Mu:56.521386
+Step: 2.764189 Mu:190.891071
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.958099 Mu:469.348400
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.195385 Mu:54.861484
+Encontrando caminhos entre 16 ➡️  8
+Step: 1.550057 Mu:15.901075
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.356563 Mu:54.666099
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.278906 Mu:189.280365
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.121506 Mu:189.001459
+Encontrando caminhos entre 16 ➡️  8
+Step: 1.326917 Mu:55.205536
+Step: 0.404164 Mu:210.949578
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.193733 Mu:54.588442
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.162482 Mu:188.879953
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.070918 Mu:188.717471
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.565557 Mu:93.697661
+Step: 0.000002 Mu:468.728857
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.169770 Mu:447.395553
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.332733 Mu:188.646554
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.145665 Mu:188.313821
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.286043 Mu:14.351018
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.263385 Mu:188.454199
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.087145 Mu:188.190814
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.203154 Mu:14.064974
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.065635 Mu:242.384993
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.104339 Mu:13.861821
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.041417 Mu:55.323079
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.047882 Mu:2.238787
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.024207 Mu:53.878618
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.024107 Mu:69.681853
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.026559 Mu:188.055787
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.019538 Mu:69.657746
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.015457 Mu:209.948629
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.085355 Mu:69.638209
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.016523 Mu:2.190905
+Encontrando caminhos entre 16 ➡️  18
+Step: 2.833345 Mu:258.431082
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.821123 Mu:13.757482
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.435211 Mu:54.675535
+Step: 0.736064 Mu:209.949695
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.346527 Mu:55.265139
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.287247 Mu:188.029228
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.125818 Mu:187.741981
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.500101 Mu:12.936359
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.117339 Mu:55.205860
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.425986 Mu:54.240324
+Step: 0.330653 Mu:187.616163
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.071596 Mu:447.085861
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.187183 Mu:93.567315
+Step: 0.008269 Mu:468.611733
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.051369 Mu:447.201448
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.100774 Mu:187.293779
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.098818 Mu:12.436258
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.044644 Mu:447.148123
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.057803 Mu:12.337439
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.026942 Mu:53.814339
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.020760 Mu:2.460383
+Step: 0.030430 Mu:187.193005
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.060137 Mu:12.279637
+Encontrando caminhos entre 16 ➡️  18
+Step: 0.923549 Mu:255.597737
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.334565 Mu:12.219499
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.147428 Mu:253.590321
+Step: 0.267886 Mu:187.162575
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.075137 Mu:468.636698
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.153602 Mu:11.884934
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.065078 Mu:93.527560
+Step: 0.046240 Mu:186.969827
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.022038 Mu:53.808156
+Step: 0.031518 Mu:208.383591
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.033933 Mu:186.923587
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.016036 Mu:93.484520
+Step: 0.018956 Mu:186.889655
+Encontrando caminhos entre 16 ➡️  18
+Step: 0.300365 Mu:254.674188
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.088033 Mu:11.731332
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.046063 Mu:53.874151
+Step: 0.082348 Mu:208.318140
+Encontrando caminhos entre 16 ➡️  6
+Step: 0.053694 Mu:186.870699
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.025529 Mu:53.828088
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.023176 Mu:93.514547
+Step: 0.031451 Mu:186.817005
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.047340 Mu:11.643299
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.009722 Mu:2.552041
+Step: 0.027642 Mu:186.785554
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.015536 Mu:53.802559
+Encontrando caminhos entre 16 ➡️  18
+Step: 0.091495 Mu:254.373823
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.045676 Mu:11.595959
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.031991 Mu:186.757912
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.018478 Mu:11.550284
+Encontrando caminhos entre 16 ➡️  18
+Step: 0.033362 Mu:254.282328
+Encontrando caminhos entre 16 ➡️  8
+Step: 0.017329 Mu:11.531806
+
+		👌👌👌👌👌👌👌👌👌👌👌👌 Bush 3 está em equilíbrio 👌👌👌👌👌👌👌👌👌👌👌👌
+
+Bush 3 é ótima! ✅
+
+
+		🎉🎉🎉🎉🎉🎉 Bush 3 é ótima! 🎉🎉🎉🎉🎉🎉
+
+		👌👌👌👌👌👌👌👌👌👌👌👌 Bush 3 está em equilíbrio 👌👌👌👌👌👌👌👌👌👌👌👌
+
+Bush 3 é ótima! ✅
+
+
+		🎉🎉🎉🎉🎉🎉 Bush 3 é ótima! 🎉🎉🎉🎉🎉🎉
+Encontrando caminhos entre 18 ➡️  6
+Step: 67.090715 Mu:500.000000
+Step: 185.416385 Mu:500.000000
+Encontrando caminhos entre 18 ➡️  6
+Step: 2.132176 Mu:432.909285
+Step: 32.093672 Mu:314.583615
+Encontrando caminhos entre 18 ➡️  6
+Step: 0.000433 Mu:69.222891
+Step: 0.145091 Mu:217.510056
+
+		👌👌👌👌👌👌👌👌👌👌👌👌 Bush 4 está em equilíbrio 👌👌👌👌👌👌👌👌👌👌👌👌
+
+
+
+		🎉🎉🎉🎉🎉🎉 Bush 4 é ótima! 🎉🎉🎉🎉🎉🎉
+Encontrando caminhos entre 18 ➡️  6
+Step: 0.000000 Mu:69.222458
+Step: 128.776962 Mu:217.364965
+Encontrando caminhos entre 18 ➡️  6
+Step: 89.793959 Mu:411.411996
+Encontrando caminhos entre 18 ➡️  6
+Step: 87.988774 Mu:89.793959
+Step: 127.903392 Mu:692.841076
+Encontrando caminhos entre 18 ➡️  6
+Step: 0.651377 Mu:69.222458
+Step: 70.021429 Mu:588.588004
+Encontrando caminhos entre 18 ➡️  6
+Step: 0.000050 Mu:68.571081
+Step: 32.889811 Mu:409.606812
+Encontrando caminhos entre 18 ➡️  6
+Step: 1.805184 Mu:1.805184
+Encontrando caminhos entre 18 ➡️  6
+Step: 0.651473 Mu:431.428969
+Step: 7.331966 Mu:121.477815
+Encontrando caminhos entre 18 ➡️  6
+Step: 0.000046 Mu:69.222504
+Step: 5.700275 Mu:385.854151
+Encontrando caminhos entre 18 ➡️  6
+Step: 0.000000 Mu:69.222458
+Step: 2.644750 Mu:119.846124
+Encontrando caminhos entre 18 ➡️  6
+Step: 0.000000 Mu:69.222458
+Step: 1.461211 Mu:382.798626
+Encontrando caminhos entre 18 ➡️  6
+Step: 0.000000 Mu:69.222458
+Step: 1.914433 Mu:508.589859
+Encontrando caminhos entre 18 ➡️  6
+Step: 0.077489 Mu:118.662585
+Encontrando caminhos entre 18 ➡️  6
+Step: 0.000000 Mu:69.222458
+Step: 0.057281 Mu:268.462254
+Encontrando caminhos entre 18 ➡️  6
+Step: 0.000000 Mu:69.222458
+Step: 0.061738 Mu:111.987159
+Encontrando caminhos entre 18 ➡️  8
+Step: 24.316150 Mu:87.988774
+Encontrando caminhos entre 18 ➡️  6
+Step: 0.000000 Mu:69.222458
+Step: 0.442012 Mu:292.721123
+Encontrando caminhos entre 18 ➡️  6
+Step: 0.176926 Mu:381.414904
+Encontrando caminhos entre 18 ➡️  6
+Step: 0.000000 Mu:69.222458
+Step: 0.069132 Mu:292.279111
+Encontrando caminhos entre 18 ➡️  6
+Step: 0.000000 Mu:69.222458
+Step: 0.041127 Mu:118.831154
+Encontrando caminhos entre 18 ➡️  6
+Step: 0.047987 Mu:292.209979
+Encontrando caminhos entre 18 ➡️  6
+Step: 0.042624 Mu:292.161993
+Encontrando caminhos entre 18 ➡️  16
+Step: 62.457472 Mu:112.150333
+Encontrando caminhos entre 18 ➡️  6
+Step: 0.000000 Mu:69.222458
+Step: 0.394385 Mu:506.687681
+Encontrando caminhos entre 18 ➡️  6
+Step: 0.147214 Mu:381.161986
+Encontrando caminhos entre 18 ➡️  6
+Step: 0.056773 Mu:292.119368
+Encontrando caminhos entre 18 ➡️  6
+Step: 0.000000 Mu:69.222458
+Step: 0.034391 Mu:119.042001
+Encontrando caminhos entre 18 ➡️  6
+Step: 0.041045 Mu:292.062595
+Encontrando caminhos entre 18 ➡️  6
+Step: 0.035301 Mu:292.021550
+Encontrando caminhos entre 18 ➡️  16
+Step: 5.391314 Mu:50.275506
+
+		👌👌👌👌👌👌👌👌👌👌👌👌 Bush 4 está em equilíbrio 👌👌👌👌👌👌👌👌👌👌👌👌
+
+Bush 4 é ótima! ✅
+
+
+		🎉🎉🎉🎉🎉🎉 Bush 4 é ótima! 🎉🎉🎉🎉🎉🎉
+
+		👌👌👌👌👌👌👌👌👌👌👌👌 Bush 4 está em equilíbrio 👌👌👌👌👌👌👌👌👌👌👌👌
+
+Bush 4 é ótima! ✅
+
+
+		🎉🎉🎉🎉🎉🎉 Bush 4 é ótima! 🎉🎉🎉🎉🎉🎉
+🔢🔢🔢🔢🔢🔢🔢🔢 Iteração 1 🔢🔢🔢🔢🔢🔢🔢🔢
+Encontrando caminhos entre 6 ➡️  8
+Step: 11.406122 Mu:289.354160
+Encontrando caminhos entre 6 ➡️  8
+Step: 4.466557 Mu:33.311051
+Encontrando caminhos entre 6 ➡️  8
+Step: 3.201909 Mu:243.774504
+Encontrando caminhos entre 6 ➡️  8
+Step: 8.011898 Mu:28.844494
+Encontrando caminhos entre 6 ➡️  8
+Step: 2.262779 Mu:289.161845
+Encontrando caminhos entre 6 ➡️  8
+Step: 2.226769 Mu:20.832596
+Encontrando caminhos entre 6 ➡️  8
+Step: 0.629958 Mu:289.125835
+Encontrando caminhos entre 6 ➡️  8
+Step: 0.621258 Mu:18.605827
+Encontrando caminhos entre 6 ➡️  8
+Step: 0.175886 Mu:289.117135
+Encontrando caminhos entre 6 ➡️  8
+Step: 0.173704 Mu:17.984569
+Encontrando caminhos entre 6 ➡️  8
+Step: 0.049190 Mu:289.114952
+Encontrando caminhos entre 6 ➡️  16
+Step: 3.010404 Mu:29.087847
+Encontrando caminhos entre 6 ➡️  16
+Step: 0.085529 Mu:424.170921
+Encontrando caminhos entre 6 ➡️  18
+Step: 71.266425 Mu:93.292892
+Encontrando caminhos entre 6 ➡️  16
+Step: 31.296842 Mu:143.130056
+Encontrando caminhos entre 6 ➡️  16
+Step: 26.077443 Mu:26.077443
+Encontrando caminhos entre 6 ➡️  16
+Step: 9.361350 Mu:137.910657
+Encontrando caminhos entre 6 ➡️  16
+Step: 0.116640 Mu:393.477159
+Encontrando caminhos entre 6 ➡️  18
+Aresta 26 (8,9) - 21.722542
+Step: 15.372412 Mu:17.810865
+Fluxo de 26 (8,9) - 21.7225420860401605693823512410745024681091,217.6470849268775680229737190529704093933105
+Fluxo de 26 (8,9) - 6.35012997316499827605,202.27467281400240040057
+Encontrando caminhos entre 6 ➡️  8
+Step: 5.053637 Mu:599.830481
+Encontrando caminhos entre 6 ➡️  8
+Step: 6.568150 Mu:289.065763
+Encontrando caminhos entre 6 ➡️  16
+Step: 5.608883 Mu:393.360519
+Encontrando caminhos entre 6 ➡️  16
+Step: 0.046161 Mu:387.751636
+Encontrando caminhos entre 6 ➡️  18
+Aresta 26 (8,9) - 6.350130
+Step: 4.412482 Mu:6.350130
+Fluxo de 26 (8,9) - 6.3501299731649982760472994414158165454865,202.2746728140024004005681490525603294372559
+Fluxo de 26 (8,9) - 1.93764837562663050363,197.86219121646402641090
+Encontrando caminhos entre 6 ➡️  8
+Step: 1.702537 Mu:223.852517
+Encontrando caminhos entre 6 ➡️  8
+Step: 0.803113 Mu:14.060239
+Encontrando caminhos entre 6 ➡️  8
+Step: 0.222793 Mu:280.590781
+Encontrando caminhos entre 6 ➡️  8
+Step: 0.220125 Mu:13.257126
+Encontrando caminhos entre 6 ➡️  8
+Step: 0.061181 Mu:280.588113
+Encontrando caminhos entre 6 ➡️  16
+Step: 1.662771 Mu:387.705475
+Encontrando caminhos entre 6 ➡️  18
+Step: 3.120014 Mu:91.051319
+Encontrando caminhos entre 6 ➡️  16
+Step: 1.872517 Mu:139.103777
+Encontrando caminhos entre 6 ➡️  18
+Aresta 26 (8,9) - 1.937648
+Step: 1.937648 Mu:1.937648
+Fluxo de 26 (8,9) - 1.9376483756266305036319863575045019388199,197.8621912164640264109038980677723884582520
+Fluxo de 26 (8,9) - 0.00000000000000000000,195.92454284083740390088
+Encontrando caminhos entre 6 ➡️  8
+Step: 0.594632 Mu:593.358281
+Encontrando caminhos entre 6 ➡️  8
+Step: 0.767218 Mu:280.526933
+Encontrando caminhos entre 6 ➡️  16
+Step: 0.430668 Mu:139.168909
+Encontrando caminhos entre 6 ➡️  18
+Step: 1.601196 Mu:87.931305
+Encontrando caminhos entre 6 ➡️  16
+Step: 0.959665 Mu:140.339438
+Encontrando caminhos entre 6 ➡️  18
+Step: 0.295961 Mu:312.748752
+Encontrando caminhos entre 6 ➡️  18
+Step: 0.035102 Mu:86.330109
+Encontrando caminhos entre 6 ➡️  18
+Step: 0.031150 Mu:86.295007
+
+		👌👌👌👌👌👌👌👌👌👌👌👌 Bush 1 está em equilíbrio 👌👌👌👌👌👌👌👌👌👌👌👌
+
+Error: Bush 2 has flow_per_alvo[26] = 195.92454284083743232259 greater than solucao[26] = 195.92454284083740390088

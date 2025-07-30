@@ -34,7 +34,7 @@ void print_flow(
         for (long i = 0; i < igraph_ecount(Grafo); i++) {
             igraph_integer_t from, to;
             igraph_edge(Grafo, i, &from, &to);
-            printf("%ld %ld %f\n", from, to, VECTOR(*flow)[i]);
+            printf("%ld %ld %f\n", from+1, to+1, VECTOR(*flow)[i]);
         }
         printf("\n");
     }
@@ -70,6 +70,13 @@ void erase_path(struct min_max_bush *path){
 }
 
 void print_vetor(void* array,int N,int check){
+    if(check == sizeof(bool)){
+        bool* boolArray = (bool*)array;
+        for (int i = 0; i < N; i++){
+            if(i!=N-1) printf("%d ",boolArray[i]);
+            else printf("%d\n",boolArray[i]);
+        }
+    }
     if(check == sizeof(int)){
         int* intArray = (int*)array;
         for (int i = 0; i < N; i++){

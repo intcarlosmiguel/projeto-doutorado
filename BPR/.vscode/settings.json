@@ -19,6 +19,7 @@
         "stdbool.h": "c",
         "math.h": "c",
         "mtwister.h": "c",
-        "omp.h": "c"
+        "omp.h": "c",
+        "simulate.h": "c"
     }
 }
