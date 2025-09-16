@@ -82,7 +82,9 @@ void load_OD_from_file(const char* filename, struct OD_MATRIX* OD_MATRIX) {
     double flow;
     OD_MATRIX->size = 0;
     OD_MATRIX->Elementos = malloc(sizeof(struct ElementOD) * 0);
+    OD_MATRIX->all_elements = 0;
     while (fscanf(file, "%d %d %lf", &source, &target, &flow) == 3) {
+        OD_MATRIX->all_elements++;
         if (current_source != source - 1) {
             OD_MATRIX->Elementos = realloc(OD_MATRIX->Elementos, sizeof(struct ElementOD) * (OD_MATRIX->size + 1));
             OD_MATRIX->Elementos[OD_MATRIX->size].fonte = source - 1;

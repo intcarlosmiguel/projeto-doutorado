@@ -31,6 +31,7 @@ struct ElementOD{
 struct OD_MATRIX{
     struct ElementOD* Elementos;
     int size;
+    int all_elements;
 };
 struct min_max_bush{
     igraph_vector_int_t min_edges;
@@ -49,3 +50,12 @@ struct BUSH{
     struct min_max_bush paths;
     igraph_vector_t flow_per_origin; // Fluxo por alvo
 };
+
+typedef struct {
+    igraph_t*       graph;
+    double          lambda;
+    struct OD_MATRIX*  od_matrix;
+    struct PARAMETERS* bpr_params;
+    igraph_vector_t *flow_hat;
+    // Poderíamos até incluir o rastreador da pergunta anterior aqui se quiséssemos!
+} OPTIMIZATION_DATA;

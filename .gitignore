@@ -8,3 +8,7 @@ input/
 igraph/
 *.md
 !**/README.md
+*.zip
+/output/edges_bairro/*
+/output/time/*
+/BPR/liblbfgs/*
